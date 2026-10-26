@@ -15,7 +15,39 @@ export const SITE = {
 	googleSiteVerification: '',
 	// Shows the "Want this done for you?" box at the end of every article.
 	showServiceCta: true,
+	// Cloudflare Turnstile site key (public). The secret key lives in Cloudflare as TURNSTILE_SECRET_KEY.
+	turnstileSiteKey: '0x4AAAAAAFmi4S7Vz6hL6ne5',
 };
+
+export const TOOLS = [
+	{
+		slug: 'website-audit',
+		name: 'Free Website Audit',
+		short: 'Website Audit',
+		description: 'Check your homepage for the issues that stop Google and customers finding you: speed, mobile, titles, tap-to-call and more.',
+		time: '1 minute',
+		color: 'bg-blue',
+		fg: 'text-white',
+	},
+	{
+		slug: 'google-visibility-scorecard',
+		name: 'Google Visibility Scorecard',
+		short: 'Visibility Scorecard',
+		description: 'Answer 12 quick questions and see how easy your business is to find on Google, with a plan of what to fix first.',
+		time: '2 minutes',
+		color: 'bg-sun',
+		fg: 'text-ink',
+	},
+	{
+		slug: 'review-request-generator',
+		name: 'Review Request Generator',
+		short: 'Review Request Generator',
+		description: 'Get ready-to-send text, email and WhatsApp messages asking for Google reviews, plus a printable QR code card.',
+		time: '1 minute',
+		color: 'bg-coral',
+		fg: 'text-ink',
+	},
+] as const;
 
 export const AUTHOR = {
 	name: 'Burhanuddin Kapasi',
@@ -63,6 +95,7 @@ export const CATEGORIES = [
 export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
 
 export const NAV = [
+	{ label: 'Free tools', href: '/tools/' },
 	{ label: 'Websites', href: '/category/websites/' },
 	{ label: 'SEO', href: '/category/seo/' },
 	{ label: 'Google Business Profile', href: '/category/google-business-profile/' },

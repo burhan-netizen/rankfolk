@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { TOOLS, SITE } from '../../site.config';
+
+const icons: Record<string, string> = {
+	'website-audit': 'M3 5h18v14H3zM3 9h18M8 14l2.5 2.5L16 12',
+	'google-visibility-scorecard': 'M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM9.5 9.5l2 2 3.5-3.5',
+	'review-request-generator': 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z',
+};
+
+const schema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'CollectionPage',
+		name: 'Free tools for small businesses',
+		url: `${SITE.url}/tools/`,
+		hasPart: TOOLS.map((t) => ({ '@type': 'WebApplication', name: t.name, url: `${SITE.url}/tools/${t.slug}/` })),
+	},
+];
+---
+
+<BaseLayout title="Free Tools for Small Businesses" description="Free tools to help small businesses get found on Google: a website audit, a Google visibility scorecard and a review request generator with QR codes." schema={schema}>
+	<section class="dots border-b-2 border-ink">
+		<div class="container-wide py-14 md:py-20">
+			<span class="sticker -rotate-2 bg-sun">100% free, no sign-up</span>
+			<h1 class="mt-5 max-w-3xl text-4xl font-extrabold md:text-[3.4rem] md:leading-[1.05]">
+				Free tools to get <span class="marker">found on Google</span>
+			</h1>
+			<p class="mt-5 max-w-2xl text-lg text-ink-soft md:text-xl">Check your website, score your Google visibility and get more reviews. Built for small business owners and contractors, in plain English.</p>
+		</div>
+	</section>
+
+	<section class="container-wide mt-14">
+		<div class="grid gap-7 md:grid-cols-3">
+			{
+				TOOLS.map((t) => (
+					<a href={`/tools/${t.slug}/`} class:list={['pop-lg pop-hover group flex flex-col rounded-[2rem] p-7', t.color, t.fg]}>
+						<span class="flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-ink bg-white text-ink shadow-[3px_3px_0_0_#0b0f1f] transition group-hover:rotate-6">
+							<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d={icons[t.slug]} /></svg>
+						</span>
+						<h2 class="mt-6 text-2xl font-extrabold">{t.name}</h2>
+						<p class="mt-3 opacity-90">{t.description}</p>
+						<p class="mt-auto flex items-center justify-between pt-8 font-display text-sm font-bold">
+							<span>Takes about {t.time}</span>
+							<span class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-ink bg-white text-ink transition group-hover:rotate-[-45deg]" aria-hidden="true">
+								<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+							</span>
+						</p>
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="container-read mt-20">
+		<div class="prose prose-lg prose-rankfolk max-w-none">
+			<h2>Which tool should I start with?</h2>
+			<ul>
+				<li><strong>Not sure where you stand?</strong> Take the <a href="/tools/google-visibility-scorecard/">Google Visibility Scorecard</a>. It covers your Google profile, reviews and website in two minutes.</li>
+				<li><strong>Have a website?</strong> Run the <a href="/tools/website-audit/">Free Website Audit</a> to find the technical issues holding it back.</li>
+				<li><strong>Need more reviews?</strong> The <a href="/tools/review-request-generator/">Review Request Generator</a> gives you messages to send today and a QR code to print.</li>
+			</ul>
+			<p>Every tool shows your results straight away. If you want the full step-by-step report, we'll email it to you for free.</p>
+		</div>
+	</section>
+</BaseLayout>

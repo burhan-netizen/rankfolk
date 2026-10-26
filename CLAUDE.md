@@ -8,11 +8,14 @@ Rankfolk (rankfolk.com) is a static Astro 7 + Tailwind 4 blog for small business
 - Don't use the word "tradie". Say "contractors", "trades" or "small business owners".
 - Write in plain English for non-technical owners. Short paragraphs, practical steps, no hype.
 - Don't invent statistics, prices or quotes. Link official sources (Google documentation first) for platform facts.
-- Keep the site static: no server code, no PHP, no database.
+- Pages stay static (Astro). Server code is allowed only as Cloudflare Pages Functions in `functions/`, using free tiers first. No PHP, no database unless agreed.
+- Never put API keys in code. Secrets live in Cloudflare (Pages project, Settings, Variables and Secrets): `PAGESPEED_API_KEY`, `RESEND_API_KEY`, `TURNSTILE_SECRET_KEY`, optional `RESEND_CONTACTS_KEY` (full access key, used to add newsletter contacts).
 - Run `npm run build` before every push and fix any errors.
 
 ## Where things live
 
+- Free tools: pages in `src/pages/tools/`, browser scripts in `src/scripts/`, server code in `functions/api/` with shared helpers in `functions/_lib/`. Turnstile site key is in `src/site.config.ts`.
+- Emails from tools are sent through Resend from hello@rankfolk.com. The Mago Labs mention appears only in emailed reports, never on tool result screens.
 - Site settings, author, categories, menu, AdSense ID: `src/site.config.ts`
 - Articles: `src/content/blog/*.md` (schema in `src/content.config.ts`)
 - Layouts: `src/layouts/`, components: `src/components/`, pages: `src/pages/`

@@ -1,0 +1,189 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import EmailReport from '../../components/EmailReport.astro';
+import { SCORECARD_QUESTIONS, SCORECARD_CATEGORIES } from '../../data/scorecard.js';
+
+const options = [
+	['yes', 'Yes'],
+	['unsure', 'Not sure'],
+	['no', 'No'],
+];
+const catName = Object.fromEntries(SCORECARD_CATEGORIES.map((c) => [c.id, c.name]));
+---
+
+<ToolLayout
+	slug="google-visibility-scorecard"
+	title="Google Visibility Scorecard"
+	seoTitle="Google Visibility Scorecard: How Easy Is Your Business to Find?"
+	eyebrow="2-minute quiz"
+	description="Answer 12 quick questions to see how easy your business is to find on Google and Google Maps, with a free, prioritized plan of what to fix first."
+	intro="Answer 12 quick yes or no questions and get a score out of 100, plus a plan of what to fix first to get found on Google and Google Maps."
+>
+	<div class="mx-auto max-w-3xl">
+		<form id="sc-form" class="space-y-5" novalidate>
+			<div class="pop sticky top-[5.25rem] z-10 rounded-2xl bg-white px-5 py-3">
+				<div class="flex items-center justify-between text-sm font-bold">
+					<span>Your progress</span>
+					<span id="sc-progress-text">0 of {SCORECARD_QUESTIONS.length}</span>
+				</div>
+				<div class="mt-2 h-3 overflow-hidden rounded-full border-2 border-ink bg-paper"><div id="sc-progress" class="h-full w-0 rounded-full bg-blue transition-all"></div></div>
+			</div>
+
+			{
+				SCORECARD_QUESTIONS.map((q, i) => (
+					<fieldset class="pop-lg rounded-[1.5rem] bg-white p-5 md:p-6" data-q={q.id}>
+						<legend class="sr-only">{q.question}</legend>
+						<p class="text-xs font-bold uppercase tracking-widest text-muted">
+							{i + 1}. {catName[q.category]}
+						</p>
+						<p class="mt-2 font-display text-lg font-bold leading-snug md:text-xl" aria-hidden="true">
+							{q.question}
+						</p>
+						<p class="mt-1.5 text-[0.95rem] text-ink-soft">{q.help}</p>
+						<div class="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
+							{options.map(([v, l]) => (
+								<label class="cursor-pointer">
+									<input type="radio" name={q.id} value={v} class="peer sr-only" />
+									<span class="block whitespace-nowrap rounded-full border-2 border-ink bg-paper px-2 py-2.5 text-center font-display text-[0.8rem] font-bold transition sm:px-3 sm:text-sm hover:bg-blue-tint peer-checked:bg-sun peer-checked:shadow-[3px_3px_0_0_#0b0f1f] peer-focus-visible:ring-4 peer-focus-visible:ring-blue/40">
+										{l}
+									</span>
+								</label>
+							))}
+						</div>
+					</fieldset>
+				))
+			}
+
+			<p id="sc-error" role="alert" class="hidden rounded-2xl border-2 border-ink bg-[#ffe1d9] px-4 py-3 font-semibold"></p>
+			<div class="text-center">
+				<button type="submit" class="btn btn-sun !px-8 !py-4 !text-lg">See my score</button>
+			</div>
+		</form>
+
+		<div id="sc-results" hidden>
+			<div class="pop-lg rounded-[2rem] bg-white p-6 md:p-8">
+				<p class="text-sm font-bold uppercase tracking-widest text-muted">Your Google Visibility Score</p>
+				<div class="mt-5 flex flex-col gap-6 sm:flex-row sm:items-center">
+					<div id="sc-ring"></div>
+					<div>
+						<p id="sc-band" class="font-display text-3xl font-extrabold"></p>
+						<p id="sc-note" class="mt-2 text-lg text-ink-soft"></p>
+					</div>
+				</div>
+				<div class="mt-8" id="sc-cats"></div>
+			</div>
+
+			<h2 class="mt-12 text-2xl font-extrabold md:text-3xl">Fix these first</h2>
+			<p class="mt-2 text-ink-soft">The changes likely to make the biggest difference, based on your answers.</p>
+			<ol id="sc-fixes" class="mt-6 space-y-4"></ol>
+
+			<div class="mt-10">
+				<EmailReport id="sc-email" askBusiness heading="Get your full action plan" text="We'll email you every fix from your answers, in order, with step-by-step guides for each one." />
+			</div>
+
+			<div class="mt-10 flex flex-wrap gap-4">
+				<button id="sc-again" type="button" class="btn btn-light">Change my answers</button>
+				<a href="/tools/website-audit/" class="btn">Audit my website next</a>
+			</div>
+		</div>
+	</div>
+
+	<section slot="after" class="container-read pb-6">
+		<div class="prose prose-lg prose-rankfolk max-w-none">
+			<h2>What this scorecard measures</h2>
+			<p>
+				Local customers usually find businesses through the Google Maps results or the normal search results underneath. Google says it ranks local results on <a href="https://support.google.com/business/answer/7091" target="_blank" rel="noopener">relevance, distance and prominence</a>. You can't change your distance from a customer, but almost
+				everything else in this quiz is in your control, and most of it is free.
+			</p>
+			<p>The questions cover four areas: your Google Business Profile, your reviews, your website, and a couple of search basics. Questions that matter more, like having a verified profile, count more toward your score.</p>
+			<h2>Frequently asked questions</h2>
+			<h3>Is this based on Google's real ranking factors?</h3>
+			<p>It's based on what Google publicly recommends for local businesses, plus the basics we see making the biggest difference in practice. Google doesn't publish an exact formula, so treat your score as a guide to what to improve, not a prediction of your ranking.</p>
+			<h3>What if I answered "Not sure"?</h3>
+			<p>"Not sure" counts as a small amount, because you might already be doing it. Your report includes how to check each one.</p>
+			<h3>Do I need to give my email?</h3>
+			<p>No. Your score and top fixes show straight away. The email is only if you want the full action plan sent to you.</p>
+			<h3>Where should I start?</h3>
+			<p>Usually with your profile and reviews. Our <a href="/blog/how-to-set-up-google-business-profile/">Google Business Profile setup guide</a> and <a href="/blog/how-to-get-more-google-reviews/">how to get more Google reviews</a> cover both step by step.</p>
+		</div>
+	</section>
+</ToolLayout>
+
+<script>
+	import { SCORECARD_QUESTIONS, scoreScorecard } from '../../data/scorecard.js';
+	import { setupEmailReport } from '../../scripts/email-report';
+	import { scoreRing, categoryBars, fixCard } from '../../scripts/results';
+
+	const form = document.getElementById('sc-form') as HTMLFormElement;
+	const results = document.getElementById('sc-results')!;
+	const errorEl = document.getElementById('sc-error')!;
+	const total = SCORECARD_QUESTIONS.length;
+	let answers: Record<string, string> = {};
+	let emailReady = false;
+
+	function readAnswers() {
+		const data = new FormData(form);
+		answers = {};
+		for (const q of SCORECARD_QUESTIONS) {
+			const v = data.get(q.id);
+			if (v) answers[q.id] = String(v);
+		}
+		const n = Object.keys(answers).length;
+		document.getElementById('sc-progress')!.style.width = `${(n / total) * 100}%`;
+		document.getElementById('sc-progress-text')!.textContent = `${n} of ${total}`;
+		return n;
+	}
+
+	form.addEventListener('change', (e) => {
+		readAnswers();
+		const fs = (e.target as HTMLElement).closest('fieldset');
+		fs?.classList.remove('!border-coral');
+		const next = fs?.nextElementSibling as HTMLElement | null;
+		if (next?.tagName === 'FIELDSET' && !next.querySelector('input:checked') && window.matchMedia('(min-width: 640px)').matches) {
+			next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+		}
+	});
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const n = readAnswers();
+		if (n < total) {
+			const missing = SCORECARD_QUESTIONS.filter((q) => !answers[q.id]);
+			missing.forEach((q) => form.querySelector(`[data-q="${q.id}"]`)?.classList.add('!border-coral'));
+			errorEl.textContent = `Please answer ${missing.length === 1 ? 'the last question' : `the ${missing.length} remaining questions`} first.`;
+			errorEl.classList.remove('hidden');
+			form.querySelector(`[data-q="${missing[0].id}"]`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			return;
+		}
+		errorEl.classList.add('hidden');
+		const s = scoreScorecard(answers);
+		document.getElementById('sc-ring')!.innerHTML = scoreRing(s.score);
+		document.getElementById('sc-band')!.textContent = s.band.label;
+		document.getElementById('sc-note')!.textContent = s.band.note;
+		document.getElementById('sc-cats')!.innerHTML = categoryBars(s.categories);
+		const top = s.fixes.slice(0, 3);
+		const more = s.fixes.length - top.length;
+		document.getElementById('sc-fixes')!.innerHTML = top.length
+			? top.map((f: any, i: number) => fixCard(i + 1, { title: f.title, fix: f.text, status: f.answer, link: f.link, linkLabel: f.linkLabel })).join('') +
+				(more > 0 ? `<li class="rounded-2xl border-2 border-dashed border-ink bg-white/60 p-5 font-semibold">+ ${more} more ${more === 1 ? 'fix' : 'fixes'} in your full action plan below.</li>` : '')
+			: `<li class="pop rounded-2xl bg-mint p-5 font-semibold">You answered yes to everything. Keep the routine going, and try the website audit next.</li>`;
+
+		const box = document.getElementById('sc-email')!;
+		if (!emailReady) {
+			setupEmailReport(box, () => ({ kind: 'scorecard', answers }));
+			emailReady = true;
+		} else {
+			box.querySelector<HTMLElement>('[data-form-wrap]')!.hidden = false;
+			box.querySelector<HTMLElement>('[data-done]')!.hidden = true;
+		}
+		form.hidden = true;
+		results.hidden = false;
+		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	});
+
+	document.getElementById('sc-again')!.addEventListener('click', () => {
+		results.hidden = true;
+		form.hidden = false;
+		form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	});
+</script>

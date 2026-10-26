@@ -1,0 +1,302 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+import EmailReport from '../../components/EmailReport.astro';
+import { SITE } from '../../site.config';
+
+const checks = [
+	['Google can find you', 'https, noindex settings, robots.txt, sitemap and canonical tag'],
+	['How you look in Google', 'Page title, meta description, main heading and sharing preview'],
+	['Speed and mobile', 'Mobile setup, Google PageSpeed score and real visitor data'],
+	['Turning visitors into calls', 'Tap-to-call number, contact or quote path, helpful text, link to your Google profile'],
+	['Trust and accessibility', 'Local business schema, image alt text, accessibility score and broken links'],
+];
+---
+
+<ToolLayout
+	slug="website-audit"
+	title="Free Website Audit"
+	seoTitle="Free Website Audit Tool for Small Businesses"
+	eyebrow="Free tool"
+	description="Free website audit for small businesses: check your homepage for speed, mobile, Google visibility and tap-to-call issues, and get a plain-English fix list."
+	intro="Enter your website and get a score out of 100, with the issues most likely to be costing you calls from Google, in plain English."
+>
+	<div class="grid gap-10 lg:grid-cols-[1fr_22rem]">
+		<div>
+			<!-- Form -->
+			<div id="audit-start" class="pop-lg rounded-[2rem] bg-white p-6 md:p-8" data-sitekey={SITE.turnstileSiteKey}>
+				<form id="audit-form" class="space-y-4" novalidate>
+					<label for="audit-url" class="block font-display text-lg font-bold">Your website address</label>
+					<div class="flex flex-col gap-3 sm:flex-row">
+						<input
+							id="audit-url"
+							name="url"
+							type="text"
+							inputmode="url"
+							autocomplete="url"
+							autocapitalize="off"
+							spellcheck="false"
+							required
+							placeholder="yourbusiness.com"
+							class="w-full flex-1 rounded-full border-2 border-ink bg-paper px-5 py-3.5 text-lg outline-none focus:ring-4 focus:ring-blue/30"
+						/>
+						<button type="submit" class="btn justify-center">
+							Run free audit
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+						</button>
+					</div>
+					<div data-turnstile class="min-h-[65px]"></div>
+					<p id="audit-error" role="alert" class="hidden rounded-2xl border-2 border-ink bg-[#ffe1d9] px-4 py-3 font-semibold"></p>
+				</form>
+				<p class="mt-3 text-sm text-muted">Checks your homepage only. Takes up to a minute because we run Google's own speed test.</p>
+			</div>
+
+			<!-- Loading -->
+			<div id="audit-loading" hidden class="pop-lg rounded-[2rem] bg-white p-8 text-center md:p-12" aria-live="polite">
+				<div class="mx-auto h-16 w-16 animate-spin rounded-full border-[6px] border-blue-tint border-t-blue" aria-hidden="true"></div>
+				<p class="mt-6 font-display text-xl font-bold" id="audit-step">Fetching your homepage…</p>
+				<p class="mt-2 text-ink-soft">Please keep this page open. Google's speed test can take 30 to 60 seconds.</p>
+				<ol class="mx-auto mt-6 max-w-xs space-y-2 text-left text-sm font-semibold text-muted" id="audit-steps">
+					<li data-step>Fetching your homepage</li>
+					<li data-step>Checking Google can find you</li>
+					<li data-step>Testing links and mobile setup</li>
+					<li data-step>Running Google's speed test</li>
+					<li data-step>Working out your score</li>
+				</ol>
+			</div>
+
+			<!-- Results -->
+			<div id="audit-results" hidden>
+				<div class="pop-lg rounded-[2rem] bg-white p-6 md:p-8">
+					<p class="text-sm font-bold uppercase tracking-widest text-muted">Results for</p>
+					<p id="r-url" class="break-all font-display text-lg font-bold"></p>
+					<div class="mt-6 flex flex-col gap-6 sm:flex-row sm:items-center">
+						<div id="r-ring"></div>
+						<div>
+							<p id="r-band" class="font-display text-3xl font-extrabold"></p>
+							<p id="r-note" class="mt-2 text-lg text-ink-soft"></p>
+							<div id="r-counts" class="mt-4 flex flex-wrap gap-2"></div>
+						</div>
+					</div>
+					<div class="mt-8" id="r-cats"></div>
+				</div>
+
+				<h2 class="mt-12 text-2xl font-extrabold md:text-3xl">Your top fixes</h2>
+				<p class="mt-2 text-ink-soft">The issues most likely to be costing you visitors and calls, most important first.</p>
+				<ol id="r-fixes" class="mt-6 space-y-4"></ol>
+
+				<div class="mt-10">
+					<EmailReport id="audit-email" heading="Get every fix, step by step" text="We'll email you the complete report: every issue we found, how to fix each one, and what is already working." />
+				</div>
+
+				<div id="r-passes-wrap" class="mt-12">
+					<h2 class="text-2xl font-extrabold">Already working</h2>
+					<ul id="r-passes" class="mt-5 grid gap-2 sm:grid-cols-2"></ul>
+				</div>
+
+				<button id="audit-again" type="button" class="btn btn-light mt-10">Check another website</button>
+			</div>
+		</div>
+
+		<aside class="space-y-6">
+			<div class="pop rounded-[1.5rem] bg-blue-tint p-6">
+				<h2 class="text-lg font-extrabold">What we check</h2>
+				<ul class="mt-4 space-y-4">
+					{
+						checks.map(([t, d]) => (
+							<li>
+								<p class="font-bold">{t}</p>
+								<p class="text-sm text-ink-soft">{d}</p>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+			<div class="pop rounded-[1.5rem] bg-white p-6">
+				<h2 class="text-lg font-extrabold">Also try</h2>
+				<ul class="mt-3 space-y-2 font-semibold">
+					<li><a class="text-blue underline decoration-2 underline-offset-2" href="/tools/google-visibility-scorecard/">Google Visibility Scorecard</a></li>
+					<li><a class="text-blue underline decoration-2 underline-offset-2" href="/tools/review-request-generator/">Review Request Generator</a></li>
+				</ul>
+			</div>
+		</aside>
+	</div>
+
+	<section slot="after" class="container-read pb-6">
+		<div class="prose prose-lg prose-rankfolk max-w-none">
+			<h2>How this free website audit works</h2>
+			<p>
+				We load your homepage the way a search engine would, check the settings that decide whether Google can find and understand it, and
+				look for the things that turn visitors into calls. We also run Google's own <a href="https://pagespeed.web.dev/" target="_blank" rel="noopener">PageSpeed Insights</a> mobile test, the same one you can run yourself, and include its speed and accessibility scores.
+			</p>
+			<p>Each check is marked as good, worth improving, or something to fix. Your score is weighted, so the issues that matter most to a local business, like Google being blocked or no tap-to-call number, count more than minor ones.</p>
+			<h2>What the score means</h2>
+			<table>
+				<thead><tr><th>Score</th><th>What it usually means</th></tr></thead>
+				<tbody>
+					<tr><td>85 to 100</td><td>The basics are covered. Fine-tune the few items left.</td></tr>
+					<tr><td>65 to 84</td><td>Solid foundations, with fixes that could bring in more calls.</td></tr>
+					<tr><td>40 to 64</td><td>Several issues are likely holding you back in Google and with visitors.</td></tr>
+					<tr><td>Below 40</td><td>Important basics are missing. Start with the top fixes.</td></tr>
+				</tbody>
+			</table>
+			<p>A high score doesn't guarantee rankings, and a lower one doesn't mean your site is bad. It's a checklist of fixable issues, not a verdict. Google also looks at your content, reviews and how well known your business is.</p>
+			<h2>Frequently asked questions</h2>
+			<h3>Is the audit really free?</h3>
+			<p>Yes. There's no sign-up to see your score and top fixes. If you want the full step-by-step report, we email it to you for free.</p>
+			<h3>Why does it take up to a minute?</h3>
+			<p>Most of that time is Google's PageSpeed test, which loads your page on a simulated mobile phone. Our own checks take a few seconds.</p>
+			<h3>Does it check my whole website?</h3>
+			<p>It checks your homepage in detail and tests a sample of links from it. Your homepage is usually the most visited page and the one Google sees first, so it's the best place to start.</p>
+			<h3>It says it couldn't reach my site. Why?</h3>
+			<p>Some security settings block automated checkers. If your site loads fine for you, that's usually the reason. You can still run Google's PageSpeed test directly at pagespeed.web.dev.</p>
+			<h3>What should I do after the audit?</h3>
+			<p>
+				Work through the fixes from the top. For speed problems, see <a href="/blog/how-to-make-my-website-faster/">how to make your website faster</a>. If your site isn't in Google at all,
+				read <a href="/blog/why-is-my-website-not-showing-up-on-google/">why your website isn't showing up on Google</a>.
+			</p>
+		</div>
+	</section>
+</ToolLayout>
+
+<script>
+	import { mountTurnstile, type Human } from '../../scripts/turnstile';
+	import { setupEmailReport } from '../../scripts/email-report';
+	import { esc, scoreRing, categoryBars, fixCard } from '../../scripts/results';
+
+	const start = document.getElementById('audit-start')!;
+	const form = document.getElementById('audit-form') as HTMLFormElement;
+	const input = document.getElementById('audit-url') as HTMLInputElement;
+	const errorEl = document.getElementById('audit-error')!;
+	const loading = document.getElementById('audit-loading')!;
+	const results = document.getElementById('audit-results')!;
+	const steps = [...document.querySelectorAll<HTMLElement>('#audit-steps [data-step]')];
+	const stepLabel = document.getElementById('audit-step')!;
+	let human: Human | null = null;
+	let latest: { payload: string; sig: string } | null = null;
+	let emailReady = false;
+
+	mountTurnstile(start.querySelector('[data-turnstile]') as HTMLElement, start.dataset.sitekey || '')
+		.then((h) => (human = h))
+		.catch(() => showError('The security check could not load. Please check your connection or disable ad blockers for this page.'));
+
+	const prefill = new URLSearchParams(location.search).get('url');
+	if (prefill) input.value = prefill;
+
+	function showError(msg: string) {
+		errorEl.textContent = msg;
+		errorEl.classList.remove('hidden');
+	}
+
+	let timer: number | undefined;
+	function runSteps() {
+		let i = 0;
+		const tick = () => {
+			steps.forEach((s, j) => {
+				s.classList.toggle('text-ink', j <= i);
+				s.textContent = (j < i ? '✓ ' : j === i ? '→ ' : '') + s.textContent!.replace(/^(✓|→) /, '');
+			});
+			stepLabel.textContent = `${steps[i].textContent!.replace(/^(✓|→) /, '')}…`;
+			if (i < steps.length - 1) {
+				i++;
+				timer = window.setTimeout(tick, [1500, 2500, 3000, 25000][i - 1] ?? 4000);
+			}
+		};
+		tick();
+	}
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		errorEl.classList.add('hidden');
+		const url = input.value.trim();
+		if (!url || !/\./.test(url)) {
+			showError('Please enter your website address, for example yourbusiness.com');
+			input.focus();
+			return;
+		}
+		if (!human) {
+			showError('Please wait a moment for the security check to load, then try again.');
+			return;
+		}
+		let token = '';
+		try {
+			token = await human.getToken();
+		} catch {
+			showError('Please complete the quick security check, then try again.');
+			return;
+		}
+
+		start.hidden = true;
+		loading.hidden = false;
+		runSteps();
+		try {
+			const res = await fetch('/api/audit', {
+				method: 'POST',
+				headers: { 'content-type': 'application/json' },
+				body: JSON.stringify({ url, token }),
+			});
+			const out = await res.json().catch(() => ({ ok: false, error: 'The audit took too long or failed. Please try again.' }));
+			if (!out.ok) throw new Error(out.error || 'Something went wrong. Please try again.');
+			latest = { payload: out.payload, sig: out.sig };
+			render(out.result);
+			const u = new URL(location.href);
+			u.searchParams.set('url', url);
+			history.replaceState(null, '', u);
+		} catch (err: any) {
+			start.hidden = false;
+			showError(err?.message || 'Something went wrong. Please try again.');
+		} finally {
+			clearTimeout(timer);
+			loading.hidden = true;
+			human?.reset();
+		}
+	});
+
+	function render(r: any) {
+		document.getElementById('r-url')!.textContent = r.url;
+		document.getElementById('r-ring')!.innerHTML = scoreRing(r.score);
+		document.getElementById('r-band')!.textContent = r.band.label;
+		document.getElementById('r-note')!.textContent = r.band.note;
+		document.getElementById('r-counts')!.innerHTML = [
+			[r.counts.fail, 'to fix', 'bg-[#ffe1d9]'],
+			[r.counts.warn, 'to improve', 'bg-sun-soft'],
+			[r.counts.pass, 'looking good', 'bg-mint'],
+		]
+			.map(([n, l, c]) => `<span class="sticker ${c}">${n} ${l}</span>`)
+			.join('');
+		document.getElementById('r-cats')!.innerHTML = categoryBars(r.categories);
+
+		const top = r.issues.slice(0, 3);
+		const more = r.issues.length - top.length;
+		document.getElementById('r-fixes')!.innerHTML = top.length
+			? top.map((f: any, i: number) => fixCard(i + 1, f)).join('') +
+				(more > 0 ? `<li class="rounded-2xl border-2 border-dashed border-ink bg-white/60 p-5 font-semibold">+ ${more} more ${more === 1 ? 'issue' : 'issues'}, with step-by-step fixes, in your full report below.</li>` : '')
+			: `<li class="pop rounded-2xl bg-mint p-5 font-semibold">Nothing to fix on the checks we run. Nice work.</li>`;
+
+		const passes = document.getElementById('r-passes')!;
+		passes.innerHTML = r.passes
+			.map((p: any) => `<li class="flex items-start gap-2 rounded-xl border-2 border-ink/10 bg-white px-3 py-2 text-[0.95rem]"><span class="font-bold text-[#0d8a47]" aria-hidden="true">✓</span><span>${esc(p.title)}</span></li>`)
+			.join('');
+		document.getElementById('r-passes-wrap')!.hidden = r.passes.length === 0;
+
+		const emailBox = document.getElementById('audit-email')!;
+		if (!latest?.sig) emailBox.hidden = true;
+		else if (!emailReady) {
+			setupEmailReport(emailBox, () => ({ kind: 'audit', payload: latest!.payload, sig: latest!.sig }));
+			emailReady = true;
+		} else {
+			emailBox.hidden = false;
+			emailBox.querySelector<HTMLElement>('[data-form-wrap]')!.hidden = false;
+			emailBox.querySelector<HTMLElement>('[data-done]')!.hidden = true;
+		}
+
+		results.hidden = false;
+		results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	}
+
+	document.getElementById('audit-again')!.addEventListener('click', () => {
+		results.hidden = true;
+		start.hidden = false;
+		input.select();
+		start.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	});
+</script>

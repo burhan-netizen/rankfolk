@@ -1,0 +1,47 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { SITE } from '../site.config';
+
+interface Props {
+	title: string;
+	seoTitle?: string;
+	description: string;
+	eyebrow: string;
+	intro: string;
+	slug: string;
+}
+const { title, seoTitle, description, eyebrow, intro, slug } = Astro.props;
+
+const schema = [
+	{
+		'@context': 'https://schema.org',
+		'@type': 'WebApplication',
+		name: title,
+		url: `${SITE.url}/tools/${slug}/`,
+		description,
+		applicationCategory: 'BusinessApplication',
+		operatingSystem: 'Any',
+		offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+		publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+	},
+];
+---
+
+<BaseLayout title={seoTitle ?? title} description={description} schema={schema}>
+	<section class="dots border-b-2 border-ink">
+		<div class="container-wide py-12 md:py-16">
+			<nav aria-label="Breadcrumb" class="mb-5 text-sm font-semibold text-muted">
+				<a href="/tools/" class="hover:text-blue">Free tools</a>
+				<span aria-hidden="true"> / </span>
+				<span class="text-ink">{title}</span>
+			</nav>
+			<span class="sticker -rotate-2 bg-sun">{eyebrow}</span>
+			<h1 class="mt-5 max-w-3xl text-4xl font-extrabold md:text-[3.2rem] md:leading-[1.05]">{title}</h1>
+			<p class="mt-5 max-w-2xl text-lg text-ink-soft md:text-xl">{intro}</p>
+		</div>
+	</section>
+	<div class="container-wide py-10 md:py-14">
+		<slot />
+	</div>
+	<slot name="after" />
+</BaseLayout>
