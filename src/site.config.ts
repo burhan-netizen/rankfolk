@@ -50,9 +50,11 @@ export const TOOLS = [
 ] as const;
 
 export const AUTHOR = {
-	name: 'Burhanuddin Kapasi',
+	name: 'Burhan Kapasi',
+	// Small square photo used in emails and structured data. Site pages use src/assets/burhan-kapasi*.jpg.
+	photo: '/images/burhan-kapasi.jpg',
 	role: 'Founder, Mago Labs',
-	bio: 'Burhanuddin spent 8+ years in banking, fintech and insurance before founding Mago Labs, where he builds websites and runs SEO and Google Business Profile work for small businesses and contractors in the USA, UK, Canada, Australia and New Zealand. On Rankfolk he shares what actually brings in calls and customers.',
+	bio: 'Burhan spent 8+ years in banking, fintech and insurance before founding Mago Labs, where he builds websites and runs SEO and Google Business Profile work for small businesses and contractors in the USA, UK, Canada, Australia and New Zealand. On Rankfolk he shares what actually brings in calls and customers.',
 	linkedin: 'https://www.linkedin.com/in/burhanuddinkapasi/',
 	website: 'https://magolabs.in',
 };

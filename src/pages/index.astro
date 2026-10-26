@@ -4,6 +4,8 @@ import PostCard from '../components/PostCard.astro';
 import HeroVisual from '../components/HeroVisual.astro';
 import { getPosts } from '../lib/posts';
 import { SITE, AUTHOR, CATEGORIES, TOOLS } from '../site.config';
+import { Image } from 'astro:assets';
+import authorPhoto from '../assets/burhan-kapasi-square.jpg';
 import { CATEGORY_ICONS as icons, CATEGORY_THEME as themes } from '../lib/icons';
 
 const posts = await getPosts();
@@ -152,7 +154,8 @@ const schema = [
 	<section class="container-wide mt-24">
 		<div class="pop-lg relative overflow-hidden rounded-[2rem] bg-blue p-8 text-white md:p-14">
 			<svg class="absolute -right-16 -top-16 h-64 w-64 text-white/10" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0l12 38 38 12-38 12-12 38-12-38L0 50l38-12z" fill="currentColor"></path></svg>
-			<div class="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
+			<div class="relative grid items-center gap-8 md:grid-cols-[auto_1fr_auto]">
+				<Image src={authorPhoto} alt={AUTHOR.name} width={320} height={320} class="h-32 w-32 -rotate-3 rounded-[1.5rem] border-2 border-ink object-cover shadow-[5px_5px_0_0_#0b0f1f] md:h-40 md:w-40" />
 				<div>
 					<span class="sticker rotate-[-2deg] bg-sun text-ink">Who writes Rankfolk</span>
 					<h2 class="mt-5 text-3xl font-extrabold md:text-[2.6rem]">Advice from someone who does this work every day</h2>

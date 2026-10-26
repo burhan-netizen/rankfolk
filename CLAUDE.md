@@ -1,6 +1,6 @@
 # Rankfolk: notes for Claude Code
 
-Rankfolk (rankfolk.com) is a static Astro 7 + Tailwind 4 blog for small business owners and contractors in the USA, UK, Canada, Australia and New Zealand. It earns through Google AdSense and affiliate links. Author: Burhanuddin Kapasi, founder of Mago Labs.
+Rankfolk (rankfolk.com) is a static Astro 7 + Tailwind 4 blog for small business owners and contractors in the USA, UK, Canada, Australia and New Zealand. It earns through Google AdSense and affiliate links. Author: Burhan Kapasi (photo: src/assets/burhan-kapasi*.jpg, public/images/burhan-kapasi.jpg for emails), founder of Mago Labs.
 
 ## Rules
 

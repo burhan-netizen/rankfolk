@@ -83,8 +83,10 @@ function heading(text) {
 
 function magoBlock() {
 	return `<tr><td style="padding:22px 28px 28px;${font}">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.sun};border:2px solid ${C.ink};border-radius:14px;"><tr><td style="padding:16px 18px;${font}font-size:15px;line-height:1.55;color:${C.ink};">
-<strong>Want these fixed for you?</strong> Rankfolk is run by Burhanuddin Kapasi, founder of Mago Labs, which builds websites and handles local SEO and Google Business Profile work for small businesses.
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.sun};border:2px solid ${C.ink};border-radius:14px;"><tr>
+<td width="72" valign="top" style="padding:16px 0 16px 18px;"><img src="${SITE}/images/burhan-kapasi.jpg" width="56" height="56" alt="Burhan Kapasi" style="display:block;width:56px;height:56px;border-radius:12px;border:2px solid ${C.ink};"></td>
+<td style="padding:16px 18px 16px 14px;${font}font-size:15px;line-height:1.55;color:${C.ink};">
+<strong>Want these fixed for you?</strong> Rankfolk is run by Burhan Kapasi, founder of Mago Labs, which builds websites and handles local SEO and Google Business Profile work for small businesses.
 <a href="https://magolabs.in" style="color:${C.blue};font-weight:700;">Visit Mago Labs &rarr;</a>
 </td></tr></table></td></tr>`;
 }
@@ -128,7 +130,7 @@ export function renderAuditEmail(r) {
 		"WHAT'S ALREADY WORKING",
 		...(r.passes || []).map((p) => `- ${p.title}: ${p.result}`),
 		'',
-		'Want these fixed for you? Rankfolk is run by Burhanuddin Kapasi, founder of Mago Labs: https://magolabs.in',
+		'Want these fixed for you? Rankfolk is run by Burhan Kapasi, founder of Mago Labs: https://magolabs.in',
 		'',
 		'You asked for this report on rankfolk.com. Reply to this email with any questions.',
 	]
@@ -161,7 +163,7 @@ export function renderScorecardEmail(s, business) {
 		'',
 		'YOUR ACTION PLAN',
 		...s.fixes.flatMap((f, i) => [`${i + 1}. ${f.title}`, `   ${f.text}`, `   Guide: ${abs(f.link)}`, '']),
-		'Want these fixed for you? Rankfolk is run by Burhanuddin Kapasi, founder of Mago Labs: https://magolabs.in',
+		'Want these fixed for you? Rankfolk is run by Burhan Kapasi, founder of Mago Labs: https://magolabs.in',
 		'',
 		'You asked for this report on rankfolk.com. Reply to this email with any questions.',
 	].join('\n');

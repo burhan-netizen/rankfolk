@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
+import photo from '../assets/burhan-kapasi.jpg';
 import { AUTHOR, SITE } from '../site.config';
 
 const schema = {
@@ -8,6 +10,7 @@ const schema = {
 	name: AUTHOR.name,
 	jobTitle: AUTHOR.role,
 	url: `${SITE.url}/about/`,
+	image: `${SITE.url}${AUTHOR.photo}`,
 	sameAs: [AUTHOR.linkedin, AUTHOR.website],
 };
 ---
@@ -26,17 +29,20 @@ const schema = {
 	</p>
 	<p>
 		Rankfolk is different. Every guide answers one practical question an owner actually has, like how to show up on Google
-		Maps, what a website needs to turn visitors into calls, or which tools are worth paying for. The goal is simple:
-		{SITE.tagline.toLowerCase()}.
+		Maps, what a website needs to turn visitors into calls, or which tools are worth paying for. The goal is simple: {SITE.tagline.toLowerCase()}.
 	</p>
 
 	<h2>Who writes it</h2>
+	<figure class="not-prose float-none mx-auto my-8 w-full max-w-xs sm:float-right sm:my-2 sm:ml-8 sm:w-64">
+		<Image src={photo} alt={`${AUTHOR.name}, founder of Mago Labs`} width={520} height={650} class="pop-lg aspect-[4/5] w-full rotate-2 rounded-[1.75rem] object-cover" />
+		<figcaption class="mt-4 text-center text-sm font-semibold text-muted">{AUTHOR.name}, {AUTHOR.role}</figcaption>
+	</figure>
 	<p>
 		Rankfolk is written by <strong>{AUTHOR.name}</strong>, founder of <a href={AUTHOR.website} target="_blank" rel="noopener">Mago Labs</a>.
 	</p>
 	<p>{AUTHOR.bio}</p>
 	<p>
-		Before building websites full time, Burhanuddin spent over eight years in sales and partnerships at banks, fintech
+		Before building websites full time, Burhan spent over eight years in sales and partnerships at banks, fintech
 		companies and an insurer. That background shapes how Rankfolk is written: focused on results, honest about costs, and
 		clear about what is worth your time.
 	</p>
@@ -52,6 +58,6 @@ const schema = {
 	<h2>Get in touch</h2>
 	<p>
 		Questions, corrections or topic ideas are always welcome. <a href="/contact/">Contact us</a> or connect with
-		Burhanuddin on <a href={AUTHOR.linkedin} target="_blank" rel="noopener me">LinkedIn</a>.
+		Burhan on <a href={AUTHOR.linkedin} target="_blank" rel="noopener me">LinkedIn</a>.
 	</p>
 </PageLayout>

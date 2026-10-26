@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import photo from '../assets/burhan-kapasi-square.jpg';
 import PageLayout from '../layouts/PageLayout.astro';
 import { SITE, AUTHOR } from '../site.config';
 ---
@@ -18,6 +20,13 @@ import { SITE, AUTHOR } from '../site.config';
 	</ul>
 
 	<h2>Need hands-on help?</h2>
+	<div class="not-prose my-6 flex items-center gap-4">
+		<Image src={photo} alt={AUTHOR.name} width={128} height={128} class="h-16 w-16 rounded-2xl border-2 border-ink object-cover shadow-[3px_3px_0_0_#0b0f1f]" />
+		<div>
+			<p class="font-display font-extrabold">{AUTHOR.name}</p>
+			<p class="text-sm font-medium text-muted">{AUTHOR.role}</p>
+		</div>
+	</div>
 	<p>
 		Rankfolk is written by {AUTHOR.name}, who also runs <a href={AUTHOR.website} target="_blank" rel="noopener">Mago Labs</a>. If you want
 		your website, SEO or Google Business Profile done for you, you can contact Mago Labs directly.

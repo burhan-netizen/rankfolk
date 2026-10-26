@@ -9,6 +9,7 @@ import PostCard from '../../components/PostCard.astro';
 import Cover from '../../components/Cover.astro';
 import { getPosts, getCategory, formatDate, readingTime, relatedPosts, postUrl } from '../../lib/posts';
 import { SITE, AUTHOR } from '../../site.config';
+import authorPhoto from '../../assets/burhan-kapasi-square.jpg';
 
 export async function getStaticPaths() {
 	const posts = await getPosts();
@@ -33,7 +34,7 @@ const schema = [
 		datePublished: pubDate.toISOString(),
 		dateModified: (updatedDate ?? pubDate).toISOString(),
 		mainEntityOfPage: url,
-		author: { '@type': 'Person', name: AUTHOR.name, url: `${SITE.url}/about/`, sameAs: [AUTHOR.linkedin] },
+		author: { '@type': 'Person', name: AUTHOR.name, url: `${SITE.url}/about/`, image: `${SITE.url}${AUTHOR.photo}`, sameAs: [AUTHOR.linkedin] },
 		publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url, logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` } },
 		...(heroImage ? { image: new URL(heroImage.src, SITE.url).href } : {}),
 	},
@@ -71,7 +72,7 @@ const schema = [
 					<p class="mt-5 text-lg text-ink-soft md:text-xl">{description}</p>
 					<div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium text-muted">
 						<a href="/about/" class="flex items-center gap-2.5 font-bold text-ink hover:text-blue">
-							<span class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-ink bg-blue font-display text-sm font-extrabold text-white">BK</span>
+							<Image src={authorPhoto} alt="" width={80} height={80} class="h-10 w-10 rounded-full border-2 border-ink object-cover" loading="eager" />
 							{AUTHOR.name}
 						</a>
 						<span>
