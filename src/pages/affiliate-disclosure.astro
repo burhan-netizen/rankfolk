@@ -1,0 +1,38 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../site.config';
+const updated = 'October 26, 2026';
+---
+
+<PageLayout title="Affiliate Disclosure" eyebrow="Legal" updated={updated} description={`How ${SITE.name} earns money, and how that affects our recommendations.`}>
+	<p>{SITE.name} is free to read. We keep it running through advertising and affiliate partnerships.</p>
+
+	<h2>What an affiliate link is</h2>
+	<p>
+		Some links on the Site are affiliate links. If you click one and buy a product or sign up for a service, we may earn a
+		commission from the company. <strong>This never costs you anything extra</strong>, and sometimes you get a discount.
+	</p>
+
+	<h2>How we choose what to recommend</h2>
+	<ul>
+		<li>We recommend tools and services we believe help small businesses, whether or not they pay us.</li>
+		<li>Commissions never decide our rankings or opinions.</li>
+		<li>When a free option is good enough, we say so.</li>
+		<li>We point out downsides as well as strengths.</li>
+	</ul>
+
+	<h2>FTC and ASA compliance</h2>
+	<p>
+		In line with the US Federal Trade Commission guidelines and the UK Advertising Standards Authority rules, we disclose
+		affiliate relationships on this page and in articles that contain affiliate links.
+	</p>
+
+	<h2>Advertising</h2>
+	<p>
+		The Site also shows ads served by Google AdSense. We don't choose individual ads, and an ad appearing on the Site is not an
+		endorsement. See our <a href="/privacy-policy/">Privacy Policy</a> for how ads use cookies.
+	</p>
+
+	<h2>Questions</h2>
+	<p>Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> with any questions about our partnerships.</p>
+</PageLayout>

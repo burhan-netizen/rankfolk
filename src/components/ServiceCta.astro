@@ -1,0 +1,21 @@
+---
+import { SERVICE_CTA, SITE } from '../site.config';
+---
+
+{
+	SITE.showServiceCta && (
+		<aside class="mt-10 rounded-3xl bg-forest p-7 text-white sm:p-9" aria-label="Get help">
+			<p class="font-display text-2xl font-bold">{SERVICE_CTA.title}</p>
+			<p class="mt-2 max-w-xl text-white/85">{SERVICE_CTA.text}</p>
+			<a
+				href={SERVICE_CTA.url}
+				target="_blank"
+				rel="noopener"
+				class="mt-5 inline-flex items-center gap-2 rounded-full bg-marigold px-5 py-3 font-semibold text-ink transition hover:bg-white"
+			>
+				{SERVICE_CTA.label}
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+			</a>
+		</aside>
+	)
+}

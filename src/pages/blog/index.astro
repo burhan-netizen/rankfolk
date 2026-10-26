@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/posts';
+import { CATEGORIES } from '../../site.config';
+
+const posts = await getPosts();
+---
+
+<BaseLayout
+	title="All guides"
+	description="Every Rankfolk guide on websites, SEO, Google Business Profile and marketing for small businesses."
+>
+	<section class="border-b border-line bg-cream/50">
+		<div class="container-wide py-14 md:py-20">
+			<span class="pill">{posts.length} guides</span>
+			<h1 class="mt-4 text-4xl font-bold md:text-6xl">All guides</h1>
+			<p class="mt-4 max-w-2xl text-lg text-ink-soft">Practical, step-by-step help for getting more customers online.</p>
+			<div class="mt-8 flex flex-wrap gap-2">
+				{
+					CATEGORIES.map((c) => (
+						<a href={`/category/${c.slug}/`} class="rounded-full border border-line bg-white/70 px-4 py-2 text-sm font-medium hover:border-forest hover:text-forest">
+							{c.name}
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+	<section class="container-wide mt-12">
+		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{posts.map((post) => <PostCard post={post} />)}
+		</div>
+	</section>
+</BaseLayout>

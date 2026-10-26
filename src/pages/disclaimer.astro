@@ -1,0 +1,39 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../site.config';
+const updated = 'October 26, 2026';
+---
+
+<PageLayout title="Disclaimer" eyebrow="Legal" updated={updated} description="What our guides are, and what they are not.">
+	<p>
+		The information on {SITE.url} is published in good faith for general information only. We aim to keep it accurate and up
+		to date, but platforms like Google change often, so details may become outdated.
+	</p>
+
+	<h2>Not professional advice</h2>
+	<p>
+		Our guides are not legal, financial, tax or other professional advice. For decisions that carry legal or financial risk,
+		please speak with a qualified professional.
+	</p>
+
+	<h2>No guaranteed results</h2>
+	<p>
+		Rankings, traffic, leads and sales depend on many factors outside our control, including your market, competition and
+		Google's algorithms. Following our advice does not guarantee any specific result.
+	</p>
+
+	<h2>Third party tools</h2>
+	<p>
+		We mention and review third party tools and services. Prices, features and terms can change at any time. Always confirm the
+		current details on the provider's website before you buy.
+	</p>
+
+	<h2>Affiliate links and ads</h2>
+	<p>
+		The Site shows ads and contains affiliate links. See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a> and
+		<a href="/privacy-policy/">Privacy Policy</a> for details.
+	</p>
+
+	<h2>Trademarks</h2>
+	<p>Product names and brands mentioned on the Site belong to their owners. Mentioning them does not imply endorsement by or affiliation with those companies.</p>
+</PageLayout>

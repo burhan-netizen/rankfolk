@@ -1,0 +1,57 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { AUTHOR, SITE } from '../site.config';
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: AUTHOR.name,
+	jobTitle: AUTHOR.role,
+	url: `${SITE.url}/about/`,
+	sameAs: [AUTHOR.linkedin, AUTHOR.website],
+};
+---
+
+<PageLayout
+	title="About Rankfolk"
+	eyebrow="About"
+	description="Rankfolk helps small business owners and contractors get more customers online, with plain English guides based on real client work."
+>
+	<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+	<h2>Why Rankfolk exists</h2>
+	<p>
+		Most marketing advice is written for big companies with big budgets. Small business owners get buried in jargon, tool
+		pitches and "growth hacks" that don't apply to a roofing company, a dental clinic or a local cleaner.
+	</p>
+	<p>
+		Rankfolk is different. Every guide answers one practical question an owner actually has, like how to show up on Google
+		Maps, what a website needs to turn visitors into calls, or which tools are worth paying for. The goal is simple:
+		{SITE.tagline.toLowerCase()}.
+	</p>
+
+	<h2>Who writes it</h2>
+	<p>
+		Rankfolk is written by <strong>{AUTHOR.name}</strong>, founder of <a href={AUTHOR.website} target="_blank" rel="noopener">Mago Labs</a>.
+	</p>
+	<p>{AUTHOR.bio}</p>
+	<p>
+		Before building websites full time, Burhanuddin spent over eight years in sales and partnerships at banks, fintech
+		companies and an insurer. That background shapes how Rankfolk is written: focused on results, honest about costs, and
+		clear about what is worth your time.
+	</p>
+
+	<h2>How we write our guides</h2>
+	<ul>
+		<li><strong>Based on real work.</strong> Advice comes from building and ranking real small business websites.</li>
+		<li><strong>Checked against official sources.</strong> Google's own documentation comes first for anything about Search or Maps.</li>
+		<li><strong>Kept up to date.</strong> Guides are reviewed and updated when platforms change.</li>
+		<li><strong>Honest about money.</strong> Some links are affiliate links. They never decide what we recommend. See our <a href="/affiliate-disclosure/">affiliate disclosure</a>.</li>
+	</ul>
+
+	<h2>Get in touch</h2>
+	<p>
+		Questions, corrections or topic ideas are always welcome. <a href="/contact/">Contact us</a> or connect with
+		Burhanuddin on <a href={AUTHOR.linkedin} target="_blank" rel="noopener me">LinkedIn</a>.
+	</p>
+</PageLayout>

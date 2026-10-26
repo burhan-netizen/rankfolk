@@ -1,0 +1,43 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE } from '../site.config';
+const updated = 'October 26, 2026';
+---
+
+<PageLayout title="Terms of Use" eyebrow="Legal" updated={updated} description={`The rules for using ${SITE.name}.`}>
+	<p>By using {SITE.url} (the "Site"), you agree to these Terms of Use. If you do not agree, please do not use the Site.</p>
+
+	<h2>Use of content</h2>
+	<p>
+		All articles, images, graphics and other content on the Site belong to {SITE.name} unless stated otherwise. You may read,
+		share links to, and quote short passages from our content with a link back to the original article. You may not copy,
+		republish or sell our content in full without written permission.
+	</p>
+
+	<h2>Information only</h2>
+	<p>
+		Content on the Site is for general information. It is not professional, legal, financial or tax advice. See our
+		<a href="/disclaimer/">Disclaimer</a>.
+	</p>
+
+	<h2>Third party links and products</h2>
+	<p>
+		The Site links to third party websites, tools and services. We do not control them and are not responsible for their
+		content, pricing, availability or practices. Your use of them is at your own risk and under their terms.
+	</p>
+
+	<h2>Acceptable use</h2>
+	<p>You agree not to misuse the Site, including by attempting to disrupt it, scrape it at a harmful rate, or access it in ways that break the law.</p>
+
+	<h2>No warranty</h2>
+	<p>The Site is provided "as is". We try to keep information accurate and current but make no guarantees that it is complete, correct or up to date.</p>
+
+	<h2>Limitation of liability</h2>
+	<p>To the fullest extent allowed by law, {SITE.name} is not liable for any loss or damage arising from your use of the Site or reliance on its content.</p>
+
+	<h2>Changes</h2>
+	<p>We may update these Terms at any time. Continued use of the Site means you accept the updated Terms.</p>
+
+	<h2>Contact</h2>
+	<p>Questions? Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+</PageLayout>

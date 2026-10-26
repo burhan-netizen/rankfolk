@@ -1,0 +1,24 @@
+---
+interface Props {
+	size?: number;
+	showText?: boolean;
+	class?: string;
+}
+const { size = 32, showText = true, class: className = '' } = Astro.props;
+---
+
+<span class={`inline-flex items-center gap-2.5 ${className}`}>
+	<svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
+		<rect width="40" height="40" rx="11" fill="#1d6b47"></rect>
+		<rect x="9" y="22" width="5.5" height="9" rx="2" fill="#dcefe3"></rect>
+		<rect x="17.25" y="16" width="5.5" height="15" rx="2" fill="#dcefe3"></rect>
+		<rect x="25.5" y="9" width="5.5" height="22" rx="2" fill="#f2b33d"></rect>
+	</svg>
+	{
+		showText && (
+			<span class="font-display text-[1.35rem] font-bold tracking-tight text-ink">
+				Rankfolk
+			</span>
+		)
+	}
+</span>

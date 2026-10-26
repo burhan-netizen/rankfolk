@@ -1,0 +1,54 @@
+---
+import Logo from './Logo.astro';
+import { NAV } from '../site.config';
+const path = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 border-b border-line/70 bg-paper/90 backdrop-blur">
+	<div class="container-wide flex h-16 items-center justify-between gap-4">
+		<a href="/" aria-label="Rankfolk home"><Logo /></a>
+
+		<nav aria-label="Main" class="hidden lg:block">
+			<ul class="flex items-center gap-1 text-[0.95rem] font-medium">
+				{
+					NAV.map((item) => (
+						<li>
+							<a
+								href={item.href}
+								class:list={[
+									'rounded-full px-3.5 py-2 transition-colors hover:bg-cream',
+									path.startsWith(item.href) ? 'bg-cream text-forest-dark' : 'text-ink-soft',
+								]}
+							>
+								{item.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+
+		<details class="group relative lg:hidden">
+			<summary
+				class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-line [&::-webkit-details-marker]:hidden"
+				aria-label="Open menu"
+			>
+				<svg class="group-open:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+				<svg class="hidden group-open:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+			</summary>
+			<nav aria-label="Mobile" class="absolute right-0 top-12 w-64 rounded-2xl border border-line bg-paper p-2 shadow-xl">
+				<ul>
+					{
+						NAV.map((item) => (
+							<li>
+								<a href={item.href} class="block rounded-xl px-4 py-3 font-medium hover:bg-cream">
+									{item.label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+		</details>
+	</div>
+</header>

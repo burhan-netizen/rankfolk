@@ -1,0 +1,39 @@
+---
+import Logo from './Logo.astro';
+import { SITE, CATEGORIES } from '../site.config';
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-line bg-cream/60">
+	<div class="container-wide grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+		<div>
+			<Logo />
+			<p class="mt-4 max-w-sm text-ink-soft">{SITE.tagline}.</p>
+			<p class="mt-2 max-w-sm text-sm text-muted">Practical guides for owners, written in plain English.</p>
+		</div>
+		<div>
+			<h2 class="font-display text-sm font-bold uppercase tracking-wider text-muted">Topics</h2>
+			<ul class="mt-4 space-y-2.5">
+				{CATEGORIES.map((c) => <li><a class="hover:text-forest" href={`/category/${c.slug}/`}>{c.name}</a></li>)}
+			</ul>
+		</div>
+		<div>
+			<h2 class="font-display text-sm font-bold uppercase tracking-wider text-muted">Rankfolk</h2>
+			<ul class="mt-4 space-y-2.5">
+				<li><a class="hover:text-forest" href="/about/">About</a></li>
+				<li><a class="hover:text-forest" href="/contact/">Contact</a></li>
+				<li><a class="hover:text-forest" href="/privacy-policy/">Privacy Policy</a></li>
+				<li><a class="hover:text-forest" href="/terms/">Terms of Use</a></li>
+				<li><a class="hover:text-forest" href="/disclaimer/">Disclaimer</a></li>
+				<li><a class="hover:text-forest" href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
+				<li><a class="hover:text-forest" href="/rss.xml">RSS</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="border-t border-line">
+		<div class="container-wide flex flex-col gap-2 py-6 text-sm text-muted sm:flex-row sm:justify-between">
+			<p>© {year} {SITE.name}. All rights reserved.</p>
+			<p>Some links may be affiliate links. <a class="underline hover:text-forest" href="/affiliate-disclosure/">Learn more</a>.</p>
+		</div>
+	</div>
+</footer>

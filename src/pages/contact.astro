@@ -1,0 +1,25 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { SITE, AUTHOR } from '../site.config';
+---
+
+<PageLayout title="Contact" eyebrow="Contact" description="Questions, corrections or ideas for a guide? We read every message.">
+	<p>The best way to reach Rankfolk is by email:</p>
+	<p>
+		<a href={`mailto:${SITE.email}`} class="text-2xl font-bold">{SITE.email}</a>
+	</p>
+	<p>We usually reply within two business days.</p>
+
+	<h2>What to write to us about</h2>
+	<ul>
+		<li><strong>Corrections.</strong> If something in a guide is wrong or out of date, tell us and we'll fix it.</li>
+		<li><strong>Topic ideas.</strong> Stuck on something with your website, Google rankings or Google Maps? Ask, and it may become a guide.</li>
+		<li><strong>Partnerships.</strong> Tool companies and agencies can reach out, but we only recommend products we believe help small businesses.</li>
+	</ul>
+
+	<h2>Need hands-on help?</h2>
+	<p>
+		Rankfolk is written by {AUTHOR.name}, who also runs <a href={AUTHOR.website} target="_blank" rel="noopener">Mago Labs</a>. If you want
+		your website, SEO or Google Business Profile done for you, you can contact Mago Labs directly.
+	</p>
+</PageLayout>
