@@ -67,7 +67,7 @@ const schema = [
 						<span aria-hidden="true" class="text-muted">/</span>
 						<a href={`/category/${cat.slug}/`} class="sticker !py-1.5 bg-sun hover:bg-white">{cat.name}</a>
 					</nav>
-					<h1 class="mt-6 text-[2.35rem] font-extrabold leading-[1.02] md:text-[3.4rem]">{title}</h1>
+					<h1 class="mt-6 text-[1.75rem] font-extrabold leading-[1.1] md:text-[2.6rem]">{title}</h1>
 					<p class="mt-5 text-lg text-ink-soft md:text-xl">{description}</p>
 					<div class="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm font-medium text-muted">
 						<a href="/about/" class="flex items-center gap-2.5 font-bold text-ink hover:text-blue">
@@ -99,7 +99,7 @@ const schema = [
 			{
 				toc.length > 2 && (
 					<nav aria-label="In this guide" class="pop mb-12 rounded-3xl bg-blue-tint p-6 md:p-7">
-						<p class="font-display text-xl font-extrabold">In this guide</p>
+						<p class="font-display text-lg font-extrabold">In this guide</p>
 						<ol class="mt-4 space-y-2.5">
 							{toc.map((h, i) => (
 								<li class="flex gap-3">
@@ -130,7 +130,7 @@ const schema = [
 	{
 		related.length > 0 && (
 			<section class="container-wide mt-24">
-				<h2 class="text-4xl font-extrabold">Keep reading</h2>
+				<h2 class="text-3xl font-extrabold">Keep reading</h2>
 				<div class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{related.map((p) => <PostCard post={p} />)}
 				</div>

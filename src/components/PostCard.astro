@@ -35,7 +35,7 @@ const minutes = readingTime(post.body);
 	</div>
 	<div class:list={['flex flex-1 flex-col p-6', large && 'md:p-10 md:justify-center']}>
 		{post.data.heroImage && <p class="mb-2 text-sm font-semibold text-blue">{cat?.name}</p>}
-		<h3 class:list={['font-extrabold text-ink', large ? 'text-3xl md:text-4xl' : 'text-[1.4rem]']}>
+		<h3 class:list={['font-extrabold text-ink', large ? 'text-2xl md:text-3xl leading-tight' : 'text-[1.15rem] leading-snug']}>
 			<a href={postUrl(post)} class="after:absolute after:inset-0 group-hover:underline group-hover:decoration-sun group-hover:decoration-4 group-hover:underline-offset-4">
 				{post.data.title}
 			</a>

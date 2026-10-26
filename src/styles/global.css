@@ -1,11 +1,11 @@
 @import '@fontsource-variable/inter';
-@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/unbounded';
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
 @theme {
 	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
-	--font-display: 'Bricolage Grotesque Variable', 'Inter Variable', ui-sans-serif, sans-serif;
+	--font-display: 'Unbounded Variable', 'Inter Variable', ui-sans-serif, sans-serif;
 
 	--color-blue: #2b4bff;
 	--color-blue-dark: #1a2fd1;
@@ -43,8 +43,8 @@
 	h3,
 	h4 {
 		font-family: var(--font-display);
-		letter-spacing: -0.03em;
-		line-height: 1.05;
+		letter-spacing: -0.012em;
+		line-height: 1.12;
 	}
 	:focus-visible {
 		outline: 3px solid var(--color-blue);
@@ -95,8 +95,8 @@
 		border-radius: 999px;
 		font-family: var(--font-display);
 		font-weight: 700;
-		font-size: 0.85rem;
-		line-height: 1;
+		font-size: 0.75rem;
+		line-height: 1.1;
 		padding: 0.45rem 0.85rem;
 		background: white;
 		white-space: nowrap;
@@ -111,8 +111,8 @@
 		color: white;
 		font-family: var(--font-display);
 		font-weight: 700;
-		font-size: 1.05rem;
-		padding: 0.85rem 1.5rem;
+		font-size: 0.95rem;
+		padding: 0.9rem 1.5rem;
 		box-shadow: var(--shadow-pop);
 		transition:
 			transform 0.15s ease,
@@ -212,7 +212,8 @@
 	--tw-prose-code: var(--color-ink);
 }
 .prose-rankfolk h2 {
-	font-weight: 800;
+	font-weight: 700;
+	font-size: 1.55em;
 	scroll-margin-top: 6rem;
 }
 .prose-rankfolk h3 {

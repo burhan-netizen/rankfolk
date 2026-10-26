@@ -16,7 +16,7 @@ Rankfolk (rankfolk.com) is a static Astro 7 + Tailwind 4 blog for small business
 - Site settings, author, categories, menu, AdSense ID: `src/site.config.ts`
 - Articles: `src/content/blog/*.md` (schema in `src/content.config.ts`)
 - Layouts: `src/layouts/`, components: `src/components/`, pages: `src/pages/`
-- Brand colors and fonts: `src/styles/global.css` (electric blue #2b4bff, sun yellow #ffd43b, coral #ff6b4a, lilac #c9b8ff, ink #0b0f1f, paper #fffdf8; bold "pop" style with 2px ink borders and hard offset shadows; Bricolage Grotesque headings, Inter body)
+- Brand colors and fonts: `src/styles/global.css` (electric blue #2b4bff, sun yellow #ffd43b, coral #ff6b4a, lilac #c9b8ff, ink #0b0f1f, paper #fffdf8; bold "pop" style with 2px ink borders and hard offset shadows; Unbounded headings, Inter body)
 
 ## New article checklist
 

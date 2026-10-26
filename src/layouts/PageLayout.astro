@@ -15,7 +15,7 @@ const { title, description, eyebrow, updated, noindex } = Astro.props;
 	<section class="dots border-b-2 border-ink">
 		<div class="container-read py-14 md:py-20">
 			{eyebrow && <span class="sticker -rotate-2 bg-sun">{eyebrow}</span>}
-			<h1 class="mt-5 text-5xl font-extrabold md:text-6xl">{title}</h1>
+			<h1 class="mt-5 text-4xl font-extrabold md:text-5xl">{title}</h1>
 			<p class="mt-5 text-lg text-ink-soft md:text-xl">{description}</p>
 			{updated && <p class="mt-4 text-sm font-medium text-muted">Last updated: {updated}</p>}
 		</div>

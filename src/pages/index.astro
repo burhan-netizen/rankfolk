@@ -31,10 +31,10 @@ const schema = [
 		<div class="container-wide grid items-center gap-14 py-14 md:py-20 lg:grid-cols-[1.15fr_1fr] lg:gap-10 lg:py-24">
 			<div>
 				<span class="sticker bg-white">
-					<span class="h-2.5 w-2.5 rounded-full bg-coral"></span>
-					For small business owners and contractors
+					<span class="h-2.5 w-2.5 shrink-0 rounded-full bg-coral"></span>
+					For small business owners<span class="hidden sm:inline">&nbsp;and contractors</span>
 				</span>
-				<h1 class="mt-6 text-[2.9rem] font-extrabold leading-[0.98] sm:text-6xl lg:text-[4.6rem]">
+				<h1 class="mt-6 text-[2.05rem] font-extrabold leading-[1.05] sm:text-5xl lg:text-[3.7rem]">
 					Helping small businesses get <span class="marker">more customers</span> <span class="squiggle">online</span>
 				</h1>
 				<p class="mt-7 max-w-xl text-lg text-ink-soft md:text-xl">
@@ -56,7 +56,7 @@ const schema = [
 
 	<!-- Marquee -->
 	<div class="overflow-hidden border-b-2 border-ink bg-blue py-4 text-white" aria-hidden="true">
-		<div class="animate-marquee flex w-max gap-10 font-display text-2xl font-extrabold tracking-tight">
+		<div class="animate-marquee flex w-max gap-10 font-display text-xl font-extrabold tracking-tight">
 			{
 				[...marquee, ...marquee].map((m) => (
 					<span class="flex items-center gap-10">
@@ -74,7 +74,7 @@ const schema = [
 			<section class="container-wide mt-20">
 				<div class="mb-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
 					<span class="sticker -rotate-2 bg-coral">Start here</span>
-					<h2 class="text-3xl font-extrabold md:text-4xl">The guide everyone should read first</h2>
+					<h2 class="text-2xl font-extrabold md:text-3xl">The guide everyone should read first</h2>
 				</div>
 				<PostCard post={featured} large />
 			</section>
@@ -83,7 +83,7 @@ const schema = [
 
 	<!-- Topics -->
 	<section class="container-wide mt-24">
-		<h2 class="text-4xl font-extrabold md:text-5xl">
+		<h2 class="text-3xl font-extrabold md:text-[2.6rem]">
 			Pick what you <span class="marker">need help</span> with
 		</h2>
 		<div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
@@ -97,7 +97,7 @@ const schema = [
 									<path d={icons[c.slug]} />
 								</svg>
 							</span>
-							<h3 class="mt-6 text-2xl font-extrabold">{c.name}</h3>
+							<h3 class="mt-6 text-lg font-extrabold">{c.name}</h3>
 							<p class="mt-2 text-[0.95rem] opacity-85">{c.description}</p>
 							<p class="mt-auto pt-6 font-display text-sm font-bold">
 								{counts[c.slug] === 0 ? 'Coming soon' : `${counts[c.slug]} ${counts[c.slug] === 1 ? 'guide' : 'guides'} →`}
@@ -114,7 +114,7 @@ const schema = [
 		latest.length > 0 && (
 			<section class="container-wide mt-24">
 				<div class="flex flex-wrap items-end justify-between gap-4">
-					<h2 class="text-4xl font-extrabold md:text-5xl">Fresh guides</h2>
+					<h2 class="text-3xl font-extrabold md:text-[2.6rem]">Fresh guides</h2>
 					<a href="/blog/" class="btn btn-light !py-2.5 !text-base">
 						See all guides
 					</a>
@@ -133,7 +133,7 @@ const schema = [
 			<div class="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
 				<div>
 					<span class="sticker rotate-[-2deg] bg-sun text-ink">Who writes Rankfolk</span>
-					<h2 class="mt-5 text-4xl font-extrabold md:text-5xl">Advice from someone who does this work every day</h2>
+					<h2 class="mt-5 text-3xl font-extrabold md:text-[2.6rem]">Advice from someone who does this work every day</h2>
 					<p class="mt-5 max-w-2xl text-lg text-white/85">
 						{AUTHOR.name} builds websites and runs local SEO for small businesses and contractors. Every guide comes from real client work, not theory.
 					</p>

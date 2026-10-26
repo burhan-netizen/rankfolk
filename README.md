@@ -70,7 +70,7 @@ In Cloudflare, open your domain → **Email → Email Routing** and forward `hel
 - SEO: titles, meta descriptions, canonical URLs, Open Graph and Twitter cards, BlogPosting, Breadcrumb, WebSite and Person schema
 - Sitemap, robots.txt, RSS feed, ads.txt
 - Author box, related posts, table of contents, reading time, "Want this done for you?" box linking to Mago Labs
-- Self-hosted fonts (Bricolage Grotesque and Inter), mobile menu without JavaScript
+- Self-hosted fonts (Unbounded and Inter), mobile menu without JavaScript
 
 ## Note
 

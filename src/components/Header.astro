@@ -14,7 +14,7 @@ const path = Astro.url.pathname;
 		<a href="/" aria-label="Rankfolk home"><Logo /></a>
 
 		<nav aria-label="Main" class="hidden lg:block">
-			<ul class="flex items-center gap-1 font-display text-[1rem] font-bold">
+			<ul class="flex items-center gap-0.5 font-display text-[0.85rem] font-semibold">
 				{
 					NAV.map((item) => (
 						<li>
@@ -46,7 +46,7 @@ const path = Astro.url.pathname;
 					{
 						NAV.map((item) => (
 							<li>
-								<a href={item.href} class="block rounded-2xl px-4 py-3 font-display text-lg font-bold hover:bg-sun">
+								<a href={item.href} class="block rounded-2xl px-4 py-3 font-display text-base font-semibold hover:bg-sun">
 									{item.label}
 								</a>
 							</li>
