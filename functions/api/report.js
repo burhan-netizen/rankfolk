@@ -26,6 +26,28 @@ async function sendEmail(env, { to, subject, html, text, tag }) {
 	return { ok: true };
 }
 
+// Sends Rankfolk a copy of every report, with who it went to at the top. Reply-to is the person, so replying reaches them.
+async function sendOwnerCopy(env, { email, business, kind, subscribed, message }) {
+	const tool = kind === 'audit' ? 'Website audit' : 'Google Visibility Scorecard';
+	const safe = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+	const banner = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#0b0f1f;"><tr><td align="center" style="padding:14px 12px;font-family:Inter,Segoe UI,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.6;color:#ffffff;">
+<strong style="color:#ffd43b;">Lead copy (${tool})</strong><br>
+Sent to <a href="mailto:${safe(email)}" style="color:#ffffff;">${safe(email)}</a>${business ? ` &middot; Business: ${safe(business)}` : ''} &middot; Tips: ${subscribed ? 'yes' : 'no'}<br>
+<span style="color:#c9ccd6;">Reply to this email to write to them directly.</span>
+</td></tr></table>`;
+	const html = message.html.replace(/<body[^>]*>/i, (m) => m + banner);
+	const text = [`LEAD COPY (${tool})`, `Sent to: ${email}`, business ? `Business: ${business}` : '', `Tips: ${subscribed ? 'yes' : 'no'}`, '', message.text].filter((l) => l !== '').join('\n');
+	try {
+		await fetch('https://api.resend.com/emails', {
+			method: 'POST',
+			headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, 'content-type': 'application/json' },
+			body: JSON.stringify({ from: FROM, to: [OWNER], reply_to: email, subject: `Lead: ${email} | ${message.subject}`, html, text, tags: [{ name: 'tool', value: 'lead-copy' }] }),
+		});
+	} catch {
+		/* the person already has their report; a missing copy must not cause an error */
+	}
+}
+
 async function addContact(env, email, source) {
 	const key = env.RESEND_CONTACTS_KEY || env.RESEND_API_KEY;
 	try {
@@ -64,6 +86,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
 	if (!EMAIL_RE.test(email) || email.length > 200) return fail('Please enter a valid email address.');
 
 	let message;
+	let business = '';
 	if (body.kind === 'audit') {
 		if (typeof body.payload !== 'string' || !body.sig) return fail('Please run the audit again, then request the report.');
 		if (!(await verifyPayload(body.payload, body.sig, env))) return fail('Please run the audit again, then request the report.');
@@ -77,7 +100,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
 			if (!(a in ANSWER_POINTS)) return fail('Please answer every question first.');
 			answers[q.id] = a;
 		}
-		const business = String(body.business || '').replace(/[\r\n<>]/g, ' ').trim().slice(0, 80);
+		business = String(body.business || '').replace(/[\r\n<>]/g, ' ').trim().slice(0, 80);
 		message = { ...renderScorecardEmail(scoreScorecard(answers), business), tag: 'visibility-scorecard' };
 	} else {
 		return fail('Unknown report type.');
@@ -96,11 +119,11 @@ export async function onRequestPost({ request, env, waitUntil }) {
 		return fail(busy ? 'We have sent a lot of reports today. Please try again tomorrow.' : 'We could not send the email just now. Please try again in a few minutes.', busy ? 429 : 502);
 	}
 
-	if (body.subscribe === true) {
-		const job = addContact(env, email, body.kind);
-		if (waitUntil) waitUntil(job);
-		else await job;
-	}
+	const jobs = [sendOwnerCopy(env, { email, business, kind: body.kind, subscribed: body.subscribe === true, message })];
+	if (body.subscribe === true) jobs.push(addContact(env, email, body.kind));
+	const all = Promise.all(jobs);
+	if (waitUntil) waitUntil(all);
+	else await all;
 
 	return json({ ok: true });
 }
