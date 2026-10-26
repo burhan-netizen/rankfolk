@@ -3,6 +3,7 @@ import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
 import { SITE } from '../site.config';
 
 interface Props {
@@ -41,6 +42,7 @@ const props = Astro.props;
 		}
 	</head>
 	<body class="min-h-screen">
+		<Analytics />
 		<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
 		<Header />
 		<main id="main">

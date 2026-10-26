@@ -17,6 +17,8 @@ export const SITE = {
 	showServiceCta: true,
 	// Cloudflare Turnstile site key (public). The secret key lives in Cloudflare as TURNSTILE_SECRET_KEY.
 	turnstileSiteKey: '0x4AAAAAAFmi4S7Vz6hL6ne5',
+	// Google Analytics 4 measurement ID. Loaded by src/components/Analytics.astro with a consent banner for UK/EU visitors.
+	gaMeasurementId: 'G-VFB4M4CNQP',
 };
 
 export const TOOLS = [

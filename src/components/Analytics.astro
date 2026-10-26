@@ -1,0 +1,102 @@
+---
+// Google Analytics 4 with consent.
+// - Visitors whose browser time zone is in the UK/EU see a cookie banner, and GA only loads after they click Accept.
+// - Everyone else gets GA straight away, but Google Consent Mode still defaults to "denied" for UK/EEA/Swiss
+//   IP addresses as a safety net (for example, someone in Europe using a US time zone).
+// - The choice is remembered in this browser and can be changed with any [data-cookie-settings] button.
+import { SITE } from '../site.config';
+const id = SITE.gaMeasurementId;
+---
+
+{
+	id && (
+		<>
+			<script is:inline define:vars={{ id }}>
+				(function () {
+					var KEY = 'rf-consent';
+					var EEA = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH'];
+					window.dataLayer = window.dataLayer || [];
+					function gtag() { window.dataLayer.push(arguments); }
+					window.gtag = gtag;
+
+					var denied = { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' };
+					var granted = { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted' };
+					gtag('consent', 'default', Object.assign({ region: EEA }, denied));
+					gtag('consent', 'default', granted);
+
+					var choice = null;
+					try { choice = localStorage.getItem(KEY); } catch (e) {}
+					var tz = '';
+					try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+					var europe = tz.indexOf('Europe/') === 0 || ['Atlantic/Reykjavik','Atlantic/Canary','Atlantic/Madeira','Atlantic/Azores','Atlantic/Faroe'].indexOf(tz) > -1;
+
+					if (choice === 'granted') gtag('consent', 'update', granted);
+					if (choice === 'denied') gtag('consent', 'update', denied);
+					gtag('js', new Date());
+					gtag('config', id);
+
+					var loaded = false;
+					function load() {
+						if (loaded) return;
+						loaded = true;
+						var s = document.createElement('script');
+						s.async = true;
+						s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+						document.head.appendChild(s);
+					}
+
+					window.rfConsent = {
+						needsBanner: !choice && europe,
+						set: function (value) {
+							try { localStorage.setItem(KEY, value); } catch (e) {}
+							gtag('consent', 'update', value === 'granted' ? granted : denied);
+							if (value === 'granted') load();
+						},
+					};
+
+					if (choice === 'granted' || (!choice && !europe)) load();
+				})();
+			</script>
+
+			<div
+				id="cookie-banner"
+				hidden
+				role="dialog"
+				aria-live="polite"
+				aria-label="Cookie choices"
+				class="fixed inset-x-3 bottom-3 z-50 mx-auto max-w-2xl rounded-[1.5rem] border-2 border-ink bg-white p-5 shadow-[6px_6px_0_0_#0b0f1f] sm:inset-x-6 sm:bottom-6 sm:p-6"
+			>
+				<p class="font-display text-lg font-extrabold">Cookies, quickly</p>
+				<p class="mt-2 text-[0.97rem] text-ink-soft">
+					We'd like to use Google Analytics cookies to see which guides and tools are useful. You can change your mind any time in Cookie settings. See our <a href="/privacy-policy/" class="font-semibold text-blue underline">privacy policy</a>.
+				</p>
+				<div class="mt-4 flex flex-wrap gap-3">
+					<button type="button" data-consent="granted" class="btn !px-5 !py-2.5 !text-sm">Accept</button>
+					<button type="button" data-consent="denied" class="btn btn-light !px-5 !py-2.5 !text-sm">Decline</button>
+				</div>
+			</div>
+
+			<script is:inline>
+				(function () {
+					var banner = document.getElementById('cookie-banner');
+					if (!banner || !window.rfConsent) return;
+					function show() { banner.hidden = false; }
+					if (window.rfConsent.needsBanner) show();
+					banner.addEventListener('click', function (e) {
+						var btn = e.target.closest('[data-consent]');
+						if (!btn) return;
+						window.rfConsent.set(btn.getAttribute('data-consent'));
+						banner.hidden = true;
+					});
+					document.addEventListener('click', function (e) {
+						if (e.target.closest('[data-cookie-settings]')) {
+							e.preventDefault();
+							show();
+							banner.querySelector('[data-consent="granted"]').focus();
+						}
+					});
+				})();
+			</script>
+		</>
+	)
+}

@@ -113,6 +113,7 @@ const catName = Object.fromEntries(SCORECARD_CATEGORIES.map((c) => [c.id, c.name
 	import { SCORECARD_QUESTIONS, scoreScorecard } from '../../data/scorecard.js';
 	import { setupEmailReport } from '../../scripts/email-report';
 	import { scoreRing, categoryBars, fixCard } from '../../scripts/results';
+	import { track } from '../../scripts/analytics';
 
 	const form = document.getElementById('sc-form') as HTMLFormElement;
 	const results = document.getElementById('sc-results')!;
@@ -157,6 +158,7 @@ const catName = Object.fromEntries(SCORECARD_CATEGORIES.map((c) => [c.id, c.name
 		}
 		errorEl.classList.add('hidden');
 		const s = scoreScorecard(answers);
+		track('scorecard_complete', { score: s.score, band: s.band.label });
 		document.getElementById('sc-ring')!.innerHTML = scoreRing(s.score);
 		document.getElementById('sc-band')!.textContent = s.band.label;
 		document.getElementById('sc-note')!.textContent = s.band.note;

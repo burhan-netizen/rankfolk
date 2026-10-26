@@ -146,6 +146,7 @@ const outputs = [
 
 <script>
 	import QRCode from 'qrcode';
+	import { track } from '../../scripts/analytics';
 
 	const form = document.getElementById('rr-form') as HTMLFormElement;
 	const qrCanvas = document.getElementById('rr-qr') as HTMLCanvasElement;
@@ -232,6 +233,7 @@ const outputs = [
 		}
 	}
 
+	document.getElementById('rr-wa')!.addEventListener('click', () => track('review_whatsapp_open'));
 	form.addEventListener('input', update);
 	form.addEventListener('change', update);
 	update();
@@ -243,6 +245,7 @@ const outputs = [
 			try {
 				await navigator.clipboard.writeText(text);
 				btn.textContent = 'Copied';
+				track('review_message_copied', { channel: k, tone: vals().tone });
 			} catch {
 				btn.textContent = 'Select and copy';
 			}
@@ -264,11 +267,13 @@ const outputs = [
 	document.getElementById('rr-png')!.addEventListener('click', async () => {
 		const url = await QRCode.toDataURL(vals().link, { width: 1200, margin: 2, errorCorrectionLevel: 'M', color: { dark: '#0b0f1f', light: '#ffffff' } });
 		download(`${slug()}-review-qr.png`, url);
+		track('review_qr_download', { format: 'png' });
 	});
 
 	document.getElementById('rr-svg')!.addEventListener('click', async () => {
 		const svg = await QRCode.toString(vals().link, { type: 'svg', margin: 2, errorCorrectionLevel: 'M', color: { dark: '#0b0f1f', light: '#ffffff' } });
 		download(`${slug()}-review-qr.svg`, URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' })));
+		track('review_qr_download', { format: 'svg' });
 	});
 
 	function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
@@ -353,5 +358,6 @@ const outputs = [
 		ctx.fillText('Thank you for supporting a local business', W / 2 - 10, H - 160);
 
 		download(`${slug()}-review-card.png`, c.toDataURL('image/png'));
+		track('review_qr_download', { format: 'card' });
 	});
 </script>

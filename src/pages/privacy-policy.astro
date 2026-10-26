@@ -1,7 +1,7 @@
 ---
 import PageLayout from '../layouts/PageLayout.astro';
 import { SITE } from '../site.config';
-const updated = 'October 26, 2026';
+const updated = 'October 27, 2026';
 ---
 
 <PageLayout title="Privacy Policy" eyebrow="Legal" updated={updated} description={`How ${SITE.name} collects, uses and protects information when you visit ${SITE.url.replace('https://', '')}.`}>
@@ -68,8 +68,14 @@ const updated = 'October 26, 2026';
 
 	<h2>Analytics</h2>
 	<p>
-		We may use analytics services such as Google Analytics or Cloudflare Web Analytics to understand how visitors use the Site.
-		These services collect information about your visit in aggregate form to help us improve our content.
+		We use <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google Analytics</a> to understand how visitors use the Site,
+		for example which pages are read and which free tools are used. It uses cookies and collects information such as pages visited, approximate location,
+		device and browser type, and how you arrived. We use this in aggregate to improve our content, not to identify you.
+	</p>
+	<p>
+		If you are in the United Kingdom or the European Economic Area, we ask for your consent before Google Analytics cookies are set, and it does not
+		load unless you accept. You can change your choice at any time using <strong>Cookie settings</strong> in the footer. You can also block cookies in your
+		browser, or use the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics opt-out browser add-on</a>.
 	</p>
 
 	<h2>Affiliate links</h2>

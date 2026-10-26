@@ -1,4 +1,5 @@
 import { mountTurnstile, type Human } from './turnstile';
+import { track } from './analytics';
 
 // Connects an EmailReport box to /api/report. `extra` returns the tool-specific fields.
 export function setupEmailReport(root: HTMLElement, extra: () => Record<string, unknown>) {
@@ -48,6 +49,7 @@ export function setupEmailReport(root: HTMLElement, extra: () => Record<string, 
 			} catch {
 				throw new Error('Please complete the quick security check above, then try again.');
 			}
+			const fields = extra();
 			const res = await fetch('/api/report', {
 				method: 'POST',
 				headers: { 'content-type': 'application/json' },
@@ -56,12 +58,13 @@ export function setupEmailReport(root: HTMLElement, extra: () => Record<string, 
 					subscribe: data.get('subscribe') === 'on',
 					business: data.get('business') || '',
 					token,
-					...extra(),
+					...fields,
 				}),
 			});
 			const out = await res.json().catch(() => ({ ok: false, error: 'Something went wrong. Please try again.' }));
 			h.reset();
 			if (!out.ok) throw new Error(out.error);
+			track('report_emailed', { tool: String(fields.kind || ''), subscribed: data.get('subscribe') === 'on' });
 			root.querySelector<HTMLElement>('[data-form-wrap]')!.hidden = true;
 			root.querySelector<HTMLElement>('[data-done]')!.hidden = false;
 		} catch (err: any) {

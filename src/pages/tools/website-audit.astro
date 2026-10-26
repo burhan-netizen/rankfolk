@@ -162,6 +162,7 @@ const checks = [
 	import { mountTurnstile, type Human } from '../../scripts/turnstile';
 	import { setupEmailReport } from '../../scripts/email-report';
 	import { esc, scoreRing, categoryBars, fixCard } from '../../scripts/results';
+	import { track } from '../../scripts/analytics';
 
 	const start = document.getElementById('audit-start')!;
 	const form = document.getElementById('audit-form') as HTMLFormElement;
@@ -238,12 +239,14 @@ const checks = [
 			if (!out.ok) throw new Error(out.error || 'Something went wrong. Please try again.');
 			latest = { payload: out.payload, sig: out.sig };
 			render(out.result);
+			track('audit_complete', { score: out.result.score, band: out.result.band.label });
 			const u = new URL(location.href);
 			u.searchParams.set('url', url);
 			history.replaceState(null, '', u);
 		} catch (err: any) {
 			start.hidden = false;
 			showError(err?.message || 'Something went wrong. Please try again.');
+			track('audit_error', { reason: String(err?.message || 'unknown').slice(0, 90) });
 		} finally {
 			clearTimeout(timer);
 			loading.hidden = true;
