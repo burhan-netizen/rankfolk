@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { getPosts } from '../../lib/posts';
 import { CATEGORIES, SITE } from '../../site.config';
+import { CATEGORY_ICONS, CATEGORY_THEME } from '../../lib/icons';
 
 export async function getStaticPaths() {
 	return CATEGORIES.map((c) => ({ params: { slug: c.slug }, props: { category: c } }));
@@ -10,6 +11,7 @@ export async function getStaticPaths() {
 
 const { category } = Astro.props;
 const posts = (await getPosts()).filter((p) => p.data.category === category.slug);
+const theme = CATEGORY_THEME[category.slug];
 
 const schema = [
 	{
@@ -29,27 +31,32 @@ const schema = [
 	schema={schema}
 	noindex={posts.length === 0}
 >
-	<section class="border-b border-line bg-cream/50">
-		<div class="container-wide py-14 md:py-20">
-			<nav aria-label="Breadcrumb" class="text-sm text-muted">
-				<a href="/" class="hover:text-forest">Home</a> / <span>{category.name}</span>
+	<section class:list={['relative overflow-hidden border-b-2 border-ink', theme.bg, theme.fg]}>
+		<svg class="absolute -right-12 -top-12 h-72 w-72 opacity-15" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0l12 38 38 12-38 12-12 38-12-38L0 50l38-12z" fill="currentColor"></path></svg>
+		<div class="container-wide relative py-14 md:py-20">
+			<nav aria-label="Breadcrumb" class="text-sm font-semibold opacity-80">
+				<a href="/" class="hover:underline">Home</a> / <span>{category.name}</span>
 			</nav>
-			<h1 class="mt-4 text-4xl font-bold md:text-6xl">{category.name}</h1>
-			<p class="mt-4 max-w-2xl text-lg text-ink-soft">{category.description}</p>
+			<div class="mt-6 flex items-center gap-5">
+				<span class:list={['flex h-16 w-16 shrink-0 -rotate-6 items-center justify-center rounded-2xl border-2 border-ink text-ink shadow-[3px_3px_0_0_#0b0f1f]', theme.chip, theme.chip === 'bg-blue' && '!text-white']}>
+					<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={CATEGORY_ICONS[category.slug]}></path></svg>
+				</span>
+				<h1 class="text-5xl font-extrabold md:text-7xl">{category.name}</h1>
+			</div>
+			<p class="mt-5 max-w-2xl text-lg opacity-90 md:text-xl">{category.description}</p>
 		</div>
 	</section>
-	<section class="container-wide mt-12">
+	<section class="container-wide mt-14">
 		{
 			posts.length > 0 ? (
-				<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{posts.map((post) => <PostCard post={post} />)}
 				</div>
 			) : (
-				<div class="rounded-3xl border border-dashed border-line p-10 text-center">
-					<p class="font-display text-xl font-bold">New guides coming soon</p>
-					<p class="mt-2 text-ink-soft">
-						In the meantime, <a href="/blog/" class="font-semibold text-forest underline">browse all guides</a>.
-					</p>
+				<div class="pop-lg rounded-[1.75rem] bg-white p-10 text-center">
+					<p class="font-display text-3xl font-extrabold">New guides coming soon</p>
+					<p class="mt-3 text-ink-soft">In the meantime, explore what's already here.</p>
+					<a href="/blog/" class="btn mt-6">Browse all guides</a>
 				</div>
 			)
 		}

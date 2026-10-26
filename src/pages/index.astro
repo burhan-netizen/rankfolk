@@ -1,15 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
+import HeroVisual from '../components/HeroVisual.astro';
 import { getPosts } from '../lib/posts';
 import { SITE, AUTHOR, CATEGORIES } from '../site.config';
-import { CATEGORY_ICONS as icons } from '../lib/icons';
+import { CATEGORY_ICONS as icons, CATEGORY_THEME as themes } from '../lib/icons';
 
 const posts = await getPosts();
 const featured = posts.find((p) => p.data.featured) ?? posts[0];
 const latest = posts.filter((p) => p.id !== featured?.id).slice(0, 6);
 const counts = Object.fromEntries(CATEGORIES.map((c) => [c.slug, posts.filter((p) => p.data.category === c.slug).length]));
 
+const marquee = ['Websites that get calls', 'Google Maps rankings', 'Local SEO', 'More reviews', 'Plain English', 'No fluff'];
 
 const schema = [
 	{
@@ -25,61 +27,84 @@ const schema = [
 
 <BaseLayout title={SITE.name} description={SITE.description} schema={schema}>
 	<!-- Hero -->
-	<section class="relative overflow-hidden">
-		<div class="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-mint blur-3xl"></div>
-		<div class="pointer-events-none absolute -left-20 top-40 h-72 w-72 rounded-full bg-marigold-soft blur-3xl"></div>
-		<div class="container-wide relative py-16 md:py-24">
-			<span class="pill">For small business owners and contractors</span>
-			<h1 class="mt-5 max-w-4xl text-[2.6rem] font-extrabold leading-[1.05] md:text-7xl">
-				Helping small businesses get <span class="highlight">more customers</span> online
-			</h1>
-			<p class="mt-6 max-w-2xl text-lg text-ink-soft md:text-xl">
-				Simple, practical guides on websites, Google rankings and Google Maps. No jargon, no fluff, just what brings in calls.
-			</p>
-			<div class="mt-8 flex flex-wrap gap-3">
-				<a href="/blog/" class="btn">
-					Read the guides
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
-				</a>
-				<a href="/category/google-business-profile/" class="btn btn-ghost">Get found on Google Maps</a>
+	<section class="dots relative overflow-hidden border-b-2 border-ink">
+		<div class="container-wide grid items-center gap-14 py-14 md:py-20 lg:grid-cols-[1.15fr_1fr] lg:gap-10 lg:py-24">
+			<div>
+				<span class="sticker bg-white">
+					<span class="h-2.5 w-2.5 rounded-full bg-coral"></span>
+					For small business owners and contractors
+				</span>
+				<h1 class="mt-6 text-[2.9rem] font-extrabold leading-[0.98] sm:text-6xl lg:text-[4.6rem]">
+					Helping small businesses get <span class="marker">more customers</span> <span class="squiggle">online</span>
+				</h1>
+				<p class="mt-7 max-w-xl text-lg text-ink-soft md:text-xl">
+					Simple, practical guides on websites, Google rankings and Google Maps. No jargon. No fluff. Just what brings in calls.
+				</p>
+				<div class="mt-9 flex flex-wrap gap-4">
+					<a href="/blog/" class="btn">
+						Read the guides
+						<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+					</a>
+					<a href="/category/google-business-profile/" class="btn btn-light">Get found on Google Maps</a>
+				</div>
+			</div>
+			<div class="px-4 pb-6 sm:px-10 lg:px-0">
+				<HeroVisual />
 			</div>
 		</div>
 	</section>
 
+	<!-- Marquee -->
+	<div class="overflow-hidden border-b-2 border-ink bg-blue py-4 text-white" aria-hidden="true">
+		<div class="animate-marquee flex w-max gap-10 font-display text-2xl font-extrabold tracking-tight">
+			{
+				[...marquee, ...marquee].map((m) => (
+					<span class="flex items-center gap-10">
+						{m}
+						<svg width="22" height="22" viewBox="0 0 100 100" class="text-sun"><path d="M50 0l12 38 38 12-38 12-12 38-12-38L0 50l38-12z" fill="currentColor" /></svg>
+					</span>
+				))
+			}
+		</div>
+	</div>
+
 	<!-- Featured -->
 	{
 		featured && (
-			<section class="container-wide">
-				<h2 class="mb-6 text-sm font-bold uppercase tracking-wider text-muted">Start here</h2>
+			<section class="container-wide mt-20">
+				<div class="mb-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+					<span class="sticker -rotate-2 bg-coral">Start here</span>
+					<h2 class="text-3xl font-extrabold md:text-4xl">The guide everyone should read first</h2>
+				</div>
 				<PostCard post={featured} large />
 			</section>
 		)
 	}
 
 	<!-- Topics -->
-	<section class="container-wide mt-20">
-		<div class="flex items-end justify-between gap-4">
-			<h2 class="text-3xl font-bold md:text-4xl">Browse by topic</h2>
-		</div>
-		<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+	<section class="container-wide mt-24">
+		<h2 class="text-4xl font-extrabold md:text-5xl">
+			Pick what you <span class="marker">need help</span> with
+		</h2>
+		<div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
 			{
-				CATEGORIES.map((c) => (
-					<a
-						href={`/category/${c.slug}/`}
-						class="group rounded-3xl border border-line bg-white/60 p-6 transition hover:-translate-y-0.5 hover:border-forest/40 hover:shadow-md"
-					>
-						<span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-mint text-forest-dark">
-							<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d={icons[c.slug]} />
-							</svg>
-						</span>
-						<h3 class="mt-4 text-lg font-bold group-hover:text-forest">{c.name}</h3>
-						<p class="mt-1 text-sm text-ink-soft">{c.description}</p>
-						<p class="mt-3 text-xs font-semibold text-muted">
-							{counts[c.slug] === 0 ? 'Coming soon' : `${counts[c.slug]} ${counts[c.slug] === 1 ? 'guide' : 'guides'}`}
-						</p>
-					</a>
-				))
+				CATEGORIES.map((c) => {
+					const t = themes[c.slug];
+					return (
+						<a href={`/category/${c.slug}/`} class:list={['pop-lg pop-hover group flex flex-col rounded-[1.75rem] p-6', t.bg, t.fg]}>
+							<span class:list={['flex h-14 w-14 items-center justify-center rounded-2xl border-2 border-ink text-ink shadow-[3px_3px_0_0_#0b0f1f] transition group-hover:rotate-6', t.chip, t.chip === 'bg-blue' && '!text-white']}>
+								<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+									<path d={icons[c.slug]} />
+								</svg>
+							</span>
+							<h3 class="mt-6 text-2xl font-extrabold">{c.name}</h3>
+							<p class="mt-2 text-[0.95rem] opacity-85">{c.description}</p>
+							<p class="mt-auto pt-6 font-display text-sm font-bold">
+								{counts[c.slug] === 0 ? 'Coming soon' : `${counts[c.slug]} ${counts[c.slug] === 1 ? 'guide' : 'guides'} →`}
+							</p>
+						</a>
+					);
+				})
 			}
 		</div>
 	</section>
@@ -87,14 +112,14 @@ const schema = [
 	<!-- Latest -->
 	{
 		latest.length > 0 && (
-			<section class="container-wide mt-20">
-				<div class="flex items-end justify-between gap-4">
-					<h2 class="text-3xl font-bold md:text-4xl">Latest guides</h2>
-					<a href="/blog/" class="font-semibold text-forest hover:underline">
-						See all
+			<section class="container-wide mt-24">
+				<div class="flex flex-wrap items-end justify-between gap-4">
+					<h2 class="text-4xl font-extrabold md:text-5xl">Fresh guides</h2>
+					<a href="/blog/" class="btn btn-light !py-2.5 !text-base">
+						See all guides
 					</a>
 				</div>
-				<div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				<div class="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 					{latest.map((post) => <PostCard post={post} />)}
 				</div>
 			</section>
@@ -102,16 +127,19 @@ const schema = [
 	}
 
 	<!-- About strip -->
-	<section class="container-wide mt-20">
-		<div class="grid items-center gap-8 rounded-[2rem] bg-ink p-8 text-white md:grid-cols-[1fr_auto] md:p-12">
-			<div>
-				<p class="text-sm font-semibold uppercase tracking-wider text-marigold">Who writes Rankfolk</p>
-				<h2 class="mt-3 text-3xl font-bold md:text-4xl">Advice from someone who does this work every day</h2>
-				<p class="mt-4 max-w-2xl text-white/80">
-					{AUTHOR.name} builds websites and runs local SEO for small businesses and contractors. Every guide here comes from real client work, not theory.
-				</p>
+	<section class="container-wide mt-24">
+		<div class="pop-lg relative overflow-hidden rounded-[2rem] bg-blue p-8 text-white md:p-14">
+			<svg class="absolute -right-16 -top-16 h-64 w-64 text-white/10" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 0l12 38 38 12-38 12-12 38-12-38L0 50l38-12z" fill="currentColor"></path></svg>
+			<div class="relative grid items-center gap-8 md:grid-cols-[1fr_auto]">
+				<div>
+					<span class="sticker rotate-[-2deg] bg-sun text-ink">Who writes Rankfolk</span>
+					<h2 class="mt-5 text-4xl font-extrabold md:text-5xl">Advice from someone who does this work every day</h2>
+					<p class="mt-5 max-w-2xl text-lg text-white/85">
+						{AUTHOR.name} builds websites and runs local SEO for small businesses and contractors. Every guide comes from real client work, not theory.
+					</p>
+				</div>
+				<a href="/about/" class="btn btn-sun self-start md:self-center">About Rankfolk</a>
 			</div>
-			<a href="/about/" class="btn self-start bg-marigold text-ink hover:bg-white md:self-center">About Rankfolk</a>
 		</div>
 	</section>
 </BaseLayout>

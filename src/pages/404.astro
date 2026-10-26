@@ -3,13 +3,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Page not found" description="This page could not be found." noindex>
-	<section class="container-read py-24 text-center">
-		<p class="font-display text-7xl font-extrabold text-forest">404</p>
-		<h1 class="mt-4 text-3xl font-bold">This page got lost</h1>
-		<p class="mt-3 text-ink-soft">It may have moved, or the link may be wrong.</p>
-		<div class="mt-8 flex justify-center gap-3">
-			<a href="/" class="btn">Go home</a>
-			<a href="/blog/" class="btn btn-ghost">Browse guides</a>
+	<section class="dots border-b-2 border-ink">
+		<div class="container-read py-24 text-center">
+			<p class="inline-block -rotate-3 rounded-3xl border-2 border-ink bg-sun px-8 py-2 font-display text-8xl font-extrabold shadow-[7px_7px_0_0_#0b0f1f]">404</p>
+			<h1 class="mt-10 text-4xl font-extrabold md:text-5xl">This page got lost</h1>
+			<p class="mt-4 text-lg text-ink-soft">It may have moved, or the link may be wrong.</p>
+			<div class="mt-9 flex flex-wrap justify-center gap-4">
+				<a href="/" class="btn">Go home</a>
+				<a href="/blog/" class="btn btn-light">Browse guides</a>
+			</div>
 		</div>
 	</section>
 </BaseLayout>

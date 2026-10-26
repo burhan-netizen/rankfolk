@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { getPosts } from '../../lib/posts';
 import { CATEGORIES } from '../../site.config';
+import { CATEGORY_THEME } from '../../lib/icons';
 
 const posts = await getPosts();
 ---
@@ -11,15 +12,17 @@ const posts = await getPosts();
 	title="All guides"
 	description="Every Rankfolk guide on websites, SEO, Google Business Profile and marketing for small businesses."
 >
-	<section class="border-b border-line bg-cream/50">
+	<section class="dots border-b-2 border-ink">
 		<div class="container-wide py-14 md:py-20">
-			<span class="pill">{posts.length} guides</span>
-			<h1 class="mt-4 text-4xl font-bold md:text-6xl">All guides</h1>
-			<p class="mt-4 max-w-2xl text-lg text-ink-soft">Practical, step-by-step help for getting more customers online.</p>
-			<div class="mt-8 flex flex-wrap gap-2">
+			<span class="sticker -rotate-2 bg-sun">{posts.length} guides and counting</span>
+			<h1 class="mt-5 text-5xl font-extrabold md:text-7xl">
+				All <span class="marker">guides</span>
+			</h1>
+			<p class="mt-5 max-w-2xl text-lg text-ink-soft md:text-xl">Practical, step-by-step help for getting more customers online.</p>
+			<div class="mt-9 flex flex-wrap gap-3">
 				{
 					CATEGORIES.map((c) => (
-						<a href={`/category/${c.slug}/`} class="rounded-full border border-line bg-white/70 px-4 py-2 text-sm font-medium hover:border-forest hover:text-forest">
+						<a href={`/category/${c.slug}/`} class:list={['sticker pop-hover shadow-[3px_3px_0_0_#0b0f1f]', CATEGORY_THEME[c.slug].bg, CATEGORY_THEME[c.slug].fg]}>
 							{c.name}
 						</a>
 					))
@@ -27,8 +30,8 @@ const posts = await getPosts();
 			</div>
 		</div>
 	</section>
-	<section class="container-wide mt-12">
-		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+	<section class="container-wide mt-14">
+		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{posts.map((post) => <PostCard post={post} />)}
 		</div>
 	</section>

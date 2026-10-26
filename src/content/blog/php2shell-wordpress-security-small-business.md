@@ -1,6 +1,7 @@
 ---
 title: "The October 2026 PHP Security Flaw: What Small Business Owners on WordPress Should Do"
 description: "A critical PHP flaw, called php2shell, put millions of WordPress sites at risk. Here's what happened, in plain English, and a simple checklist to make sure your site is safe."
+coverTitle: "Is your WordPress site safe?"
 pubDate: 2026-10-25
 category: websites
 tags: ["wordpress", "website security", "php"]

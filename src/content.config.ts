@@ -11,6 +11,8 @@ const blog = defineCollection({
 		z.object({
 			title: z.string(),
 			description: z.string(),
+			// Short text (3 to 6 words) shown big on the auto-generated cover. Defaults to the title.
+			coverTitle: z.string().optional(),
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			category: z.enum(categorySlugs),

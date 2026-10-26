@@ -1,6 +1,7 @@
 ---
 title: "Does a Small Business Still Need a Website in 2026?"
 description: "Social media and Google Maps can bring in customers, so is a website still worth it? An honest answer for owners, with what a good small business site actually needs."
+coverTitle: "Do you still need a website?"
 pubDate: 2026-10-24
 category: websites
 tags: ["small business website", "google business profile", "local seo"]

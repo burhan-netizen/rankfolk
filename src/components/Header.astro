@@ -4,20 +4,25 @@ import { NAV } from '../site.config';
 const path = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-40 border-b border-line/70 bg-paper/90 backdrop-blur">
-	<div class="container-wide flex h-16 items-center justify-between gap-4">
+<div class="border-b-2 border-ink bg-ink text-center text-sm font-medium text-white">
+	<p class="container-wide py-2">
+		New: <a href="/blog/how-to-set-up-google-business-profile/" class="font-semibold text-sun underline decoration-2 underline-offset-2 hover:text-white">The step-by-step Google Business Profile guide</a>
+	</p>
+</div>
+<header class="sticky top-0 z-40 border-b-2 border-ink bg-paper/95 backdrop-blur">
+	<div class="container-wide flex h-[4.5rem] items-center justify-between gap-4">
 		<a href="/" aria-label="Rankfolk home"><Logo /></a>
 
 		<nav aria-label="Main" class="hidden lg:block">
-			<ul class="flex items-center gap-1 text-[0.95rem] font-medium">
+			<ul class="flex items-center gap-1 font-display text-[1rem] font-bold">
 				{
 					NAV.map((item) => (
 						<li>
 							<a
 								href={item.href}
 								class:list={[
-									'rounded-full px-3.5 py-2 transition-colors hover:bg-cream',
-									path.startsWith(item.href) ? 'bg-cream text-forest-dark' : 'text-ink-soft',
+									'rounded-full border-2 px-4 py-2 transition',
+									path.startsWith(item.href) ? 'border-ink bg-sun' : 'border-transparent hover:border-ink hover:bg-white',
 								]}
 							>
 								{item.label}
@@ -30,18 +35,18 @@ const path = Astro.url.pathname;
 
 		<details class="group relative lg:hidden">
 			<summary
-				class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-line [&::-webkit-details-marker]:hidden"
+				class="pop flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full bg-sun [&::-webkit-details-marker]:hidden"
 				aria-label="Open menu"
 			>
-				<svg class="group-open:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
-				<svg class="hidden group-open:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+				<svg class="group-open:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+				<svg class="hidden group-open:block" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
 			</summary>
-			<nav aria-label="Mobile" class="absolute right-0 top-12 w-64 rounded-2xl border border-line bg-paper p-2 shadow-xl">
+			<nav aria-label="Mobile" class="pop-lg absolute right-0 top-14 w-72 rounded-3xl bg-white p-2">
 				<ul>
 					{
 						NAV.map((item) => (
 							<li>
-								<a href={item.href} class="block rounded-xl px-4 py-3 font-medium hover:bg-cream">
+								<a href={item.href} class="block rounded-2xl px-4 py-3 font-display text-lg font-bold hover:bg-sun">
 									{item.label}
 								</a>
 							</li>

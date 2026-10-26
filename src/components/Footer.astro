@@ -4,36 +4,41 @@ import { SITE, CATEGORIES } from '../site.config';
 const year = new Date().getFullYear();
 ---
 
-<footer class="mt-24 border-t border-line bg-cream/60">
-	<div class="container-wide grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+<footer class="mt-28 border-t-2 border-ink bg-ink text-white">
+	<div class="container-wide grid gap-12 py-16 md:grid-cols-[1.5fr_1fr_1fr]">
 		<div>
-			<Logo />
-			<p class="mt-4 max-w-sm text-ink-soft">{SITE.tagline}.</p>
-			<p class="mt-2 max-w-sm text-sm text-muted">Practical guides for owners, written in plain English.</p>
+			<Logo invert />
+			<p class="mt-5 max-w-sm font-display text-2xl font-bold leading-tight">{SITE.tagline}.</p>
+			<p class="mt-3 max-w-sm text-white/65">Practical guides for owners, written in plain English.</p>
 		</div>
 		<div>
-			<h2 class="font-display text-sm font-bold uppercase tracking-wider text-muted">Topics</h2>
-			<ul class="mt-4 space-y-2.5">
-				{CATEGORIES.map((c) => <li><a class="hover:text-forest" href={`/category/${c.slug}/`}>{c.name}</a></li>)}
+			<h2 class="font-display text-sm font-bold uppercase tracking-widest text-sun">Topics</h2>
+			<ul class="mt-5 space-y-3">
+				{CATEGORIES.map((c) => <li><a class="text-white/85 hover:text-sun" href={`/category/${c.slug}/`}>{c.name}</a></li>)}
 			</ul>
 		</div>
 		<div>
-			<h2 class="font-display text-sm font-bold uppercase tracking-wider text-muted">Rankfolk</h2>
-			<ul class="mt-4 space-y-2.5">
-				<li><a class="hover:text-forest" href="/about/">About</a></li>
-				<li><a class="hover:text-forest" href="/contact/">Contact</a></li>
-				<li><a class="hover:text-forest" href="/privacy-policy/">Privacy Policy</a></li>
-				<li><a class="hover:text-forest" href="/terms/">Terms of Use</a></li>
-				<li><a class="hover:text-forest" href="/disclaimer/">Disclaimer</a></li>
-				<li><a class="hover:text-forest" href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
-				<li><a class="hover:text-forest" href="/rss.xml">RSS</a></li>
+			<h2 class="font-display text-sm font-bold uppercase tracking-widest text-sun">Rankfolk</h2>
+			<ul class="mt-5 space-y-3">
+				<li><a class="text-white/85 hover:text-sun" href="/about/">About</a></li>
+				<li><a class="text-white/85 hover:text-sun" href="/contact/">Contact</a></li>
+				<li><a class="text-white/85 hover:text-sun" href="/privacy-policy/">Privacy Policy</a></li>
+				<li><a class="text-white/85 hover:text-sun" href="/terms/">Terms of Use</a></li>
+				<li><a class="text-white/85 hover:text-sun" href="/disclaimer/">Disclaimer</a></li>
+				<li><a class="text-white/85 hover:text-sun" href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
+				<li><a class="text-white/85 hover:text-sun" href="/rss.xml">RSS</a></li>
 			</ul>
 		</div>
 	</div>
-	<div class="border-t border-line">
-		<div class="container-wide flex flex-col gap-2 py-6 text-sm text-muted sm:flex-row sm:justify-between">
+	<div class="overflow-hidden border-t-2 border-white/15">
+		<p class="container-wide select-none py-2 font-display text-[18vw] font-extrabold leading-[0.85] tracking-[-0.06em] text-white/[0.06] md:text-[11rem]" aria-hidden="true">
+			rankfolk
+		</p>
+	</div>
+	<div class="border-t-2 border-white/15">
+		<div class="container-wide flex flex-col gap-2 py-6 text-sm text-white/60 sm:flex-row sm:justify-between">
 			<p>© {year} {SITE.name}. All rights reserved.</p>
-			<p>Some links may be affiliate links. <a class="underline hover:text-forest" href="/affiliate-disclosure/">Learn more</a>.</p>
+			<p>Some links may be affiliate links. <a class="underline hover:text-sun" href="/affiliate-disclosure/">Learn more</a>.</p>
 		</div>
 	</div>
 </footer>

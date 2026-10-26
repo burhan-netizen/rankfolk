@@ -1,6 +1,7 @@
 ---
 title: "How to Set Up a Google Business Profile: A Step-by-Step Guide"
 description: "Get your business on Google Maps the right way. A plain English walkthrough of creating, verifying and completing your Google Business Profile."
+coverTitle: "Get on Google Maps the right way"
 pubDate: 2026-10-26
 category: google-business-profile
 tags: ["google business profile", "google maps", "local seo"]

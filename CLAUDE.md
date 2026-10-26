@@ -16,11 +16,11 @@ Rankfolk (rankfolk.com) is a static Astro 7 + Tailwind 4 blog for small business
 - Site settings, author, categories, menu, AdSense ID: `src/site.config.ts`
 - Articles: `src/content/blog/*.md` (schema in `src/content.config.ts`)
 - Layouts: `src/layouts/`, components: `src/components/`, pages: `src/pages/`
-- Brand colors and fonts: `src/styles/global.css` (forest green #1d6b47, marigold #f2b33d, paper #fbf8f3, ink #16212e; Bricolage Grotesque headings, Inter body)
+- Brand colors and fonts: `src/styles/global.css` (electric blue #2b4bff, sun yellow #ffd43b, coral #ff6b4a, lilac #c9b8ff, ink #0b0f1f, paper #fffdf8; bold "pop" style with 2px ink borders and hard offset shadows; Bricolage Grotesque headings, Inter body)
 
 ## New article checklist
 
-- Frontmatter: title, description (under 160 characters), pubDate, category, tags
+- Frontmatter: title, description (under 160 characters), coverTitle (3 to 6 words for the auto cover), pubDate, category, tags
 - One clear search intent per article; answer it in the first two paragraphs
 - Use `##` sections, lists and tables; add a checklist or summary at the end
 - Link to 1 to 3 related Rankfolk articles

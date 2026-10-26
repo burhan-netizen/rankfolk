@@ -2,22 +2,24 @@
 interface Props {
 	size?: number;
 	showText?: boolean;
+	invert?: boolean;
 	class?: string;
 }
-const { size = 32, showText = true, class: className = '' } = Astro.props;
+const { size = 38, showText = true, invert = false, class: className = '' } = Astro.props;
 ---
 
 <span class={`inline-flex items-center gap-2.5 ${className}`}>
-	<svg width={size} height={size} viewBox="0 0 40 40" aria-hidden="true">
-		<rect width="40" height="40" rx="11" fill="#1d6b47"></rect>
-		<rect x="9" y="22" width="5.5" height="9" rx="2" fill="#dcefe3"></rect>
-		<rect x="17.25" y="16" width="5.5" height="15" rx="2" fill="#dcefe3"></rect>
-		<rect x="25.5" y="9" width="5.5" height="22" rx="2" fill="#f2b33d"></rect>
+	<svg width={size} height={size} viewBox="0 0 48 48" aria-hidden="true">
+		<rect x="4" y="4" width="42" height="42" rx="13" fill="#0b0f1f"></rect>
+		<rect x="1" y="1" width="42" height="42" rx="13" fill="#2b4bff" stroke="#0b0f1f" stroke-width="2"></rect>
+		<path d="M14 33V13h9.5a6.25 6.25 0 0 1 0 12.5H14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+		<path d="M22.5 26l8 7.5" stroke="#fff" stroke-width="5" stroke-linecap="round"></path>
+		<circle cx="35.5" cy="10.5" r="4.5" fill="#ffd43b" stroke="#0b0f1f" stroke-width="2"></circle>
 	</svg>
 	{
 		showText && (
-			<span class="font-display text-[1.35rem] font-bold tracking-tight text-ink">
-				Rankfolk
+			<span class:list={['font-display text-[1.6rem] font-extrabold leading-none tracking-[-0.04em]', invert ? 'text-white' : 'text-ink']}>
+				rankfolk
 			</span>
 		)
 	}
