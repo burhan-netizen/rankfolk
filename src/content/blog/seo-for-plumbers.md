@@ -3,7 +3,7 @@ title: "SEO for Plumbers: How to Rank When Someone Searches 'Plumber Near Me'"
 description: "A plumber's guide to SEO: show up for 'plumber near me' and emergency searches, win more calls from Google Maps and stop relying on paid leads."
 coverTitle: "SEO for plumbers"
 pubDate: 2026-10-26
-category: seo
+category: contractors
 tags: ["plumber seo", "local seo", "contractors"]
 ---
 

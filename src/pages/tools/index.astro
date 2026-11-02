@@ -6,6 +6,9 @@ const icons: Record<string, string> = {
 	'website-audit': 'M3 5h18v14H3zM3 9h18M8 14l2.5 2.5L16 12',
 	'google-visibility-scorecard': 'M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21zM9.5 9.5l2 2 3.5-3.5',
 	'review-request-generator': 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z',
+	'google-search-preview': 'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5M8 9h6M8 12h4',
+	'verification-video-checklist': 'M15 10l5-3v10l-5-3zM3 6h12v12H3zM6 12l2 2 3-4',
+	'website-cost-planner': 'M5 3h14v18H5zM8 7h8M8 11h2M12 11h2M8 15h2M12 15h4',
 };
 
 const schema = [
@@ -19,7 +22,7 @@ const schema = [
 ];
 ---
 
-<BaseLayout title="Free Tools for Small Businesses" description="Free tools to help small businesses get found on Google: a website audit, a Google visibility scorecard and a review request generator with QR codes." schema={schema}>
+<BaseLayout title="Free Tools for Small Businesses" description="Free tools to help small businesses get found on Google: website audit, visibility scorecard, review requests, search preview, verification checklist and cost planner." schema={schema}>
 	<section class="dots border-b-2 border-ink">
 		<div class="container-wide py-14 md:py-20">
 			<span class="sticker -rotate-2 bg-sun">100% free, no sign-up</span>
@@ -59,8 +62,11 @@ const schema = [
 				<li><strong>Not sure where you stand?</strong> Take the <a href="/tools/google-visibility-scorecard/">Google Visibility Scorecard</a>. It covers your Google profile, reviews and website in two minutes.</li>
 				<li><strong>Have a website?</strong> Run the <a href="/tools/website-audit/">Free Website Audit</a> to find the technical issues holding it back.</li>
 				<li><strong>Need more reviews?</strong> The <a href="/tools/review-request-generator/">Review Request Generator</a> gives you messages to send today and a QR code to print.</li>
+				<li><strong>Writing page titles?</strong> Check them in the <a href="/tools/google-search-preview/">Google Search Preview</a> before you publish.</li>
+				<li><strong>Verifying your Google Business Profile?</strong> Follow the <a href="/tools/verification-video-checklist/">Verification Video Checklist</a> so your video passes first time.</li>
+				<li><strong>Planning a new website?</strong> The <a href="/tools/website-cost-planner/">Website Cost Planner</a> shows what drives the price and gives you a brief for fair quotes.</li>
 			</ul>
-			<p>Every tool shows your results straight away. If you want the full step-by-step report, we'll email it to you for free.</p>
+			<p>Every tool shows your results straight away. For the audit and scorecard, we can also email you the full step-by-step report for free.</p>
 		</div>
 	</section>
 </BaseLayout>

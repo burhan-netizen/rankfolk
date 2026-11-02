@@ -3,7 +3,7 @@ title: "What Should Be on a Contractor Website? 15 Things That Win Jobs"
 description: "The 15 things every contractor website needs to turn visitors into quote requests, from a tappable phone number to project photos, reviews and service pages."
 coverTitle: "15 contractor website must-haves"
 pubDate: 2026-10-26
-category: websites
+category: contractors
 tags: ["contractor website", "contractors", "small business website"]
 ---
 

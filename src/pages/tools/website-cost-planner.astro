@@ -1,0 +1,330 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const chip =
+	'block rounded-full border-2 border-ink bg-paper px-3 py-2 text-center font-display text-sm font-bold peer-checked:bg-sun peer-checked:shadow-[3px_3px_0_0_#0b0f1f] peer-focus-visible:ring-4 peer-focus-visible:ring-blue/40';
+const box =
+	'flex items-start gap-3 rounded-2xl border-2 border-ink bg-paper px-4 py-3 peer-checked:bg-sun peer-focus-visible:ring-4 peer-focus-visible:ring-blue/40';
+
+const features = [
+	['quote', 'Quote or contact form', 1],
+	['gallery', 'Photo gallery or project pages', 1],
+	['reviews', 'Google reviews shown on the site', 1],
+	['booking', 'Online booking or appointments', 2],
+	['blog', 'Blog or news section', 1],
+	['shop-small', 'Sell a few products online (under 20)', 2],
+	['shop-big', 'Full online shop (20+ products)', 4],
+	['areas', 'Separate pages for each town you serve', 2],
+	['members', 'Customer log-in or member area', 4],
+	['languages', 'More than one language', 3],
+	['integrations', 'Connect to other software (CRM, booking system, accounts)', 3],
+] as const;
+---
+
+<ToolLayout
+	slug="website-cost-planner"
+	title="Website Cost Planner"
+	seoTitle="Small Business Website Cost Calculator: Plan Your Site and Budget"
+	eyebrow="Free tool"
+	description="Free website cost planner for small businesses: see how big your site really is, what drives the price, the best way to build it, and get a brief for fair quotes."
+	intro="Prices vary by country and designer, so instead of a made-up number this planner shows how big your website really is, what will push the price up, the best way to get it built, and a ready-to-send brief so quotes are easy to compare."
+>
+	<div class="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_26rem] [&>*]:min-w-0">
+		<form id="cp-form" class="space-y-6" novalidate autocomplete="off">
+			<section class="pop-lg rounded-[1.75rem] bg-white p-6">
+				<h2 class="text-xl font-extrabold">1. About your business</h2>
+				<div class="mt-4 grid gap-2 sm:grid-cols-2">
+					{
+						[
+							['service', 'Service business or contractor'],
+							['shop', 'Shop or retailer'],
+							['hospitality', 'Restaurant, cafe or venue'],
+							['professional', 'Professional service (clinic, accountant, law)'],
+						].map(([v, l], i) => (
+							<label class="cursor-pointer">
+								<input type="radio" name="kind" value={v} checked={i === 0} class="peer sr-only" />
+								<span class={chip}>{l}</span>
+							</label>
+						))
+					}
+				</div>
+				<label for="cp-services" class="mt-6 block text-sm font-bold">How many main services or product types do you offer? <span id="cp-services-out" class="font-display text-blue">4</span></label>
+				<input id="cp-services" name="services" type="range" min="1" max="15" value="4" class="mt-3 w-full accent-[#2b4bff]" />
+				<p class="mt-1 text-sm text-ink-soft">Each main service ideally gets its own page, because that's what helps it show up on Google.</p>
+			</section>
+
+			<section class="pop-lg rounded-[1.75rem] bg-white p-6">
+				<h2 class="text-xl font-extrabold">2. What should the website do?</h2>
+				<div class="mt-4 grid gap-2 sm:grid-cols-2">
+					{
+						features.map(([v, l]) => (
+							<label class="cursor-pointer">
+								<input type="checkbox" name="features" value={v} checked={v === 'quote' || v === 'reviews'} class="peer sr-only" />
+								<span class={box}>
+									<span class="font-semibold">{l}</span>
+								</span>
+							</label>
+						))
+					}
+				</div>
+			</section>
+
+			<section class="pop-lg rounded-[1.75rem] bg-white p-6">
+				<h2 class="text-xl font-extrabold">3. Content and design</h2>
+				{
+					[
+						['words', 'Who will write the words?', [['me', 'I will'], ['them', 'The designer']]],
+						['photos', 'Do you have real photos of your work?', [['yes', 'Yes, plenty'], ['no', 'No, need help']]],
+						['design', 'What kind of design?', [['template', 'A good template is fine'], ['custom', 'Unique, custom design']]],
+						['brand', 'Do you have a logo and brand colors?', [['yes', 'Yes'], ['no', 'No, need them']]],
+						['care', 'Who will update the site after launch?', [['me', 'Me'], ['them', 'Someone else (care plan)']]],
+					].map(([name, q, opts]) => (
+						<fieldset class="mt-5">
+							<legend class="text-sm font-bold">{q}</legend>
+							<div class="mt-2 grid grid-cols-2 gap-2">
+								{(opts as string[][]).map(([v, l], i) => (
+									<label class="cursor-pointer">
+										<input type="radio" name={name as string} value={v} checked={i === 0} class="peer sr-only" />
+										<span class={chip}>{l}</span>
+									</label>
+								))}
+							</div>
+						</fieldset>
+					))
+				}
+			</section>
+		</form>
+
+		<aside class="space-y-6 lg:sticky lg:top-[5.75rem] lg:self-start">
+			<section id="cp-result" class="pop-lg rounded-[1.75rem] bg-blue p-6 text-white" aria-live="polite">
+				<p class="font-display text-sm font-bold uppercase tracking-wider opacity-85">Your website size</p>
+				<p id="cp-level" class="mt-2 font-display text-4xl font-extrabold">Starter</p>
+				<div class="mt-3 grid grid-cols-3 gap-1.5" aria-hidden="true">
+					<span data-seg="1" class="h-3 rounded-full border-2 border-ink bg-white"></span>
+					<span data-seg="2" class="h-3 rounded-full border-2 border-ink bg-white"></span>
+					<span data-seg="3" class="h-3 rounded-full border-2 border-ink bg-white"></span>
+				</div>
+				<p id="cp-level-text" class="mt-4"></p>
+				<p class="mt-5 font-display text-sm font-bold uppercase tracking-wider opacity-85">About <span id="cp-pages"></span> pages</p>
+				<p id="cp-page-list" class="mt-1 text-[0.95rem] opacity-90"></p>
+			</section>
+
+			<section class="pop-lg rounded-[1.75rem] bg-white p-6">
+				<h2 class="text-lg font-extrabold">Best way to build it</h2>
+				<p id="cp-route" class="mt-2"></p>
+			</section>
+
+			<section class="pop-lg rounded-[1.75rem] bg-white p-6">
+				<h2 class="text-lg font-extrabold">What drives your cost</h2>
+				<ul id="cp-drivers" class="mt-3 space-y-2"></ul>
+			</section>
+
+			<section class="pop-lg rounded-[1.75rem] bg-sun p-6">
+				<h2 class="text-lg font-extrabold">Ongoing costs to budget for</h2>
+				<ul id="cp-ongoing" class="mt-3 list-disc space-y-1 pl-5"></ul>
+			</section>
+		</aside>
+	</div>
+
+	<section class="pop-lg mt-10 rounded-[1.75rem] bg-white p-6 md:p-8" aria-labelledby="cp-h-brief">
+		<div class="flex flex-wrap items-start justify-between gap-3">
+			<div>
+				<h2 id="cp-h-brief" class="text-2xl font-extrabold">Your quote brief</h2>
+				<p class="mt-1 text-ink-soft">Send the same brief to 3 designers or agencies, so their quotes cover the same work and are easy to compare.</p>
+			</div>
+			<button type="button" id="cp-copy" class="btn !px-4 !py-2 !text-sm">Copy brief</button>
+		</div>
+		<pre id="cp-brief" class="mt-5 whitespace-pre-wrap break-words rounded-xl border-2 border-ink/15 bg-paper p-5 font-sans text-[0.98rem] leading-relaxed"></pre>
+	</section>
+
+	<section slot="after" class="container-read pb-6">
+		<div class="prose prose-lg prose-rankfolk max-w-none">
+			<h2>Why this planner doesn't show a price</h2>
+			<p>
+				Website prices depend on your country, the designer's experience and what's included, and any single figure goes out of date fast.
+				What doesn't change is <strong>what makes a website cost more</strong>: the number of pages, custom features, who writes the content and
+				who looks after it afterwards. Knowing your website's real size means you can spot a quote that's missing something, or padded with things you don't need.
+			</p>
+			<h2>How to compare website quotes</h2>
+			<ul>
+				<li><strong>Send everyone the same brief.</strong> Otherwise you're comparing different websites.</li>
+				<li><strong>Check what's included:</strong> number of pages, content writing, photos, Google setup, training and revisions.</li>
+				<li><strong>Ask who owns the domain, the website and the accounts.</strong> It should be you.</li>
+				<li><strong>Ask about ongoing costs</strong> before you sign: hosting, renewals and care plans.</li>
+				<li><strong>Look at their past work on your phone.</strong> Is it fast? Is the phone number easy to tap?</li>
+			</ul>
+			<p>
+				For a full breakdown, read <a href="/blog/how-much-does-a-small-business-website-cost/">how much a small business website costs</a> and our
+				step-by-step guide to <a href="/blog/how-to-make-a-website-for-my-small-business/">making a business website</a>. Planning to do it yourself?
+				Our <a href="/blog/wix-vs-squarespace-vs-wordpress/">Wix vs Squarespace vs WordPress comparison</a> helps you choose.
+			</p>
+			<h2>Frequently asked questions</h2>
+			<h3>Is anything I enter saved?</h3>
+			<p>No. The planner runs in your browser and nothing is sent to Rankfolk.</p>
+			<h3>Should I build it myself or hire someone?</h3>
+			<p>If your site is a Starter size, you're comfortable with technology and you have time, a website builder is a sensible option. If your time is better spent on paid work, or the site is Standard or Advanced, hiring someone usually pays off.</p>
+		</div>
+	</section>
+</ToolLayout>
+
+<script>
+	import { track } from '../../scripts/analytics';
+
+	const form = document.getElementById('cp-form') as HTMLFormElement;
+	const $ = (id: string) => document.getElementById(id)!;
+	const WEIGHTS: Record<string, number> = {
+		quote: 1, gallery: 1, reviews: 1, booking: 2, blog: 1, 'shop-small': 2, 'shop-big': 4, areas: 2, members: 4, languages: 3, integrations: 3,
+	};
+	const LABELS: Record<string, string> = {
+		quote: 'Quote or contact form', gallery: 'Photo gallery or project pages', reviews: 'Google reviews on the site', booking: 'Online booking',
+		blog: 'Blog or news section', 'shop-small': 'Small online shop', 'shop-big': 'Full online shop', areas: 'Town or area pages',
+		members: 'Customer log-in area', languages: 'More than one language', integrations: 'Software integrations',
+	};
+
+	function read() {
+		const d = new FormData(form);
+		return {
+			kind: String(d.get('kind')),
+			services: Number(d.get('services')),
+			features: d.getAll('features').map(String),
+			words: String(d.get('words')),
+			photos: String(d.get('photos')),
+			design: String(d.get('design')),
+			brand: String(d.get('brand')),
+			care: String(d.get('care')),
+		};
+	}
+
+	const impact = (n: number) => (n >= 3 ? ['High', 'bg-coral'] : n === 2 ? ['Medium', 'bg-sun'] : ['Low', 'bg-blue-tint']);
+
+	function render() {
+		const v = read();
+		$('cp-services-out').textContent = String(v.services);
+
+		// Pages
+		const pages = ['Home', 'About', 'Contact'];
+		const servicePages = v.services;
+		if (v.features.includes('gallery')) pages.push('Projects or gallery');
+		if (v.features.includes('reviews')) pages.push('Reviews');
+		if (v.features.includes('blog')) pages.push('Blog');
+		if (v.features.includes('booking')) pages.push('Booking');
+		if (v.features.includes('shop-small') || v.features.includes('shop-big')) pages.push('Shop, cart and checkout');
+		if (v.features.includes('members')) pages.push('Customer account');
+		pages.push('Privacy policy');
+		const areaPages = v.features.includes('areas') ? 4 : 0;
+		const total = pages.length + servicePages + areaPages;
+		$('cp-pages').textContent = String(total);
+		$('cp-page-list').textContent = [...pages.slice(0, 1), `${servicePages} service ${servicePages === 1 ? 'page' : 'pages'}`, ...pages.slice(1), ...(areaPages ? ['town pages (about 4 to start)'] : [])].join(', ');
+
+		// Score
+		const drivers: [string, number][] = [];
+		if (servicePages > 8) drivers.push([`${servicePages} service pages`, 2]);
+		else if (servicePages > 4) drivers.push([`${servicePages} service pages`, 1]);
+		v.features.forEach((f) => drivers.push([LABELS[f], WEIGHTS[f]]));
+		if (v.words === 'them') drivers.push(['Designer writes the words', 2]);
+		if (v.photos === 'no') drivers.push(['Photos needed', 2]);
+		if (v.design === 'custom') drivers.push(['Custom design', 3]);
+		if (v.brand === 'no') drivers.push(['Logo and branding', 2]);
+		if (v.care === 'them') drivers.push(['Ongoing care plan', 1]);
+		const score = drivers.reduce((a, [, n]) => a + n, 0);
+		const level = score <= 6 ? 1 : score <= 14 ? 2 : 3;
+
+		const LEVELS = [
+			['Starter', 'A small, simple site. The lowest cost option, and something you could build yourself on a website builder.'],
+			['Standard', 'A typical small business site with a few extras. Most local businesses land here. Expect a moderate one-off cost if you hire someone.'],
+			['Advanced', 'A bigger site with features that take real development time. Expect quotes at the higher end, and get at least three.'],
+		];
+		$('cp-level').textContent = LEVELS[level - 1][0];
+		$('cp-level-text').textContent = LEVELS[level - 1][1];
+		document.querySelectorAll<HTMLElement>('[data-seg]').forEach((s) => {
+			s.classList.toggle('bg-sun', Number(s.dataset.seg) <= level);
+			s.classList.toggle('bg-white', Number(s.dataset.seg) > level);
+		});
+
+		// Route
+		const shop = v.features.includes('shop-big') || v.features.includes('shop-small');
+		let route: string;
+		if (v.features.includes('members') || v.features.includes('integrations') || (v.design === 'custom' && level === 3))
+			route = '<strong>An experienced developer or agency.</strong> Log-in areas, integrations and custom design need someone who builds these regularly. Ask to see similar projects.';
+		else if (v.features.includes('shop-big'))
+			route = '<strong>An ecommerce platform such as Shopify</strong>, set up yourself or by a designer who specializes in it. Check transaction and app fees as well as the plan price.';
+		else if (level === 1 && v.words === 'me' && v.photos === 'yes')
+			route = '<strong>A website builder (DIY), or a freelancer if your time is tight.</strong> Your site is small and you have the content ready, which is most of the work.';
+		else
+			route = `<strong>A freelance web designer or small studio.</strong> ${shop ? 'A builder or Shopify can handle a small shop. ' : ''}This size of site is their sweet spot, and usually better value than a large agency.`;
+		$('cp-route').innerHTML = route;
+
+		// Drivers
+		drivers.sort((a, b) => b[1] - a[1]);
+		$('cp-drivers').innerHTML = drivers.length
+			? drivers
+					.map(([l, n]) => {
+						const [txt, cls] = impact(n);
+						return `<li class="flex items-center justify-between gap-3"><span>${l}</span><span class="shrink-0 rounded-full border-2 border-ink px-2.5 py-0.5 font-display text-xs font-bold ${cls}">${txt}</span></li>`;
+					})
+					.join('')
+			: '<li>Nothing extra. That keeps costs low.</li>';
+
+		// Ongoing
+		const ongoing = ['Domain name renewal (yearly)', shop ? 'Platform plan, plus payment and app fees' : 'Hosting or website builder plan (monthly or yearly)'];
+		if (v.care === 'them') ongoing.push('Care plan: updates, backups, small edits');
+		else ongoing.push('Your time: updates, backups and new photos');
+		if (v.features.includes('booking')) ongoing.push('Booking software subscription, if it is a separate tool');
+		if (v.features.includes('blog')) ongoing.push('Time or budget to write new posts');
+		$('cp-ongoing').innerHTML = ongoing.map((x) => `<li>${x}</li>`).join('');
+
+		// Brief
+		const KIND: Record<string, string> = {
+			service: 'a service business', shop: 'a shop', hospitality: 'a restaurant, cafe or venue', professional: 'a professional services firm',
+		};
+		const lines = [
+			'Hi,',
+			'',
+			`I'm looking for a quote for a new website for my business, ${KIND[v.kind]}.`,
+			'',
+			'WHAT I NEED',
+			`- About ${total} pages: ${$('cp-page-list').textContent}`,
+			...v.features.map((f) => `- ${LABELS[f]}`),
+			'- Mobile-friendly, fast loading, with a tap-to-call phone number',
+			'- Basic Google setup: page titles, descriptions, sitemap, Google Search Console and a link to my Google Business Profile',
+			'',
+			'CONTENT AND DESIGN',
+			`- Words: ${v.words === 'me' ? 'I will supply them' : 'please include writing the content'}`,
+			`- Photos: ${v.photos === 'yes' ? 'I will supply them' : 'I need help with photos'}`,
+			`- Design: ${v.design === 'template' ? 'a quality template customized to my brand is fine' : 'a custom design'}`,
+			`- Branding: ${v.brand === 'yes' ? 'I have a logo and brand colors' : 'I need a logo and brand colors'}`,
+			`- After launch: ${v.care === 'me' ? 'I will update it myself, so please include a short handover' : 'please quote for a monthly care plan'}`,
+			'',
+			'PLEASE CONFIRM',
+			'- The total price and what is included',
+			'- Ongoing costs (hosting, renewals, care plan)',
+			'- That I will own the domain, website and all accounts',
+			'- Timeline and number of revision rounds',
+			'- Two or three examples of similar sites you have built',
+			'',
+			'Thanks,',
+		];
+		$('cp-brief').textContent = lines.join('\n');
+	}
+
+	let used = false;
+	form.addEventListener('input', () => {
+		render();
+		if (!used) {
+			used = true;
+			track('cost_planner_used');
+		}
+	});
+	$('cp-copy').addEventListener('click', async () => {
+		const btn = $('cp-copy');
+		try {
+			await navigator.clipboard.writeText($('cp-brief').textContent || '');
+			btn.textContent = 'Copied';
+			track('cost_planner_brief_copied');
+		} catch {
+			btn.textContent = 'Select and copy';
+		}
+		setTimeout(() => (btn.textContent = 'Copy brief'), 1800);
+	});
+	render();
+</script>

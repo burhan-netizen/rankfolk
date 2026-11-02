@@ -3,7 +3,7 @@ title: "SEO for Contractors: How to Get More Jobs From Google"
 description: "A practical SEO guide for contractors: how to show up when homeowners search for your trade, with steps for your Google profile, website and reviews."
 coverTitle: "SEO for contractors"
 pubDate: 2026-10-26
-category: seo
+category: contractors
 tags: ["contractor seo", "local seo", "contractors"]
 ---
 
@@ -126,6 +126,16 @@ SEO takes time. While it builds, many contractors also use Google Local Services
 - **Using a virtual office** to appear in another city
 - **Never asking for reviews** because "customers will leave them if they're happy" (most won't unless asked)
 - **Hiring anyone who guarantees #1 rankings.** Google says no one can guarantee that
+
+## Guides for your trade
+
+We have trade-specific guides with the searches, service pages and mistakes that matter for each:
+
+- [SEO for plumbers](/blog/seo-for-plumbers/)
+- [SEO for electricians](/blog/seo-for-electricians/)
+- [HVAC SEO](/blog/hvac-seo/)
+- [Roofing SEO](/blog/roofing-seo/)
+- [Landscaping SEO](/blog/landscaping-seo/)
 
 ## Contractor SEO checklist
 

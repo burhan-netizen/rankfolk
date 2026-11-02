@@ -14,7 +14,7 @@ Rankfolk (rankfolk.com) is a static Astro 7 + Tailwind 4 blog for small business
 
 ## Where things live
 
-- Analytics: GA4 ID in `src/site.config.ts` (`gaMeasurementId`), loaded by `src/components/Analytics.astro` with a consent banner for UK/EU time zones and Consent Mode defaults for UK/EEA/CH. Tool events go through `track()` in `src/scripts/analytics.ts`: audit_complete, audit_error, scorecard_complete, report_emailed, review_message_copied, review_whatsapp_open, review_qr_download.
+- Analytics: GA4 ID in `src/site.config.ts` (`gaMeasurementId`), loaded by `src/components/Analytics.astro` with a consent banner for UK/EU time zones and Consent Mode defaults for UK/EEA/CH. Tool events go through `track()` in `src/scripts/analytics.ts`: audit_complete, audit_error, scorecard_complete, report_emailed, review_message_copied, review_whatsapp_open, review_qr_download, serp_preview_used, serp_preview_copied, verification_checklist_complete, verification_checklist_print, cost_planner_used, cost_planner_brief_copied.
 - Free tools: pages in `src/pages/tools/`, browser scripts in `src/scripts/`, server code in `functions/api/` with shared helpers in `functions/_lib/`. Turnstile site key is in `src/site.config.ts`.
 - Emails from tools are sent through Resend from hello@rankfolk.com. The Mago Labs mention appears only in emailed reports, never on tool result screens.
 - Site settings, author, categories, menu, AdSense ID: `src/site.config.ts`

@@ -231,6 +231,14 @@
 .prose-rankfolk table {
 	font-size: 0.95em;
 }
+/* Wide tables scroll sideways on phones instead of stretching the page. */
+@media (max-width: 640px) {
+	.prose-rankfolk table {
+		display: block;
+		overflow-x: auto;
+		max-width: 100%;
+	}
+}
 .prose-rankfolk thead {
 	background: var(--color-blue-tint);
 }

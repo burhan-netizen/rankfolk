@@ -3,7 +3,7 @@ title: "Roofing SEO: How Roofers Can Get More Leads From Google"
 description: "Roofing SEO explained for roofers: how to rank for roof repair and replacement searches, handle storm season, and turn Google traffic into booked inspections."
 coverTitle: "Roofing SEO that gets leads"
 pubDate: 2026-10-26
-category: seo
+category: contractors
 tags: ["roofing seo", "local seo", "contractors"]
 ---
 

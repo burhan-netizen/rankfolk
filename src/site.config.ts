@@ -49,6 +49,33 @@ export const TOOLS = [
 		color: 'bg-coral',
 		fg: 'text-ink',
 	},
+	{
+		slug: 'google-search-preview',
+		name: 'Google Search Preview',
+		short: 'Search Preview',
+		description: 'See how your page title and description look on Google, on mobile and desktop, with length checks and tips.',
+		time: '1 minute',
+		color: 'bg-lilac',
+		fg: 'text-ink',
+	},
+	{
+		slug: 'verification-video-checklist',
+		name: 'Verification Video Checklist',
+		short: 'Verification Checklist',
+		description: 'Get your Google Business Profile verification video right first time, with a shot-by-shot plan for your business type.',
+		time: '3 minutes',
+		color: 'bg-white',
+		fg: 'text-ink',
+	},
+	{
+		slug: 'website-cost-planner',
+		name: 'Website Cost Planner',
+		short: 'Cost Planner',
+		description: 'See how big your website really is, what drives the price, the best way to build it, and get a brief for fair quotes.',
+		time: '2 minutes',
+		color: 'bg-ink',
+		fg: 'text-white',
+	},
 ] as const;
 
 export const AUTHOR = {
@@ -94,6 +121,16 @@ export const CATEGORIES = [
 		name: 'Tools',
 		description: 'Honest comparisons of website builders, SEO tools and software.',
 	},
+	{
+		slug: 'ai',
+		name: 'AI for Small Business',
+		description: 'Using AI tools in your business, and getting found in AI search and answers.',
+	},
+	{
+		slug: 'contractors',
+		name: 'Contractors',
+		description: 'Websites, SEO and lead generation for roofers, plumbers, electricians and other trades.',
+	},
 ] as const;
 
 export type CategorySlug = (typeof CATEGORIES)[number]['slug'];
@@ -104,5 +141,7 @@ export const NAV = [
 	{ label: 'SEO', href: '/category/seo/' },
 	{ label: 'Google Business Profile', href: '/category/google-business-profile/' },
 	{ label: 'Marketing', href: '/category/marketing/' },
+	{ label: 'AI', href: '/category/ai/' },
+	{ label: 'Contractors', href: '/category/contractors/' },
 	{ label: 'All guides', href: '/blog/' },
 ];

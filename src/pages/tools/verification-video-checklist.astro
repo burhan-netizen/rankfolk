@@ -1,0 +1,222 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+---
+
+<ToolLayout
+	slug="verification-video-checklist"
+	title="Verification Video Checklist"
+	seoTitle="Google Business Profile Video Verification Checklist (Free)"
+	eyebrow="Free tool"
+	description="Free checklist for Google Business Profile video verification: what to film for your business type, a shot-by-shot plan and the mistakes that get videos rejected."
+	intro="Get your Google Business Profile verification video right first time. Pick your business type, tick off each step, and you'll know exactly what to film before you press record."
+>
+	<div class="grid grid-cols-1 gap-10 lg:grid-cols-[22rem_1fr] [&>*]:min-w-0">
+		<aside class="space-y-6 lg:sticky lg:top-[5.75rem] lg:self-start">
+			<div class="pop-lg rounded-[2rem] bg-white p-6">
+				<fieldset>
+					<legend class="text-sm font-bold">Your business type</legend>
+					<div class="mt-3 space-y-2">
+						{
+							[
+								['storefront', 'Storefront', 'Customers visit you (shop, office, salon)'],
+								['service', 'Service-area', 'You visit customers or work from home'],
+								['hybrid', 'Both', 'Customers visit you and you travel to them'],
+							].map(([v, l, d], i) => (
+								<label class="block cursor-pointer">
+									<input type="radio" name="vc-type" value={v} checked={i === 0} class="peer sr-only" />
+									<span class="block rounded-2xl border-2 border-ink bg-paper px-4 py-3 peer-checked:bg-sun peer-checked:shadow-[3px_3px_0_0_#0b0f1f] peer-focus-visible:ring-4 peer-focus-visible:ring-blue/40">
+										<span class="font-display font-bold">{l}</span>
+										<span class="mt-0.5 block text-sm text-ink-soft">{d}</span>
+									</span>
+								</label>
+							))
+						}
+					</div>
+				</fieldset>
+			</div>
+			<div class="pop-lg rounded-[2rem] bg-blue p-6 text-white">
+				<p class="font-display text-sm font-bold uppercase tracking-wider opacity-85">Your progress</p>
+				<p class="mt-2 font-display text-4xl font-extrabold"><span id="vc-done">0</span>/<span id="vc-total">0</span></p>
+				<div class="mt-3 h-3 overflow-hidden rounded-full border-2 border-ink bg-white"><div id="vc-bar" class="h-full bg-sun transition-all" style="width:0%"></div></div>
+				<p id="vc-status" class="mt-4 font-semibold">Work through the list, then record.</p>
+				<div class="mt-5 flex flex-wrap gap-2">
+					<button type="button" id="vc-print" class="btn btn-sun !px-4 !py-2 !text-sm">Print checklist</button>
+					<button type="button" id="vc-reset" class="btn btn-light !px-4 !py-2 !text-sm">Start again</button>
+				</div>
+			</div>
+		</aside>
+
+		<div id="vc-list" class="space-y-6"></div>
+	</div>
+
+	<section slot="after" class="container-read pb-6">
+		<div class="prose prose-lg prose-rankfolk max-w-none">
+			<h2>Why verification videos get rejected</h2>
+			<p>
+				Most rejected videos are missing one of three things Google asks for: proof of <strong>where</strong> you are, proof the
+				<strong>business</strong> exists there, and proof that <strong>you manage it</strong>. The checklist above covers all three for your business type,
+				based on Google's own <a href="https://support.google.com/business/answer/14271705" target="_blank" rel="noopener">video verification guidelines</a>.
+			</p>
+			<p>
+				If Google does reject your video, it shows the reasons. Select <strong>Review issues</strong> and record a new video that includes everything from
+				the first one plus what was missing.
+			</p>
+			<h2>Frequently asked questions</h2>
+			<h3>How long should the verification video be?</h3>
+			<p>At least 30 seconds, in one continuous, unedited take recorded live in the app. Take as long as you need to show everything clearly.</p>
+			<h3>How long does video verification take?</h3>
+			<p>Google says reviews can take up to 5 business days. Don't edit your business name, address or category while you wait.</p>
+			<h3>Can I verify a home-based business by video?</h3>
+			<p>Yes. Choose "Service-area" above. You show your street, your tools or branded vehicle, and proof you run the business. Afterwards, hide your home address in your profile.</p>
+			<h3>What if I'm not offered video verification?</h3>
+			<p>Google decides which methods each business sees. Our guide to <a href="/blog/verify-google-business-profile-without-postcard/">verifying without a postcard</a> covers every alternative, and our full <a href="/blog/google-business-profile-video-verification/">video verification walkthrough</a> explains each step in more detail.</p>
+		</div>
+	</section>
+</ToolLayout>
+
+<script>
+	import { track } from '../../scripts/analytics';
+
+	type Item = { id: string; text: string; tip?: string; types?: string[] };
+	type Group = { title: string; color: string; items: Item[] };
+
+	const GROUPS: Group[] = [
+		{
+			title: 'Before you record',
+			color: 'bg-white',
+			items: [
+				{ id: 'phone', text: 'Use the phone you will record on, signed in to the Google Account that manages the profile', tip: 'If you started on a computer, scan the QR code Google shows to continue on your phone.' },
+				{ id: 'perms', text: 'Turn on camera, microphone and location access for the Google Maps or Google app' },
+				{ id: 'name', text: 'Your business name on the profile matches your real-world name exactly, with no added keywords' },
+				{ id: 'address', text: 'Your address on the profile is complete and matches where you will film', tip: 'Include unit or suite numbers. Virtual offices and PO boxes will fail.' },
+				{ id: 'route', text: 'You have walked the route once so you can film it in one take without stopping' },
+				{ id: 'light', text: 'Filming in daylight or a well-lit area, with the phone battery charged' },
+				{ id: 'clean', text: 'Nothing sensitive in view: bank details, tax or ID numbers, customer information or other people\'s faces' },
+			],
+		},
+		{
+			title: 'Shot 1: show where you are',
+			color: 'bg-sun',
+			items: [
+				{ id: 'loc-store', text: 'Start outside: show the street sign, building number or neighboring businesses', types: ['storefront', 'hybrid'] },
+				{ id: 'loc-service', text: 'Show your street, neighborhood or a landmark near your business address', types: ['service'], tip: 'Home-based businesses can show their street and the outside of the building.' },
+				{ id: 'loc-pan', text: 'Pan slowly so the details are readable, not blurred' },
+			],
+		},
+		{
+			title: 'Shot 2: show the business',
+			color: 'bg-lilac',
+			items: [
+				{ id: 'sign', text: 'Permanent signage with your business name (not a paper sign or temporary banner)', types: ['storefront', 'hybrid'] },
+				{ id: 'inside', text: 'Walk inside and show the space customers see: counter, products, waiting area or equipment', types: ['storefront', 'hybrid'] },
+				{ id: 'tools', text: 'Show the tools and equipment you use for your work', types: ['service', 'hybrid'] },
+				{ id: 'vehicle', text: 'Show your branded vehicle, uniform or branded items if you have them', types: ['service', 'hybrid'] },
+			],
+		},
+		{
+			title: 'Shot 3: prove you manage it',
+			color: 'bg-coral',
+			items: [
+				{ id: 'unlock', text: 'Unlock the door, open the till or use your point-of-sale system on camera', types: ['storefront', 'hybrid'] },
+				{ id: 'staff', text: 'Go into a staff-only area: back room, storage, kitchen or office', types: ['storefront', 'hybrid'] },
+				{ id: 'van', text: 'Unlock your work vehicle or toolbox, or show yourself doing the work', types: ['service', 'hybrid'] },
+				{ id: 'doc', text: 'Show a business document with your business name: permit, licence, invoice or utility bill (cover account numbers)', types: ['service', 'hybrid'] },
+			],
+		},
+		{
+			title: 'Recording and uploading',
+			color: 'bg-white',
+			items: [
+				{ id: 'continuous', text: 'One continuous, unedited take, recorded live in the app (no uploading a saved video)' },
+				{ id: 'length', text: 'At least 30 seconds long' },
+				{ id: 'review', text: 'Watched it back before uploading, and re-recorded if anything was missing or blurry' },
+				{ id: 'wait', text: 'After uploading: no edits to your name, address or category while Google reviews it' },
+			],
+		},
+	];
+
+	const KEY = 'rankfolk-vc';
+	let state: { type: string; done: string[] } = { type: 'storefront', done: [] };
+	try {
+		const saved = localStorage.getItem(KEY);
+		if (saved) state = { ...state, ...JSON.parse(saved) };
+	} catch {
+		/* storage unavailable */
+	}
+	const save = () => {
+		try {
+			localStorage.setItem(KEY, JSON.stringify(state));
+		} catch {
+			/* ignore */
+		}
+	};
+
+	const list = document.getElementById('vc-list')!;
+	let completedTracked = false;
+
+	function visible() {
+		return GROUPS.map((g) => ({ ...g, items: g.items.filter((i) => !i.types || i.types.includes(state.type)) }));
+	}
+
+	function render() {
+		const groups = visible();
+		list.innerHTML = groups
+			.map(
+				(g, gi) => `
+			<section class="pop-lg rounded-[1.75rem] ${g.color} p-6">
+				<h2 class="text-xl font-extrabold">${g.title}</h2>
+				<ul class="mt-4 space-y-3">
+					${g.items
+						.map(
+							(i) => `<li>
+						<label class="flex cursor-pointer gap-3 rounded-2xl border-2 border-ink bg-white p-4">
+							<input type="checkbox" data-id="${i.id}" ${state.done.includes(i.id) ? 'checked' : ''} class="mt-0.5 h-6 w-6 shrink-0 accent-[#2b4bff]" />
+							<span><span class="font-semibold">${i.text}</span>${i.tip ? `<span class="mt-1 block text-sm text-ink-soft">${i.tip}</span>` : ''}</span>
+						</label>
+					</li>`,
+						)
+						.join('')}
+				</ul>
+			</section>`,
+			)
+			.join('');
+		const ids = groups.flatMap((g) => g.items.map((i) => i.id));
+		const done = ids.filter((id) => state.done.includes(id)).length;
+		document.getElementById('vc-done')!.textContent = String(done);
+		document.getElementById('vc-total')!.textContent = String(ids.length);
+		(document.getElementById('vc-bar') as HTMLElement).style.width = `${(done / ids.length) * 100}%`;
+		document.getElementById('vc-status')!.textContent =
+			done === ids.length ? 'Ready. Open your profile, tap Get verified and choose Business video.' : done === 0 ? 'Work through the list, then record.' : `${ids.length - done} to go.`;
+		if (done === ids.length && !completedTracked) {
+			completedTracked = true;
+			track('verification_checklist_complete', { type: state.type });
+		}
+		document.querySelectorAll<HTMLInputElement>('input[name="vc-type"]').forEach((r) => (r.checked = r.value === state.type));
+	}
+
+	list.addEventListener('change', (e) => {
+		const t = e.target as HTMLInputElement;
+		if (!t.dataset.id) return;
+		state.done = t.checked ? [...new Set([...state.done, t.dataset.id])] : state.done.filter((x) => x !== t.dataset.id);
+		save();
+		render();
+	});
+	document.querySelectorAll<HTMLInputElement>('input[name="vc-type"]').forEach((r) =>
+		r.addEventListener('change', () => {
+			state.type = r.value;
+			save();
+			render();
+		}),
+	);
+	document.getElementById('vc-reset')!.addEventListener('click', () => {
+		state.done = [];
+		completedTracked = false;
+		save();
+		render();
+	});
+	document.getElementById('vc-print')!.addEventListener('click', () => {
+		track('verification_checklist_print');
+		window.print();
+	});
+	render();
+</script>

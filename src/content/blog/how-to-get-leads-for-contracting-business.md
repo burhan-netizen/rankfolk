@@ -3,7 +3,7 @@ title: "How to Get More Leads for Your Contracting Business"
 description: "Practical ways for contractors to get more leads: Google, reviews, referrals, partners, lead sites and ads, plus how to win more of the leads you get."
 coverTitle: "More leads for contractors"
 pubDate: 2026-10-26
-category: marketing
+category: contractors
 tags: ["contractor leads", "contractors", "local marketing"]
 ---
 

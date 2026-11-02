@@ -140,7 +140,7 @@ Most visitors will see your site on a phone. As you build:
 Before or right after launch:
 
 - **Page titles:** give each page a clear, unique title, such as "Emergency Electrician in Leeds | Bright Spark".
-- **Meta descriptions:** a one-line summary for each page that may show in Google results.
+- **Meta descriptions:** a one-line summary for each page that may show in Google results. Check both with our [Google search preview tool](/tools/google-search-preview/).
 - **Google Search Console:** set it up and submit your sitemap. Our [Search Console setup guide](/blog/how-to-set-up-google-search-console/) shows you how.
 - **Google Business Profile:** create or claim it, then add your new website link. For local businesses this is often the biggest source of calls. See our [Google Business Profile setup guide](/blog/how-to-set-up-google-business-profile/).
 - **Consistent details:** use the exact same business name, address and phone number on your site, your Google profile and any directories.
@@ -182,7 +182,7 @@ Costs depend on which route you choose. The main pieces are:
 | Design and build | Your time | Your time, or a developer | One-off fee |
 | Ongoing | Plan renewal | Updates, backups, security | Optional monthly care plan |
 
-Builder prices change often, so check the official pricing pages for [Wix](https://www.wix.com/plans) and [Squarespace](https://www.squarespace.com/pricing) before you commit, and look at the **renewal** price, not just the first-year discount. For realistic ranges and what drives the price up, read our full guide to [how much a small business website costs](/blog/how-much-does-a-small-business-website-cost/).
+Builder prices change often, so check the official pricing pages for [Wix](https://www.wix.com/plans) and [Squarespace](https://www.squarespace.com/pricing) before you commit, and look at the **renewal** price, not just the first-year discount. To see what your own site involves, try our free [website cost planner](/tools/website-cost-planner/), which also writes a brief you can send for quotes. For what drives the price up, read our full guide to [how much a small business website costs](/blog/how-much-does-a-small-business-website-cost/).
 
 ## DIY or hire someone?
 

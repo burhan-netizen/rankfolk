@@ -1,0 +1,272 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const field = 'mt-1.5 w-full rounded-xl border-2 border-ink bg-white px-4 py-3 text-base outline-none focus:ring-4 focus:ring-blue/30';
+---
+
+<ToolLayout
+	slug="google-search-preview"
+	title="Google Search Preview Tool"
+	seoTitle="Free Google Search Preview Tool: Title and Meta Description Checker"
+	eyebrow="Free tool"
+	description="Free Google search preview tool: see how your page title and meta description look on Google, on mobile and desktop, with length checks and tips."
+	intro="See how your page will look in Google before you publish. Type your title and description, check the length on mobile and desktop, and copy the finished tags. Nothing you type leaves your browser."
+>
+	<div class="grid grid-cols-1 gap-10 lg:grid-cols-[26rem_1fr] [&>*]:min-w-0">
+		<form id="sp-form" class="pop-lg space-y-5 rounded-[2rem] bg-white p-6 md:p-7 lg:sticky lg:top-[5.75rem] lg:self-start" novalidate autocomplete="off">
+			<div>
+				<div class="flex items-baseline justify-between gap-3">
+					<label for="sp-title" class="block text-sm font-bold">Page title</label>
+					<span id="sp-title-count" class="text-sm font-semibold text-ink-soft"></span>
+				</div>
+				<input id="sp-title" type="text" maxlength="120" value="Emergency Plumber in Leeds | Smith Plumbing" class={field} />
+				<div class="mt-2 h-2.5 overflow-hidden rounded-full border-2 border-ink bg-paper"><div id="sp-title-bar" class="h-full bg-blue transition-all"></div></div>
+			</div>
+			<div>
+				<div class="flex items-baseline justify-between gap-3">
+					<label for="sp-desc" class="block text-sm font-bold">Meta description</label>
+					<span id="sp-desc-count" class="text-sm font-semibold text-ink-soft"></span>
+				</div>
+				<textarea id="sp-desc" rows="4" maxlength="320" class={field}>Blocked drain or burst pipe? Local, fully insured plumbers across Leeds, with same-day call-outs and upfront prices. Call now for a free quote.</textarea>
+				<div class="mt-2 h-2.5 overflow-hidden rounded-full border-2 border-ink bg-paper"><div id="sp-desc-bar" class="h-full bg-blue transition-all"></div></div>
+			</div>
+			<div>
+				<label for="sp-url" class="block text-sm font-bold">Page address (URL)</label>
+				<input id="sp-url" type="url" inputmode="url" value="https://smithplumbing.co.uk/emergency-plumber-leeds/" class={field} />
+			</div>
+			<div>
+				<label for="sp-keyword" class="block text-sm font-bold">Main search phrase <span class="font-medium text-ink-soft">(optional)</span></label>
+				<input id="sp-keyword" type="text" maxlength="60" value="emergency plumber leeds" placeholder="roof repair denver" class={field} />
+				<p class="mt-1.5 text-sm text-ink-soft">What customers type into Google to find this page.</p>
+			</div>
+		</form>
+
+		<div class="space-y-6">
+			<section class="pop-lg rounded-[1.75rem] bg-white p-6" aria-labelledby="sp-h-preview">
+				<div class="flex flex-wrap items-center justify-between gap-3">
+					<h2 id="sp-h-preview" class="text-xl font-extrabold">Preview</h2>
+					<div class="flex gap-2" role="group" aria-label="Device">
+						<button type="button" data-device="mobile" class="sp-dev rounded-full border-2 border-ink px-4 py-1.5 font-display text-sm font-bold">Mobile</button>
+						<button type="button" data-device="desktop" class="sp-dev rounded-full border-2 border-ink px-4 py-1.5 font-display text-sm font-bold">Desktop</button>
+					</div>
+				</div>
+				<div class="mt-5 overflow-hidden rounded-2xl border-2 border-ink/15 bg-white p-5">
+					<div id="sp-card" class="mx-auto" style="font-family: Arial, Helvetica, sans-serif;">
+						<div class="flex items-center gap-3">
+							<span id="sp-fav" class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#f1f3f4] text-xs font-bold text-[#4d5156]">S</span>
+							<div class="min-w-0 leading-tight">
+								<div id="sp-site" class="truncate text-[14px] text-[#202124]"></div>
+								<div id="sp-crumb" class="truncate text-[12px] text-[#4d5156]"></div>
+							</div>
+						</div>
+						<div id="sp-out-title" class="mt-2 text-[#1a0dab]" style="font-size:20px;line-height:1.3;"></div>
+						<div id="sp-out-desc" class="mt-1 text-[#4d5156]" style="font-size:14px;line-height:1.58;"></div>
+					</div>
+				</div>
+				<p class="mt-3 text-sm text-ink-soft">An approximation. Google may rewrite titles and descriptions, and cuts them by width rather than a fixed number of characters.</p>
+			</section>
+
+			<section class="pop-lg rounded-[1.75rem] bg-white p-6" aria-labelledby="sp-h-checks">
+				<h2 id="sp-h-checks" class="text-xl font-extrabold">Checks</h2>
+				<ul id="sp-checks" class="mt-4 space-y-3"></ul>
+			</section>
+
+			<section class="pop-lg rounded-[1.75rem] bg-sun p-6" aria-labelledby="sp-h-code">
+				<div class="flex flex-wrap items-start justify-between gap-3">
+					<div>
+						<h2 id="sp-h-code" class="text-xl font-extrabold">Your tags</h2>
+						<p class="mt-1 text-sm">Paste into your page's &lt;head&gt;, or copy the text into your website builder's SEO settings.</p>
+					</div>
+					<button type="button" id="sp-copy" class="btn btn-light !px-4 !py-2 !text-sm">Copy</button>
+				</div>
+				<pre id="sp-code" class="mt-4 whitespace-pre-wrap break-words rounded-xl border-2 border-ink bg-white p-4 text-[0.9rem] leading-relaxed"></pre>
+			</section>
+		</div>
+	</div>
+
+	<section slot="after" class="container-read pb-6">
+		<div class="prose prose-lg prose-rankfolk max-w-none">
+			<h2>How to write a page title that gets clicks</h2>
+			<p>
+				Your title is the blue link people see in Google. It's one of the clearest signals of what your page is about, and the biggest thing
+				that decides whether someone clicks you or the result below. Google's own guide to
+				<a href="https://developers.google.com/search/docs/appearance/title-link" target="_blank" rel="noopener">writing good title links</a> recommends titles that are unique, descriptive and concise.
+			</p>
+			<ul>
+				<li><strong>Put the main search phrase near the start:</strong> "Emergency Plumber in Leeds" before your business name.</li>
+				<li><strong>Add your town</strong> if you serve a local area.</li>
+				<li><strong>End with your business name</strong>, separated by a | or a dash.</li>
+				<li><strong>Give every page a different title.</strong> Ten pages called "Home | Smith Plumbing" compete with each other.</li>
+				<li><strong>Don't stuff keywords.</strong> "Plumber Leeds, Plumbers Leeds, Best Plumber Leeds" looks like spam, and Google may rewrite it.</li>
+			</ul>
+			<h2>How to write a meta description</h2>
+			<p>
+				The description is the grey text under the title. It doesn't directly help you rank, but a clear one earns more clicks. Google explains
+				how it chooses <a href="https://developers.google.com/search/docs/appearance/snippet" target="_blank" rel="noopener">snippets and meta descriptions</a>, and sometimes uses text from your page instead.
+			</p>
+			<ul>
+				<li>Say what you offer, where, and why someone should choose you.</li>
+				<li>Include a reason to act: free quotes, same-day service, upfront prices.</li>
+				<li>Keep the important part in the first sentence, in case it gets cut on mobile.</li>
+			</ul>
+			<h2>Frequently asked questions</h2>
+			<h3>How long should a title be?</h3>
+			<p>Google doesn't set a character limit. It cuts titles that are too wide for the screen, which on desktop is typically somewhere around 50 to 60 characters. Aim to put everything important in the first 50.</p>
+			<h3>Why does Google show a different title from mine?</h3>
+			<p>Google sometimes rewrites titles that are too long, stuffed with keywords, or don't match the page. A clear, honest title that matches the page's main heading is the best way to keep yours.</p>
+			<h3>Where do I change my title in Wix, Squarespace or WordPress?</h3>
+			<p>Look for the page's SEO settings. In WordPress, an SEO plugin usually adds the fields below the editor. Our guide to <a href="/blog/how-to-get-my-business-on-the-first-page-of-google/">getting on the first page of Google</a> covers what else to fix, and the <a href="/tools/website-audit/">free website audit</a> checks your live titles for you.</p>
+		</div>
+	</section>
+</ToolLayout>
+
+<script>
+	import { track } from '../../scripts/analytics';
+
+	const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+	const titleIn = $<HTMLInputElement>('sp-title');
+	const descIn = $<HTMLTextAreaElement>('sp-desc');
+	const urlIn = $<HTMLInputElement>('sp-url');
+	const kwIn = $<HTMLInputElement>('sp-keyword');
+	const card = $<HTMLDivElement>('sp-card');
+
+	// Approximate width limits for Google results, in pixels.
+	const LIMITS = {
+		desktop: { title: 600, desc: 920, cardWidth: 600 },
+		mobile: { title: 500, desc: 680, cardWidth: 360 },
+	};
+	let device: 'mobile' | 'desktop' = 'mobile';
+
+	const ctx = document.createElement('canvas').getContext('2d')!;
+	function width(text: string, size: number) {
+		ctx.font = `${size}px Arial, Helvetica, sans-serif`;
+		return ctx.measureText(text).width;
+	}
+	function truncate(text: string, size: number, max: number) {
+		if (width(text, size) <= max) return { text, cut: false };
+		let lo = 0;
+		let hi = text.length;
+		while (lo < hi) {
+			const mid = Math.ceil((lo + hi) / 2);
+			if (width(text.slice(0, mid) + ' ...', size) <= max) lo = mid;
+			else hi = mid - 1;
+		}
+		return { text: text.slice(0, lo).replace(/\s+\S*$/, '') + ' ...', cut: true };
+	}
+	function esc(s: string) {
+		return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+	}
+	function bar(el: HTMLElement, ratio: number) {
+		el.style.width = Math.min(100, ratio * 100) + '%';
+		el.className = 'h-full transition-all ' + (ratio > 1 ? 'bg-coral' : ratio < 0.5 ? 'bg-sun' : 'bg-blue');
+	}
+
+	function render() {
+		const L = LIMITS[device];
+		const title = titleIn.value.trim();
+		const desc = descIn.value.trim().replace(/\s+/g, ' ');
+		const kw = kwIn.value.trim().toLowerCase();
+		let host = 'yourwebsite.com';
+		let path: string[] = [];
+		try {
+			const u = new URL(urlIn.value.trim());
+			host = u.hostname.replace(/^www\./, '');
+			path = u.pathname.split('/').filter(Boolean);
+		} catch {
+			/* keep defaults */
+		}
+
+		card.style.maxWidth = L.cardWidth + 'px';
+		$('sp-site').textContent = host.split('.')[0].replace(/^\w/, (c) => c.toUpperCase());
+		$('sp-crumb').textContent = 'https://' + host + (path.length ? ' › ' + path.join(' › ') : '');
+		$('sp-fav').textContent = host.charAt(0).toUpperCase();
+
+		const tw = width(title, 20);
+		const dw = width(desc, 14);
+		const t = truncate(title || 'Your page title', 20, L.title);
+		const d = truncate(desc || 'Your meta description will appear here.', 14, L.desc);
+		$('sp-out-title').textContent = t.text;
+		$('sp-out-desc').textContent = d.text;
+		$('sp-title-count').textContent = `${title.length} characters`;
+		$('sp-desc-count').textContent = `${desc.length} characters`;
+		bar($('sp-title-bar'), tw / L.title);
+		bar($('sp-desc-bar'), dw / L.desc);
+
+		const checks: [boolean | null, string][] = [];
+		const tl = title.toLowerCase();
+		if (!title) checks.push([false, 'Add a page title.']);
+		else if (t.cut) checks.push([false, `Your title gets cut off on ${device}. Shorten it or move the important words to the front.`]);
+		else if (title.length < 25) checks.push([null, 'Your title is short. Add your location or business name to use the space.']);
+		else checks.push([true, `Your title fits on ${device}.`]);
+
+		if (!desc) checks.push([false, 'Add a meta description, or Google will pick text from your page.']);
+		else if (d.cut) checks.push([null, `Your description gets cut off on ${device}. Make sure the first sentence works on its own.`]);
+		else if (desc.length < 70) checks.push([null, 'Your description is short. Add what makes you different and a reason to act.']);
+		else checks.push([true, `Your description fits on ${device}.`]);
+
+		if (kw) {
+			const words = kw.split(/\s+/).filter((w) => w.length > 2);
+			const inTitle = tl.includes(kw) || words.every((w) => tl.includes(w));
+			checks.push(inTitle ? [true, 'Your main search phrase is in the title.'] : [false, `Add "${kwIn.value.trim()}" (or close wording) to the title.`]);
+			if (inTitle) {
+				const pos = tl.indexOf(words[0] ?? kw);
+				checks.push(pos <= 20 ? [true, 'The search phrase is near the start of the title.'] : [null, 'Move the search phrase closer to the start of the title.']);
+			}
+			const inDesc = desc.toLowerCase().includes(kw) || words.every((w) => desc.toLowerCase().includes(w));
+			checks.push(inDesc ? [true, 'Your description mentions the search phrase. Google often bolds matching words.'] : [null, 'Mention the search phrase in the description too.']);
+		}
+		const repeated = tl.split(/[^a-z0-9]+/).filter((w) => w.length > 3);
+		const counts = repeated.reduce<Record<string, number>>((a, w) => ((a[w] = (a[w] || 0) + 1), a), {});
+		if (Object.values(counts).some((n) => n >= 3)) checks.push([false, 'A word appears 3 or more times in your title. That can look like keyword stuffing.']);
+		if (title && title === title.toUpperCase() && /[A-Z]/.test(title)) checks.push([false, 'Avoid writing the title in capital letters.']);
+		if (/\b(call|book|get|free|today|now|quote)\b/i.test(desc)) checks.push([true, 'Your description includes a reason to act.']);
+		else if (desc) checks.push([null, 'Add a reason to act, like "free quotes" or "book online".']);
+
+		const icon = (ok: boolean | null) => (ok === true ? ['✓', 'bg-blue text-white'] : ok === false ? ['!', 'bg-coral text-ink'] : ['i', 'bg-sun text-ink']);
+		$('sp-checks').innerHTML = checks
+			.map(([ok, msg]) => {
+				const [i, cls] = icon(ok);
+				return `<li class="flex gap-3"><span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 border-ink font-display text-sm font-bold ${cls}">${i}</span><span class="pt-0.5">${esc(msg)}</span></li>`;
+			})
+			.join('');
+
+		$('sp-code').textContent = `<title>${title}</title>\n<meta name="description" content="${desc.replace(/"/g, '&quot;')}">`;
+
+		document.querySelectorAll<HTMLButtonElement>('.sp-dev').forEach((b) => {
+			const on = b.dataset.device === device;
+			b.classList.toggle('bg-ink', on);
+			b.classList.toggle('text-white', on);
+			b.classList.toggle('bg-paper', !on);
+			b.setAttribute('aria-pressed', String(on));
+		});
+	}
+
+	let tracked = false;
+	[titleIn, descIn, urlIn, kwIn].forEach((el) =>
+		el.addEventListener('input', () => {
+			render();
+			if (!tracked) {
+				tracked = true;
+				track('serp_preview_used');
+			}
+		}),
+	);
+	document.querySelectorAll<HTMLButtonElement>('.sp-dev').forEach((b) =>
+		b.addEventListener('click', () => {
+			device = b.dataset.device as 'mobile' | 'desktop';
+			render();
+		}),
+	);
+	$('sp-copy').addEventListener('click', async () => {
+		const btn = $('sp-copy');
+		try {
+			await navigator.clipboard.writeText($('sp-code').textContent || '');
+			btn.textContent = 'Copied';
+			track('serp_preview_copied');
+		} catch {
+			btn.textContent = 'Select and copy';
+		}
+		setTimeout(() => (btn.textContent = 'Copy'), 1800);
+	});
+	render();
+</script>

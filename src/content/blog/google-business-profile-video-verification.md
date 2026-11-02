@@ -34,6 +34,9 @@ Google's [video verification guide](https://support.google.com/business/answer/1
 
 ### Before you start
 
+Prefer a tick-list? Our free [verification video checklist](/tools/verification-video-checklist/) turns everything below into a shot-by-shot plan for your business type.
+
+
 - Use the **phone** you'll record on, signed in to the Google Account that manages the profile.
 - Plan a route that shows everything in one continuous take.
 - Make sure your business name on any signage matches your profile exactly.

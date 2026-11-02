@@ -13,7 +13,7 @@ const path = Astro.url.pathname;
 	<div class="container-wide flex h-[4.5rem] items-center justify-between gap-4">
 		<a href="/" aria-label="Rankfolk home"><Logo /></a>
 
-		<nav aria-label="Main" class="hidden lg:block">
+		<nav aria-label="Main" class="hidden xl:block">
 			<ul class="flex items-center gap-0.5 font-display text-[0.85rem] font-semibold">
 				{
 					NAV.map((item) => (
@@ -33,7 +33,7 @@ const path = Astro.url.pathname;
 			</ul>
 		</nav>
 
-		<details class="group relative lg:hidden">
+		<details class="group relative xl:hidden">
 			<summary
 				class="pop flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full bg-sun [&::-webkit-details-marker]:hidden"
 				aria-label="Open menu"
