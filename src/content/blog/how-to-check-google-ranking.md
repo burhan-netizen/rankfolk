@@ -1,15 +1,16 @@
 ---
-title: "How to Check Where Your Website Ranks on Google (Free Methods)"
-description: "Free, accurate ways to check where your website and Google Business Profile rank, why your own searches mislead you, and which numbers to track instead."
+title: "Where Does My Website Rank on Google? 4 Free Ways to Check"
+description: "Find out where your website ranks on Google for free: Search Console, a clean search, Google Maps rank checks, and why your own searches mislead you."
 coverTitle: "Check your Google ranking"
 pubDate: 2026-10-26
+updatedDate: 2026-11-02
 category: tools
 tags: ["google search console", "rankings", "seo tools"]
 ---
 
 The most accurate free way to check where your website ranks on Google is **Google Search Console**. Its Performance report shows the searches your site appears for and your **average position** for each, based on real searches. Searching for yourself on your own phone is the least reliable way, because Google personalizes and localizes results.
 
-This guide explains the free methods that give you a true picture, how to check your Google Maps ranking, and which numbers matter more than rankings.
+This guide explains the free methods that give you a true picture, how to check your Google Maps ranking, and which numbers matter more than rankings. If you were looking for the old PageRank score, see [what happened to Google page rank](/blog/google-page-rank/).
 
 ## Why searching for yourself is misleading
 

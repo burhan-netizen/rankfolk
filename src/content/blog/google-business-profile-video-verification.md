@@ -1,13 +1,14 @@
 ---
-title: "How to Verify Your Google Business Profile (Including Video Verification)"
-description: "Every way to verify a Google Business Profile, with a step-by-step guide to video verification: what to film, how long it takes and what to do if it fails."
+title: "How to Verify Google My Business in 2026 (Every Method + Video)"
+description: "How to verify your Google Business Profile (Google My Business): phone, email, video and postcard, plus what to film and how to fix a failed verification."
 coverTitle: "Get your profile verified"
 pubDate: 2026-10-26
+updatedDate: 2026-11-02
 category: google-business-profile
 tags: ["google business profile", "verification", "google maps"]
 ---
 
-To verify your Google Business Profile, log in, select **Get verified**, and complete whichever method Google offers you: phone or text, email, a recorded video, a live video call or a postcard. **You can't choose the method.** Google decides it automatically based on your business type, location and other information ([Google's verification help](https://support.google.com/business/answer/7107242)).
+To verify your Google Business Profile (the listing that used to be called Google My Business), log in, select **Get verified**, and complete whichever method Google offers you: phone or text, email, a recorded video, a live video call or a postcard. **You can't choose the method.** Google decides it automatically based on your business type, location and other information ([Google's verification help](https://support.google.com/business/answer/7107242)).
 
 Today, many businesses are asked for **video verification**, which confuses a lot of owners. This guide explains every method, then walks through video verification in detail: what to film, what not to film and how to fix it if it fails.
 
@@ -115,7 +116,7 @@ If you haven't filled in the rest of your profile yet, our [Google Business Prof
 
 ### Can I verify my Google Business Profile without a postcard?
 
-Often, yes. Google offers different methods to different businesses, including phone, text, email, video recording and live video call. You can't choose which ones you're offered, but many businesses now verify by video instead of waiting for a postcard.
+Often, yes. Google offers different methods to different businesses, including phone, text, email, video recording and live video call. You can't choose which ones you're offered, but many businesses now verify by video instead of waiting for a postcard. Our guide to [verifying without a postcard](/blog/verify-google-business-profile-without-postcard/) covers every alternative.
 
 ### Why does Google keep asking me to verify again?
 

@@ -1,15 +1,16 @@
 ---
-title: "Google Local Services Ads: How They Work and Are They Worth It?"
-description: "How Google Local Services Ads work, what counts as a paid lead, how they compare with Google Ads, and how to decide if they're worth it for your business."
+title: "Google Local Services Ads: How They Work, Cost and Are They Worth It?"
+description: "How Google Local Services Ads (LSAs) work, what you pay per lead, how they compare with Google Ads, and how to tell if they're worth it for you."
 coverTitle: "Are Local Services Ads worth it?"
 pubDate: 2026-10-26
+updatedDate: 2026-11-02
 category: marketing
 tags: ["local services ads", "google ads", "contractors"]
 ---
 
 **Google Local Services Ads (LSAs)** are ads that appear at the very top of Google for local service searches like "plumber near me" or "electrician in Chicago". Unlike normal Google Ads, you don't pay per click. **You pay per lead**: when a customer calls, messages or books you through the ad.
 
-For many contractors and home service businesses, LSAs can be worth it, because you're paying for real contacts rather than website visits. But they're not right for everyone, and they work best alongside a strong Google Business Profile and good reviews. Here's how they work, so you can decide.
+For many contractors and home service businesses, LSAs can be worth it, because you're paying for real contacts rather than website visits. But they're not right for everyone, and they work best alongside a strong Google Business Profile and good reviews. Here's how they work, so you can decide. (New to local search? Start with [what Google Local is](/blog/what-is-google-local/).)
 
 ## How Local Services Ads work
 

@@ -9,7 +9,7 @@ tags: ["local seo", "google business profile", "small business seo"]
 
 If you search for your own service in your own town and can't find yourself, you're not alone. Most small businesses never show up on the first page of Google, and most customers never look past it.
 
-The good news: **you don't need ads to get there.** For a local business, the first page of Google is made of two parts you can influence for free: the map results (your Google Business Profile) and the normal website results underneath. This guide covers both, in the order that usually gets results fastest.
+The good news: **you don't need ads to get there.** For a local business, the first page of Google is made of two parts you can influence for free: the map results (your Google Business Profile) and the normal website results underneath. This guide covers both, in the order that usually gets results fastest. If you're not on Google at all yet, start with [how to get your business on Google](/blog/how-to-get-your-business-on-google/).
 
 ## What "the first page of Google" actually means for a local business
 

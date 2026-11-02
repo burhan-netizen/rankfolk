@@ -1,8 +1,9 @@
 ---
-title: "How to Set Up a Google Business Profile: A Step-by-Step Guide"
-description: "Get your business on Google Maps the right way. A plain English walkthrough of creating, verifying and completing your Google Business Profile."
+title: "How to Set Up Google My Business (Business Profile): Step by Step"
+description: "Set up your Google Business Profile (formerly Google My Business) step by step: create it, add your area, verify it and fill every section to show on Maps."
 coverTitle: "Get on Google Maps the right way"
 pubDate: 2026-10-26
+updatedDate: 2026-11-02
 category: google-business-profile
 tags: ["google business profile", "google maps", "local seo"]
 featured: true
@@ -63,6 +64,9 @@ Google needs to confirm your business is real before your profile goes fully liv
 You can't choose the method yourself. Google shows you what's available. Verification usually takes anywhere from a few minutes to several business days.
 
 > **Tip:** For video verification, plan your shot before you record. Show the street or a landmark, your signage or branded vehicle, then something only the owner could access, like unlocking the door or opening your work tools.
+
+
+If the postcard is the only option or verification gets stuck, see [how to verify without a postcard](/blog/verify-google-business-profile-without-postcard/).
 
 ## Step 5: Complete every section
 
