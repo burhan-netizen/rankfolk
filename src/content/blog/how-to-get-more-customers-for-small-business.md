@@ -1,5 +1,6 @@
 ---
 title: "How to Get More Customers for Your Small Business: 15 Ideas That Work"
+seoTitle: "How to Get More Customers: 15 Ideas for Small Businesses"
 description: "Fifteen practical, low-cost ways to get more customers for a local small business, from Google and reviews to referrals, partnerships and following up."
 coverTitle: "15 ways to get more customers"
 pubDate: 2026-10-26

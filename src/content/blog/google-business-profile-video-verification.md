@@ -1,5 +1,6 @@
 ---
 title: "How to Verify Google My Business in 2026 (Every Method + Video)"
+seoTitle: "How to Verify Google My Business in 2026: Every Method"
 description: "How to verify your Google Business Profile (Google My Business): phone, email, video and postcard, plus what to film and how to fix a failed verification."
 coverTitle: "Get your profile verified"
 pubDate: 2026-10-26

@@ -1,5 +1,6 @@
 ---
 title: "Why Is My Website So Slow? How to Speed It Up (Plain English Guide)"
+seoTitle: "Why Is My Website So Slow? How to Speed It Up"
 description: "Find out why your small business website is slow and how to fix it: test with free Google tools, understand Core Web Vitals and fix the most common causes."
 coverTitle: "Speed up your website"
 pubDate: 2026-10-26

@@ -1,5 +1,6 @@
 ---
 title: "How to Get Your Business on the First Page of Google (Without Paying for Ads)"
+seoTitle: "How to Get Your Business on Page 1 of Google (Free)"
 description: "A plain English plan to get your small business onto page one of Google: the map results, your website and the free fixes that matter most."
 coverTitle: "Get on page one of Google"
 pubDate: 2026-10-26

@@ -1,5 +1,6 @@
 ---
 title: "How to Get More Google Reviews (Without Breaking Google's Rules)"
+seoTitle: "How to Get More Google Reviews (Within Google's Rules)"
 description: "Simple, policy-safe ways to get more Google reviews for your small business, including copy-and-paste text and email templates and the mistakes to avoid."
 coverTitle: "Get more Google reviews"
 pubDate: 2026-10-26

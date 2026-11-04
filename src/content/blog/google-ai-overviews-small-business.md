@@ -1,5 +1,6 @@
 ---
 title: "Google AI Overviews and AI Mode: What They Mean for Small Businesses"
+seoTitle: "Google AI Overviews and AI Mode for Small Businesses"
 description: "How Google's AI Overviews and AI Mode work, how they affect local businesses and website traffic, and what to do so your business still gets found and called."
 coverTitle: "Google AI and your business"
 pubDate: 2026-11-02

@@ -1,5 +1,6 @@
 ---
 title: "How to Write Website Copy With AI (Without It Sounding Like AI)"
+seoTitle: "How to Write Website Copy With AI That Sounds Human"
 description: "A step-by-step way to write your small business website copy with ChatGPT or other AI tools, with prompts, an interview method and an editing checklist."
 coverTitle: "Website copy with AI"
 pubDate: 2026-11-02

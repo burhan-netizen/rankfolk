@@ -1,5 +1,6 @@
 ---
 title: "How to Get Your Business on Google (Free): A Step-by-Step Guide"
+seoTitle: "How to Get Your Business on Google for Free: Step by Step"
 description: "How to get your business on Google for free: create a Business Profile for Maps, get your website into search results, and show up in AI answers."
 coverTitle: "Get your business on Google"
 pubDate: 2026-11-02

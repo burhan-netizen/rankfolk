@@ -1,5 +1,6 @@
 ---
 title: "Google Local Services Ads: How They Work, Cost and Are They Worth It?"
+seoTitle: "Google Local Services Ads: Cost and Are They Worth It?"
 description: "How Google Local Services Ads (LSAs) work, what you pay per lead, how they compare with Google Ads, and how to tell if they're worth it for you."
 coverTitle: "Are Local Services Ads worth it?"
 pubDate: 2026-10-26

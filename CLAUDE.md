@@ -24,7 +24,7 @@ Rankfolk (rankfolk.com) is a static Astro 7 + Tailwind 4 blog for small business
 
 ## New article checklist
 
-- Frontmatter: title, description (under 160 characters), coverTitle (3 to 6 words for the auto cover), pubDate, category, tags
+- Frontmatter: title, seoTitle (only if title is over 60 characters: a shorter title for Google, 60 or less), description (under 160 characters), coverTitle (3 to 6 words for the auto cover), pubDate, category, tags
 - One clear search intent per article; answer it in the first two paragraphs
 - Use `##` sections, lists and tables; add a checklist or summary at the end
 - Link to 1 to 3 related Rankfolk articles

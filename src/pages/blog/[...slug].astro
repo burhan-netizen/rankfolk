@@ -18,12 +18,14 @@ export async function getStaticPaths() {
 
 const { post, all } = Astro.props;
 const { Content, headings } = await render(post);
-const { title, description, pubDate, updatedDate, heroImage, heroAlt, coverTitle } = post.data;
+const { title, seoTitle, description, pubDate, updatedDate, heroImage, heroAlt, coverTitle } = post.data;
 const cat = getCategory(post.data.category)!;
 const minutes = readingTime(post.body);
 const toc = headings.filter((h) => h.depth === 2);
 const related = relatedPosts(all, post);
 const url = `${SITE.url}${postUrl(post)}`;
+// Per-article share image, built by src/pages/og/[slug].png.ts. A hero image, when set, takes priority.
+const shareImage = heroImage?.src ?? `/og/${post.id}.png`;
 
 const schema = [
 	{
@@ -35,8 +37,8 @@ const schema = [
 		dateModified: (updatedDate ?? pubDate).toISOString(),
 		mainEntityOfPage: url,
 		author: { '@type': 'Person', name: AUTHOR.name, url: `${SITE.url}/about/`, image: `${SITE.url}${AUTHOR.photo}`, sameAs: [AUTHOR.linkedin] },
-		publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url, logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` } },
-		...(heroImage ? { image: new URL(heroImage.src, SITE.url).href } : {}),
+		publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url, logo: { '@type': 'ImageObject', url: `${SITE.url}/logo.png`, width: 512, height: 512 } },
+		image: new URL(shareImage, SITE.url).href,
 	},
 	{
 		'@context': 'https://schema.org',
@@ -51,10 +53,11 @@ const schema = [
 ---
 
 <BaseLayout
-	title={title}
+	title={seoTitle ?? title}
+	brandSuffix={false}
 	description={description}
 	type="article"
-	image={heroImage?.src}
+	image={shareImage}
 	publishedTime={pubDate}
 	modifiedTime={updatedDate}
 	schema={schema}

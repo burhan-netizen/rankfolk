@@ -10,6 +10,8 @@ interface Props {
 	modifiedTime?: Date;
 	noindex?: boolean;
 	schema?: Record<string, unknown>[];
+	// Articles skip the " | Rankfolk" suffix so the full title fits in Google results.
+	brandSuffix?: boolean;
 }
 
 const {
@@ -21,11 +23,12 @@ const {
 	modifiedTime,
 	noindex = false,
 	schema = [],
+	brandSuffix = true,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? SITE.url).href;
 const ogImage = new URL(image, Astro.site ?? SITE.url).href;
-const fullTitle = title === SITE.name ? `${SITE.name}: ${SITE.tagline}` : `${title} | ${SITE.name}`;
+const fullTitle = title === SITE.name ? `${SITE.name}: ${SITE.tagline}` : brandSuffix ? `${title} | ${SITE.name}` : title;
 ---
 
 <title>{fullTitle}</title>

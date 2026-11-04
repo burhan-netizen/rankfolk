@@ -1,5 +1,6 @@
 ---
 title: "How to Use ChatGPT for Small Business Marketing (With Prompts)"
+seoTitle: "ChatGPT for Small Business Marketing (With Prompts)"
 description: "Practical ways to use ChatGPT and other AI tools for small business marketing: review replies, social posts, website copy, emails and ads, with prompts to copy."
 coverTitle: "ChatGPT for your marketing"
 pubDate: 2026-11-02

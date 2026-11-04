@@ -10,6 +10,8 @@ const blog = defineCollection({
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
+			// Optional shorter title for Google and social shares (aim for 60 characters or less). The page H1 keeps `title`.
+			seoTitle: z.string().optional(),
 			description: z.string(),
 			// Short text (3 to 6 words) shown big on the auto-generated cover. Defaults to the title.
 			coverTitle: z.string().optional(),

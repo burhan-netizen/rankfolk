@@ -1,5 +1,6 @@
 ---
 title: "Wix vs Squarespace vs WordPress: Which Is Best for a Small Business?"
+seoTitle: "Wix vs Squarespace vs WordPress for Small Business"
 description: "An honest comparison of Wix, Squarespace and WordPress for small business websites: ease of use, design, SEO, costs, maintenance and who each suits."
 coverTitle: "Wix vs Squarespace vs WordPress"
 pubDate: 2026-10-26

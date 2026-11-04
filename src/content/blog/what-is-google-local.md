@@ -1,5 +1,6 @@
 ---
 title: "What Is Google Local? How Local Search Works for Small Businesses"
+seoTitle: "What Is Google Local? How Local Search Works"
 description: "What Google Local means today: the local pack, Google Maps, Business Profiles and Local Services Ads, how Google ranks local results, and how to show up."
 coverTitle: "What is Google Local?"
 pubDate: 2026-11-02

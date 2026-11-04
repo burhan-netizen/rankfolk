@@ -1,5 +1,6 @@
 ---
 title: "Local SEO for Small Businesses: A Step-by-Step Guide You Can Do Yourself"
+seoTitle: "Local SEO for Small Businesses: A Step-by-Step DIY Guide"
 description: "What local SEO is, why it matters for businesses that serve one area, and a step-by-step plan you can follow yourself without hiring an agency."
 coverTitle: "Local SEO, step by step"
 pubDate: 2026-10-26

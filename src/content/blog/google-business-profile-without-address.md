@@ -1,5 +1,6 @@
 ---
 title: "How to Set Up a Google Business Profile Without a Storefront (and Hide Your Home Address)"
+seoTitle: "Google Business Profile Without an Address: Hide Your Home"
 description: "Run your business from home or work at customers' properties? How to set up a Google Business Profile as a service-area business and keep your address private."
 coverTitle: "No storefront? No problem"
 pubDate: 2026-10-26

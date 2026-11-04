@@ -1,5 +1,6 @@
 ---
 title: "How to Set Up Google My Business (Business Profile): Step by Step"
+seoTitle: "How to Set Up Google My Business: Step-by-Step Guide"
 description: "Set up your Google Business Profile (formerly Google My Business) step by step: create it, add your area, verify it and fill every section to show on Maps."
 coverTitle: "Get on Google Maps the right way"
 pubDate: 2026-10-26

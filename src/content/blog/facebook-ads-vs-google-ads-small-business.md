@@ -1,5 +1,6 @@
 ---
 title: "Facebook Ads vs Google Ads: Which Is Better for a Small Business?"
+seoTitle: "Facebook Ads vs Google Ads for Small Business"
 description: "Facebook ads or Google ads? A plain English comparison for small businesses: how each works, which suits your business, and how to test without wasting money."
 coverTitle: "Facebook ads vs Google ads"
 pubDate: 2026-10-26

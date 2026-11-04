@@ -1,5 +1,6 @@
 ---
 title: "How to Get Your Business Recommended by ChatGPT and Google AI"
+seoTitle: "How to Get Your Business Recommended by ChatGPT"
 description: "Customers now ask ChatGPT and Google's AI for local recommendations. Here's what actually influences which businesses get mentioned, and what you can do today."
 coverTitle: "Get recommended by AI"
 pubDate: 2026-10-26

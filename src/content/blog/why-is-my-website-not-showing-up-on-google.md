@@ -1,5 +1,6 @@
 ---
 title: "Why Is My Website Not Showing Up on Google? How to Find and Fix It"
+seoTitle: "Website Not Showing Up on Google? How to Fix It"
 description: "Website not showing up on Google? How to check if it's indexed, the most common reasons it's missing or buried, and step-by-step fixes using free Google tools."
 coverTitle: "Website missing from Google?"
 pubDate: 2026-10-26

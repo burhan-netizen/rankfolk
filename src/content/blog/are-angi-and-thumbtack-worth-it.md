@@ -1,5 +1,6 @@
 ---
 title: "Are Lead Sites Like Angi and Thumbtack Worth It for Contractors?"
+seoTitle: "Are Angi and Thumbtack Worth It for Contractors?"
 description: "Are lead sites like Angi, Thumbtack, Checkatrade and hipages worth it for contractors? How they work, pros and cons, and how to tell if they pay off."
 coverTitle: "Are lead sites worth it?"
 pubDate: 2026-10-26
