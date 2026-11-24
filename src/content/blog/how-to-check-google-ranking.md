@@ -93,7 +93,7 @@ If clicks, calls and enquiries are rising, your SEO is working, even if one part
 ## What to do with your ranking data
 
 - **Page two searches (positions 11 to 20):** improve those pages first. Add detail, answer more questions, improve the title, add photos.
-- **High impressions, low clicks:** rewrite the page title and description so they're clearer and more appealing.
+- **High impressions, low clicks:** rewrite the page title and description so they're clearer and more appealing. Our guide to [impressions but no clicks](/blog/impressions-but-no-clicks/) walks through the common causes.
 - **Searches you don't appear for at all:** you may need a new page for that service.
 - **Rankings dropped suddenly:** check Search Console for indexing problems or messages, and check whether anything changed on your site.
 

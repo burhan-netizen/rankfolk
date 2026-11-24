@@ -94,7 +94,7 @@ This shows the searches people used to find your site:
 - **Average CTR:** the percentage of impressions that became clicks
 - **Average position:** where you typically appeared
 
-**Tip:** select the **Queries** tab and look for searches with lots of impressions but few clicks, or an average position between about 8 and 20. Those pages are close to the top and are often the fastest to improve. Rewriting the page title to be clearer can lift clicks quickly.
+**Tip:** select the **Queries** tab and look for searches with lots of impressions but few clicks, or an average position between about 8 and 20. Those pages are close to the top and are often the fastest to improve. Rewriting the page title to be clearer can lift clicks quickly. If you're seeing plenty of impressions but hardly any clicks, see [what impressions with no clicks means](/blog/impressions-but-no-clicks/).
 
 ### 2. Pages (indexing)
 
