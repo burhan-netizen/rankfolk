@@ -79,7 +79,7 @@ Google doesn't promise to index every page. Very thin pages, or many near-identi
 
 ## If your site is indexed but you can't find it
 
-This is the more common situation. Your site is in Google, just not on page one for the searches you're trying.
+This is the more common situation. Your site is in Google, just not on page one for the searches you're trying. To see exactly where you sit, use our free [Google rank checker](/tools/google-rank-checker/), or read [what your Google page rank really means](/blog/google-page-rank/).
 
 ### You're searching for a very competitive term
 

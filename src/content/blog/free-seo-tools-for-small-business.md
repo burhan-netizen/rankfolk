@@ -129,4 +129,4 @@ Once a month is plenty for most small businesses. Checking daily tends to cause 
 - Paid tools are optional for most local businesses.
 - An hour a month with free tools beats an expensive subscription you never open.
 
-If you're not sure where to start, set up Search Console first, then follow our guide on [how to check where your website ranks on Google](/blog/how-to-check-google-ranking/).
+If you're not sure where to start, set up Search Console first, then follow our guide on [how to check where your website ranks on Google](/blog/how-to-check-google-ranking/). For quick spot checks, our free [Google rank checker](/tools/google-rank-checker/) opens a clean search for each of your keywords. And if you were looking for the old PageRank score, here's [what happened to Google page rank](/blog/google-page-rank/).

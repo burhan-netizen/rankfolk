@@ -6,11 +6,11 @@ const field = 'mt-1.5 w-full rounded-xl border-2 border-ink bg-white px-4 py-3 t
 
 <ToolLayout
 	slug="google-search-preview"
-	title="Google Search Preview Tool"
-	seoTitle="Free Google Search Preview Tool: Title and Meta Description Checker"
+	title="Meta Title Checker and Google Preview"
+	seoTitle="Free Meta Title Checker and Length Tool"
 	eyebrow="Free tool"
-	description="Free Google search preview tool: see how your page title and meta description look on Google, on mobile and desktop, with length checks and tips."
-	intro="See how your page will look in Google before you publish. Type your title and description, check the length on mobile and desktop, and copy the finished tags. Nothing you type leaves your browser."
+	description="Free meta title checker: test your page title and meta description length in pixels, see how they look on Google on mobile and desktop, and copy the tags."
+	intro="Check your meta title and description before you publish. See exactly where Google will cut them off on mobile and desktop, check your keyword is in the title, and copy the finished tags. Nothing you type leaves your browser."
 >
 	<div class="grid grid-cols-1 gap-10 lg:grid-cols-[26rem_1fr] [&>*]:min-w-0">
 		<form id="sp-form" class="pop-lg space-y-5 rounded-[2rem] bg-white p-6 md:p-7 lg:sticky lg:top-[5.75rem] lg:self-start" novalidate autocomplete="off">
@@ -110,6 +110,10 @@ const field = 'mt-1.5 w-full rounded-xl border-2 border-ink bg-white px-4 py-3 t
 				<li>Keep the important part in the first sentence, in case it gets cut on mobile.</li>
 			</ul>
 			<h2>Frequently asked questions</h2>
+			<h3>What does a meta title checker do?</h3>
+			<p>It measures your page title (the meta title, or title tag) the way Google displays it, by width in pixels rather than by characters, and shows whether it gets cut off. This one also checks your meta description and whether your main keyword is in the title.</p>
+			<h3>How do I check the meta title of a live page?</h3>
+			<p>Open the page, right-click and select <strong>View page source</strong>, then search for <code>&lt;title&gt;</code>. Paste that text into the checker above. The <a href="/tools/website-audit/">free website audit</a> also reads your homepage title for you.</p>
 			<h3>How long should a title be?</h3>
 			<p>Google doesn't set a character limit. It cuts titles that are too wide for the screen, which on desktop is typically somewhere around 50 to 60 characters. Aim to put everything important in the first 50.</p>
 			<h3>Why does Google show a different title from mine?</h3>

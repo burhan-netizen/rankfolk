@@ -23,6 +23,15 @@ export const SITE = {
 
 export const TOOLS = [
 	{
+		slug: 'google-rank-checker',
+		name: 'Google Rank Checker',
+		short: 'Rank Checker',
+		description: 'See where your website ranks on Google and Google Maps for any keyword and country, and log your position over time.',
+		time: '2 minutes',
+		color: 'bg-lilac',
+		fg: 'text-ink',
+	},
+	{
 		slug: 'website-audit',
 		name: 'Free Website Audit',
 		short: 'Website Audit',
@@ -33,8 +42,8 @@ export const TOOLS = [
 	},
 	{
 		slug: 'google-visibility-scorecard',
-		name: 'Google Visibility Scorecard',
-		short: 'Visibility Scorecard',
+		name: 'Google Visibility Score',
+		short: 'Visibility Score',
 		description: 'Answer 12 quick questions and see how easy your business is to find on Google, with a plan of what to fix first.',
 		time: '2 minutes',
 		color: 'bg-sun',
@@ -51,12 +60,21 @@ export const TOOLS = [
 	},
 	{
 		slug: 'google-search-preview',
-		name: 'Google Search Preview',
-		short: 'Search Preview',
-		description: 'See how your page title and description look on Google, on mobile and desktop, with length checks and tips.',
+		name: 'Meta Title Checker',
+		short: 'Meta Title Checker',
+		description: 'Check your page title and meta description length and see how they look on Google, on mobile and desktop.',
 		time: '1 minute',
-		color: 'bg-lilac',
+		color: 'bg-white',
 		fg: 'text-ink',
+	},
+	{
+		slug: 'website-cost-planner',
+		name: 'Website Cost Calculator',
+		short: 'Cost Calculator',
+		description: 'See how big your website really is, what drives the price, the best way to build it, and get a brief for fair quotes.',
+		time: '2 minutes',
+		color: 'bg-ink',
+		fg: 'text-white',
 	},
 	{
 		slug: 'verification-video-checklist',
@@ -66,15 +84,6 @@ export const TOOLS = [
 		time: '3 minutes',
 		color: 'bg-white',
 		fg: 'text-ink',
-	},
-	{
-		slug: 'website-cost-planner',
-		name: 'Website Cost Planner',
-		short: 'Cost Planner',
-		description: 'See how big your website really is, what drives the price, the best way to build it, and get a brief for fair quotes.',
-		time: '2 minutes',
-		color: 'bg-ink',
-		fg: 'text-white',
 	},
 ] as const;
 

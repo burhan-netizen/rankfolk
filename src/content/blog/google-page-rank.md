@@ -1,8 +1,10 @@
 ---
-title: "What Is My Google Page Rank? How to Find It (Free) in 2026"
-description: "How to find your Google page rank: why the old PageRank score is gone, how to check your real ranking position for free, and what a good position is."
+title: "What Is My Google Page Rank? How to Check It Free in 2026"
+seoTitle: "What Is My Google Page Rank? Check It Free (2026)"
+description: "Google hid PageRank scores in 2016. Here is how to check where your site really ranks on Google today, free, with a rank checker or Search Console."
 coverTitle: "Find your Google page rank"
 pubDate: 2026-11-02
+updatedDate: 2026-11-24
 category: seo
 tags: ["google page rank", "pagerank", "google ranking", "search console"]
 ---
@@ -10,6 +12,8 @@ tags: ["google page rank", "pagerank", "google ranking", "search console"]
 **You can't see your Google PageRank score any more. Google stopped showing it publicly in 2016.** What most people actually want to know when they search "what is my Google page rank" is **where their website ranks on Google**, meaning which position it appears in for a search. That you can check for free, accurately, in Google Search Console.
 
 This guide clears up the confusion, then shows you how to find the number that matters.
+
+> **Want your ranking right now?** Use our free [Google rank checker](/tools/google-rank-checker/). Enter your website and keywords, pick a country, and see where you appear on Google and Google Maps in about two minutes.
 
 ![PageRank, the old link-based score, compared with your ranking position on Google](../../assets/blog/pagerank-vs-position.png)
 
@@ -43,7 +47,7 @@ New sites can take a few days to show data. Look at the last 28 days or 3 months
 
 ### Method 2: A clean manual search
 
-Searching for yourself on your own phone is misleading, because Google personalizes and localizes results. If you want to check by hand, use a private or incognito window, signed out, and remember results still vary by location.
+Searching for yourself on your own phone is misleading, because Google personalizes and localizes results. If you want to check by hand, use a private or incognito window, signed out, and remember results still vary by location. Our free [Google rank checker](/tools/google-rank-checker/) opens a clean search for each keyword in the country you choose and lets you log your position, so you can see if you are moving up.
 
 ### Method 3: Check your Google Maps position
 
@@ -82,6 +86,14 @@ Since you can't see PageRank, focus on the things that move your position:
 ### Can I still check my PageRank?
 
 No. Google stopped publishing PageRank scores in 2016. Tools that show "page rank" or "domain authority" scores use their own formulas, which can be useful for comparison but aren't Google's numbers.
+
+### Is there a free Google page rank checker?
+
+Not for the real PageRank score, because Google no longer shares it. Any "PageRank checker" shows its own estimate. To check your actual position on Google for a keyword, use a [free Google rank checker](/tools/google-rank-checker/) or the Performance report in Google Search Console.
+
+### What is my page rank on Google for a keyword?
+
+It is the position your page appears in when someone searches that keyword: 1 is the top result, 11 is the first result on page two. Open Search Console, go to **Performance**, tick **Average position**, and find the keyword in the Queries tab. If it is not listed, your page has not appeared for that search yet.
 
 ### Is PageRank still used by Google?
 

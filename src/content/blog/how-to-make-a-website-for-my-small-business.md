@@ -1,6 +1,6 @@
 ---
-title: "How to Make a Business Website in 2026: Step-by-Step Guide"
-description: "How to make a website for your small business, step by step: domain, platform, pages, words, photos and Google setup. Written by a web designer."
+title: "How to Make a Business Website in 2026: 10-Step Guide"
+description: "Make a website for your small business in 10 simple steps: domain, platform, pages, words, photos and Google setup. Written by a web designer who builds them."
 coverTitle: "Make your business website"
 pubDate: 2026-10-26
 updatedDate: 2026-11-02
@@ -140,7 +140,7 @@ Most visitors will see your site on a phone. As you build:
 Before or right after launch:
 
 - **Page titles:** give each page a clear, unique title, such as "Emergency Electrician in Leeds | Bright Spark".
-- **Meta descriptions:** a one-line summary for each page that may show in Google results. Check both with our [Google search preview tool](/tools/google-search-preview/).
+- **Meta descriptions:** a one-line summary for each page that may show in Google results. Check both with our [meta title checker](/tools/google-search-preview/).
 - **Google Search Console:** set it up and submit your sitemap. Our [Search Console setup guide](/blog/how-to-set-up-google-search-console/) shows you how.
 - **Google Business Profile:** create or claim it, then add your new website link. For local businesses this is often the biggest source of calls. See our [Google Business Profile setup guide](/blog/how-to-set-up-google-business-profile/).
 - **Consistent details:** use the exact same business name, address and phone number on your site, your Google profile and any directories.

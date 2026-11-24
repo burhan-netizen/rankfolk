@@ -105,7 +105,7 @@ Our guide to [getting your business recommended by ChatGPT](/blog/how-to-get-you
 - **A new website** is often indexed within days to weeks once you submit it in Search Console.
 - **Ranking for general searches** like "roofer near me" usually takes longer and depends on your competition. See [how long SEO takes](/blog/how-long-does-seo-take/).
 
-Want to see how visible you are right now? Our free [Google Visibility Scorecard](/tools/google-visibility-scorecard/) takes two minutes and shows what to fix first.
+Want to see how visible you are right now? Our free [Google Visibility Score](/tools/google-visibility-scorecard/) takes two minutes and shows what to fix first.
 
 ## Frequently asked questions
 

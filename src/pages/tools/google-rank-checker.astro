@@ -1,0 +1,316 @@
+---
+import ToolLayout from '../../layouts/ToolLayout.astro';
+
+const field = 'mt-1.5 w-full rounded-xl border-2 border-ink bg-white px-4 py-3 text-base outline-none focus:ring-4 focus:ring-blue/30';
+
+const countries = [
+	['us', 'United States', 'www.google.com'],
+	['gb', 'United Kingdom', 'www.google.co.uk'],
+	['ca', 'Canada', 'www.google.ca'],
+	['au', 'Australia', 'www.google.com.au'],
+	['nz', 'New Zealand', 'www.google.co.nz'],
+	['ie', 'Ireland', 'www.google.ie'],
+	['in', 'India', 'www.google.co.in'],
+];
+---
+
+<ToolLayout
+	slug="google-rank-checker"
+	title="Free Google Rank Checker"
+	seoTitle="Free Google Rank Checker: Where Does My Site Rank?"
+	eyebrow="Free tool"
+	description="Free Google rank checker: see where your website ranks on Google and Google Maps for any keyword and country, then log your position to track it over time."
+	intro="Check where your website ranks on Google for the searches your customers use. Pick a country, open a clean search for each keyword, and log your position here to see if you're moving up. No sign-up, and your log stays in your browser."
+>
+	<div class="grid grid-cols-1 gap-10 lg:grid-cols-[26rem_1fr] [&>*]:min-w-0">
+		<form id="rc-form" class="pop-lg space-y-5 rounded-[2rem] bg-white p-6 md:p-7 lg:sticky lg:top-[5.75rem] lg:self-start" novalidate autocomplete="off">
+			<div>
+				<label for="rc-site" class="block text-sm font-bold">Your website</label>
+				<input id="rc-site" type="text" inputmode="url" placeholder="smithplumbing.com" class={field} />
+				<p class="mt-1.5 text-sm text-ink-soft">Just the domain is fine.</p>
+			</div>
+			<div>
+				<label for="rc-keywords" class="block text-sm font-bold">Keywords to check <span class="font-medium text-ink-soft">(one per line, up to 10)</span></label>
+				<textarea id="rc-keywords" rows="5" class={field} placeholder={'emergency plumber leeds\nblocked drain leeds\nboiler repair near me'}></textarea>
+				<p class="mt-1.5 text-sm text-ink-soft">Use the words customers type, including your town for local services.</p>
+			</div>
+			<div>
+				<label for="rc-country" class="block text-sm font-bold">Country</label>
+				<select id="rc-country" class={field}>
+					{countries.map(([code, name, host]) => <option value={code} data-host={host}>{name}</option>)}
+				</select>
+			</div>
+			<button type="submit" class="btn w-full justify-center">Check my rankings</button>
+			<p id="rc-error" class="hidden rounded-xl border-2 border-ink bg-coral/30 px-4 py-3 text-sm font-semibold" role="alert"></p>
+		</form>
+
+		<div class="space-y-6">
+			<section id="rc-results" class="pop-lg rounded-[1.75rem] bg-white p-6" aria-labelledby="rc-h-results" aria-live="polite">
+				<h2 id="rc-h-results" class="text-xl font-extrabold">Your keywords</h2>
+				<p id="rc-empty" class="mt-3 text-ink-soft">Add your website and a few keywords, then select <strong>Check my rankings</strong>.</p>
+				<ol id="rc-list" class="mt-4 space-y-4"></ol>
+			</section>
+
+			<section class="pop-lg rounded-[1.75rem] bg-sun p-6" aria-labelledby="rc-h-how">
+				<h2 id="rc-h-how" class="text-xl font-extrabold">How to find your position in 20 seconds</h2>
+				<ol class="mt-4 list-decimal space-y-2 pl-5">
+					<li>Select <strong>Search Google</strong> next to a keyword. It opens the results for your chosen country in a new tab.</li>
+					<li>Press <strong>Ctrl + F</strong> (or <strong>Cmd + F</strong> on a Mac) and type your domain to jump to your result.</li>
+					<li>Count the normal results above you, skipping ads and the map box. That's your position. Not there? Scroll down or select <strong>More results</strong>.</li>
+					<li>Type the number back here and select <strong>Log it</strong>. Check again in a couple of weeks to see the change.</li>
+				</ol>
+				<p class="mt-4 text-sm">For the most private result, open the link in a private or incognito window, so your own browsing history doesn't nudge your site up.</p>
+			</section>
+
+			<section id="rc-log-wrap" class="pop-lg hidden rounded-[1.75rem] bg-white p-6" aria-labelledby="rc-h-log">
+				<div class="flex flex-wrap items-start justify-between gap-3">
+					<div>
+						<h2 id="rc-h-log" class="text-xl font-extrabold">Your ranking log</h2>
+						<p class="mt-1 text-sm text-ink-soft">Saved in this browser only. Download it to keep a copy.</p>
+					</div>
+					<div class="flex gap-2">
+						<button type="button" id="rc-csv" class="btn btn-light !px-4 !py-2 !text-sm">Download CSV</button>
+						<button type="button" id="rc-clear" class="btn btn-light !px-4 !py-2 !text-sm">Clear</button>
+					</div>
+				</div>
+				<div class="mt-4 overflow-x-auto">
+					<table class="w-full min-w-[30rem] text-left text-sm">
+						<thead>
+							<tr class="border-b-2 border-ink">
+								<th class="py-2 pr-3">Keyword</th>
+								<th class="py-2 pr-3">Country</th>
+								<th class="py-2 pr-3">Latest</th>
+								<th class="py-2 pr-3">Change</th>
+								<th class="py-2">Checked</th>
+							</tr>
+						</thead>
+						<tbody id="rc-log"></tbody>
+					</table>
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<section slot="after" class="container-read pb-6">
+		<div class="prose prose-lg prose-rankfolk max-w-none">
+			<h2>Why this rank checker opens Google instead of guessing</h2>
+			<p>
+				Most free "rank checker" sites either need a paid account or show numbers from their own database, which can be weeks old. This tool sends you
+				straight to Google's real results for the country you pick, so you see exactly what a customer sees today. It takes a few seconds per keyword
+				and costs nothing.
+			</p>
+			<p>
+				For the most accurate picture over time, set up <a href="/blog/how-to-set-up-google-search-console/">Google Search Console</a>. Its
+				Performance report shows your average position for every search your site appears in, based on real searches. Our guide on <a href="/blog/how-to-check-google-ranking/">how to check your Google ranking</a> walks through it.
+			</p>
+			<h2>Frequently asked questions</h2>
+			<h3>Is this a Google PageRank checker?</h3>
+			<p>
+				Google stopped showing PageRank scores publicly in 2016, so no tool can show your real PageRank any more. What people usually want to know is
+				where their site ranks for a search, and that's what this tool checks. Read more in <a href="/blog/google-page-rank/">what is my Google page rank</a>.
+			</p>
+			<h3>Why is my ranking different on my phone?</h3>
+			<p>
+				Google tailors results to your location, device and search history. A search from your own phone, near your own business, often shows you
+				higher than a customer across town would see. That's why the steps above suggest a private window.
+			</p>
+			<h3>How do I check my Google Maps ranking?</h3>
+			<p>
+				Select <strong>Search Maps</strong> next to a keyword. Map rankings depend heavily on where the searcher is standing, so ask a friend or
+				customer in another part of town to search too. Our guide to <a href="/blog/business-not-showing-on-google-maps/">why a business isn't showing on Google Maps</a> covers what to fix if you can't find yourself.
+			</p>
+			<h3>What's a good Google ranking?</h3>
+			<p>
+				Positions 1 to 3 get most of the clicks. Anything on page one (roughly the top 10) gets some. If you're on page two or three, you're close: better
+				titles, more helpful content and a few good links can often move you up. Run the <a href="/tools/website-audit/">free website audit</a> to find quick fixes.
+			</p>
+			<h3>Does checking my ranking hurt my site?</h3>
+			<p>No. Searching for your own keywords doesn't affect how Google ranks your website.</p>
+		</div>
+	</section>
+</ToolLayout>
+
+<script>
+	import { track } from '../../scripts/analytics';
+
+	type Entry = { keyword: string; site: string; country: string; pos: number | null; date: string };
+	const KEY = 'rankfolk-rank-log';
+	const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
+	const form = $<HTMLFormElement>('rc-form');
+	const siteIn = $<HTMLInputElement>('rc-site');
+	const kwIn = $<HTMLTextAreaElement>('rc-keywords');
+	const countryIn = $<HTMLSelectElement>('rc-country');
+	const list = $<HTMLOListElement>('rc-list');
+	const errorEl = $<HTMLParagraphElement>('rc-error');
+
+	function load(): Entry[] {
+		try {
+			return JSON.parse(localStorage.getItem(KEY) || '[]');
+		} catch {
+			return [];
+		}
+	}
+	function save(entries: Entry[]) {
+		try {
+			localStorage.setItem(KEY, JSON.stringify(entries.slice(-500)));
+		} catch {
+			/* storage can be blocked; the tool still works without the log */
+		}
+	}
+	function esc(s: string) {
+		return s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+	}
+	function cleanDomain(v: string) {
+		return v.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').split(/[/?#]/)[0];
+	}
+	function countryName(code: string) {
+		return countryIn.querySelector<HTMLOptionElement>(`option[value="${code}"]`)?.textContent ?? code.toUpperCase();
+	}
+	function searchUrl(keyword: string, code: string) {
+		const host = countryIn.querySelector<HTMLOptionElement>(`option[value="${code}"]`)?.dataset.host ?? 'www.google.com';
+		const p = new URLSearchParams({ q: keyword, gl: code, hl: 'en', pws: '0' });
+		return `https://${host}/search?${p}`;
+	}
+	function mapsUrl(keyword: string) {
+		return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(keyword)}`;
+	}
+	function fmtPos(p: number | null) {
+		return p === null ? 'Not found' : `#${p}`;
+	}
+
+	function renderLog() {
+		const entries = load();
+		const wrap = $('rc-log-wrap');
+		wrap.classList.toggle('hidden', entries.length === 0);
+		const groups = new Map<string, Entry[]>();
+		for (const e of entries) {
+			const k = `${e.site}|${e.keyword}|${e.country}`;
+			if (!groups.has(k)) groups.set(k, []);
+			groups.get(k)!.push(e);
+		}
+		const rows = [...groups.values()].map((g) => {
+			const latest = g[g.length - 1];
+			const prev = g.length > 1 ? g[g.length - 2] : null;
+			let change = '<span class="text-ink-soft">First check</span>';
+			if (prev) {
+				const a = prev.pos ?? 101;
+				const b = latest.pos ?? 101;
+				if (b < a) change = `<span class="font-bold text-blue">Up ${a === 101 ? '' : a - b}</span>`;
+				else if (b > a) change = `<span class="font-bold text-coral">Down ${b === 101 ? '' : b - a}</span>`;
+				else change = '<span class="text-ink-soft">No change</span>';
+			}
+			return `<tr class="border-b border-ink/15"><td class="py-2 pr-3 font-semibold">${esc(latest.keyword)}<div class="text-xs font-normal text-ink-soft">${esc(latest.site)}</div></td><td class="py-2 pr-3">${esc(countryName(latest.country))}</td><td class="py-2 pr-3 font-bold">${fmtPos(latest.pos)}</td><td class="py-2 pr-3">${change}</td><td class="py-2">${new Date(latest.date).toLocaleDateString()}</td></tr>`;
+		});
+		$('rc-log').innerHTML = rows.join('');
+	}
+
+	function logPosition(keyword: string, site: string, country: string, pos: number | null) {
+		const entries = load();
+		entries.push({ keyword, site, country, pos, date: new Date().toISOString() });
+		save(entries);
+		renderLog();
+		track('rank_checker_logged', { country, found: pos !== null });
+	}
+
+	function renderKeywords(site: string, keywords: string[], country: string) {
+		$('rc-empty').classList.add('hidden');
+		list.innerHTML = keywords
+			.map(
+				(k, i) => `<li class="rounded-2xl border-2 border-ink bg-paper p-4">
+				<p class="font-display font-bold">${esc(k)}</p>
+				<div class="mt-3 flex flex-wrap gap-2">
+					<a class="btn !px-4 !py-2 !text-sm" href="${esc(searchUrl(k, country))}" target="_blank" rel="noopener nofollow" data-search="google">Search Google</a>
+					<a class="btn btn-light !px-4 !py-2 !text-sm" href="${esc(mapsUrl(k))}" target="_blank" rel="noopener nofollow" data-search="maps">Search Maps</a>
+				</div>
+				<div class="mt-3 flex flex-wrap items-end gap-2">
+					<label class="text-sm font-bold" for="rc-pos-${i}">Your position
+						<input id="rc-pos-${i}" type="number" min="1" max="100" inputmode="numeric" class="mt-1 block w-28 rounded-xl border-2 border-ink bg-white px-3 py-2 text-base" />
+					</label>
+					<button type="button" class="btn btn-sun !px-4 !py-2 !text-sm" data-log="${i}">Log it</button>
+					<button type="button" class="btn btn-light !px-4 !py-2 !text-sm" data-notfound="${i}">Not found</button>
+				</div>
+				<p class="mt-2 hidden text-sm font-semibold text-blue" data-saved="${i}">Logged.</p>
+			</li>`,
+			)
+			.join('');
+
+		list.querySelectorAll<HTMLAnchorElement>('a[data-search]').forEach((a) =>
+			a.addEventListener('click', () => track('rank_checker_search', { type: a.dataset.search!, country })),
+		);
+		const done = (i: number, pos: number | null) => {
+			logPosition(keywords[i], site, country, pos);
+			const s = list.querySelector<HTMLElement>(`[data-saved="${i}"]`)!;
+			s.textContent = pos === null ? 'Logged as not found.' : `Logged at #${pos}.`;
+			s.classList.remove('hidden');
+		};
+		list.querySelectorAll<HTMLButtonElement>('[data-log]').forEach((b) =>
+			b.addEventListener('click', () => {
+				const i = Number(b.dataset.log);
+				const input = $<HTMLInputElement>(`rc-pos-${i}`);
+				const n = Math.round(Number(input.value));
+				if (!n || n < 1 || n > 100) {
+					input.focus();
+					input.setCustomValidity('Enter a number from 1 to 100');
+					input.reportValidity();
+					input.setCustomValidity('');
+					return;
+				}
+				done(i, n);
+			}),
+		);
+		list.querySelectorAll<HTMLButtonElement>('[data-notfound]').forEach((b) => b.addEventListener('click', () => done(Number(b.dataset.notfound), null)));
+	}
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const site = cleanDomain(siteIn.value);
+		const keywords = [...new Set(kwIn.value.split('\n').map((k) => k.trim()).filter(Boolean))].slice(0, 10);
+		errorEl.classList.add('hidden');
+		if (!site || !site.includes('.')) {
+			errorEl.textContent = 'Add your website address, like smithplumbing.com.';
+			errorEl.classList.remove('hidden');
+			siteIn.focus();
+			return;
+		}
+		if (!keywords.length) {
+			errorEl.textContent = 'Add at least one keyword.';
+			errorEl.classList.remove('hidden');
+			kwIn.focus();
+			return;
+		}
+		renderKeywords(site, keywords, countryIn.value);
+		track('rank_checker_started', { keywords: keywords.length, country: countryIn.value });
+		try {
+			localStorage.setItem(`${KEY}-form`, JSON.stringify({ site, keywords: kwIn.value, country: countryIn.value }));
+		} catch {
+			/* ignore */
+		}
+		if (window.matchMedia('(max-width: 1023px)').matches) $('rc-results').scrollIntoView({ behavior: 'smooth' });
+	});
+
+	$('rc-csv').addEventListener('click', () => {
+		const rows = [['date', 'website', 'keyword', 'country', 'position'], ...load().map((e) => [e.date.slice(0, 10), e.site, e.keyword, countryName(e.country), e.pos === null ? 'not found' : String(e.pos)])];
+		const csv = rows.map((r) => r.map((c) => `"${c.replace(/"/g, '""')}"`).join(',')).join('\n');
+		const a = document.createElement('a');
+		a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+		a.download = 'google-rankings.csv';
+		a.click();
+		URL.revokeObjectURL(a.href);
+	});
+	$('rc-clear').addEventListener('click', () => {
+		save([]);
+		renderLog();
+	});
+
+	try {
+		const saved = JSON.parse(localStorage.getItem(`${KEY}-form`) || 'null');
+		if (saved) {
+			siteIn.value = saved.site ?? '';
+			kwIn.value = saved.keywords ?? '';
+			if (saved.country) countryIn.value = saved.country;
+		}
+	} catch {
+		/* ignore */
+	}
+	renderLog();
+</script>

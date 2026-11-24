@@ -1,9 +1,9 @@
 ---
 title: "Where Does My Website Rank on Google? 4 Free Ways to Check"
-description: "Find out where your website ranks on Google for free: Search Console, a clean search, Google Maps rank checks, and why your own searches mislead you."
+description: "Check where your website ranks on Google for free: Search Console, a free rank checker, Google Maps checks, and why your own searches mislead you."
 coverTitle: "Check your Google ranking"
 pubDate: 2026-10-26
-updatedDate: 2026-11-02
+updatedDate: 2026-11-24
 category: tools
 tags: ["google search console", "rankings", "seo tools"]
 ---
@@ -57,6 +57,8 @@ For a quick spot check, reduce personalization:
 3. Note where your site appears.
 
 This still won't be perfect, especially for local searches, but it's closer to what a new customer sees than a search on your usual browser.
+
+To make this quicker, use our free [Google rank checker](/tools/google-rank-checker/). Add your website and up to 10 keywords, pick a country, and it opens a clean Google search and a Google Maps search for each one. Log the position you find and it keeps a history in your browser, so next month you can see what moved.
 
 ## Method 3: Check your Google Maps ranking
 

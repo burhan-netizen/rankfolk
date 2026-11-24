@@ -98,7 +98,7 @@ Write a page title (under 60 characters) and meta description (under
 and a call to action.
 ```
 
-Then check how it looks with our free [Google search preview tool](/tools/google-search-preview/).
+Then check how it looks with our free [meta title checker](/tools/google-search-preview/).
 
 ## Common mistakes
 

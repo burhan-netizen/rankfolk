@@ -1,8 +1,9 @@
 ---
 title: "How to Verify Google My Business Without a Postcard (2026)"
-description: "How to verify your Google Business Profile without a postcard: phone, text, email, video and live video call, plus what to do if postcard is your only option."
+description: "Postcard never arrived? How to verify Google My Business without one in 2026: phone, text, email or video, and what to do if postcard is your only option."
 coverTitle: "Verify without a postcard"
 pubDate: 2026-11-02
+updatedDate: 2026-11-24
 category: google-business-profile
 tags: ["google business profile", "verification", "google my business", "postcard"]
 ---
@@ -123,6 +124,18 @@ Phone, text and email can be immediate. Video recordings are reviewed, which Goo
 ### Why does Google ask me to verify again?
 
 Google may re-verify a profile after major edits (name, address or category), a change of owner, or if it spots signs of a problem. Use the same steps: keep details accurate and choose the quickest method offered.
+
+### Do the 2019 and 2020 tricks for skipping the postcard still work?
+
+Mostly no. Older guides suggest tricks like asking Google support to switch you to phone verification. Today the methods are picked automatically by Google and can't be changed ([Google's verification help](https://support.google.com/business/answer/7107242)). The fixes in this guide, such as accurate details and no duplicate profiles, are what still make a difference.
+
+### Can I verify Google My Business without an address?
+
+You still enter an address so Google can verify you, but if customers don't visit you, you then hide it and show your service areas instead. Our guide to a [Google Business Profile without a storefront](/blog/google-business-profile-without-address/) explains how.
+
+### What if my postcard code never arrived?
+
+Google says postcards usually arrive within 14 days and codes expire after 30 days. Don't request a new code while you wait, because that cancels the first one. If it still hasn't come after 14 days, check your profile for other methods before requesting another.
 
 ### Is the postcard method gone completely?
 

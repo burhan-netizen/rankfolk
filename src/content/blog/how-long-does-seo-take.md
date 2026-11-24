@@ -51,7 +51,7 @@ Every business is different, so treat this as a typical shape, not a promise.
 - A steady trickle of new reviews
 - First local links and directory listings
 
-**What you might see:** Search Console starts showing more impressions (times your site appears in results), often before clicks increase. You may start ranking for longer, specific searches like "flat roof repair in Leeds".
+**What you might see:** Search Console starts showing more impressions (times your site appears in results), often before clicks increase. You may start ranking for longer, specific searches like "flat roof repair in Leeds". The [free Google rank checker](/tools/google-rank-checker/) lets you log where you appear each month, so you can see progress before the calls pick up.
 
 ### Months 4 to 6: momentum
 
