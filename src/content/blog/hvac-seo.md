@@ -55,7 +55,7 @@ Publish or refresh seasonal content **a month or two before** each peak, so Goog
 - **Before winter:** "Furnace or boiler not turning on: what to check first", "How often should a boiler be serviced?"
 - **Shoulder seasons:** heat pump guides, replacement planning, maintenance plans
 
-Simple safety-first troubleshooting guides ("check the thermostat and breaker before you call") build trust and often lead to calls when the easy fixes don't work.
+Simple safety-first troubleshooting guides ("check the thermostat and breaker before you call") build trust and often lead to calls when the easy fixes don't work. For a step-by-step winter plan, see [how HVAC companies get more furnace repair calls in winter](/blog/more-furnace-repair-calls/).
 
 ## Step 4: Make calls and bookings easy
 
