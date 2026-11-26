@@ -96,6 +96,8 @@ This shows the searches people used to find your site:
 
 **Tip:** select the **Queries** tab and look for searches with lots of impressions but few clicks, or an average position between about 8 and 20. Those pages are close to the top and are often the fastest to improve. Rewriting the page title to be clearer can lift clicks quickly. If you're seeing plenty of impressions but hardly any clicks, see [what impressions with no clicks means](/blog/impressions-but-no-clicks/).
 
+Under Performance you may also see a **Generative AI** report. It shows how often your pages appeared in AI Overviews and AI Mode. Our guide to [Google AI Overviews and AI Mode](/blog/google-ai-overviews-small-business/) explains what it does and doesn't tell you.
+
 ### 2. Pages (indexing)
 
 Under **Indexing**, the Pages report shows which pages are indexed and which aren't, with reasons. Look out for important pages listed as not indexed, and check the reason, such as "Excluded by noindex tag". If your whole site is missing from Google, see [why your website isn't showing up on Google](/blog/why-is-my-website-not-showing-up-on-google/).

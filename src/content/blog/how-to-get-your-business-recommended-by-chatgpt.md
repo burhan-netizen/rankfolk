@@ -79,7 +79,7 @@ If you want to appear in ChatGPT search, make sure OAI-SearchBot isn't blocked. 
 
 You can see some of this traffic already:
 
-- In **Google Search Console**, visits from AI Overviews and AI Mode are counted as part of your normal Search traffic, under the "Web" search type.
+- In **Google Search Console**, visits from AI Overviews and AI Mode are counted as part of your normal Search traffic, under the "Web" search type. Search Console also has a separate Generative AI performance report showing how often your pages appear in these features. Our guide to [Google AI Overviews and AI Mode](/blog/google-ai-overviews-small-business/) explains how to read it.
 - In **Google Analytics**, OpenAI says ChatGPT adds `utm_source=chatgpt.com` to links it sends people to, so you can spot that traffic in your referral reports.
 - **Ask customers** how they found you. "I asked ChatGPT" is becoming a real answer.
 

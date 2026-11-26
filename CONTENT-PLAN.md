@@ -8,7 +8,7 @@ Approved by Burhan on 2026-11-24. Sources: Search Console queries (Oct to Nov 20
 
 - [x] 1. New: Why do I have impressions but no clicks? (Search Console, for new site owners)
 - [x] 2. New: How HVAC companies get more furnace repair calls in winter
-- [ ] 3. Update: google-ai-overviews-small-business (expand AI Mode, 2026 changes)
+- [x] 3. Update: google-ai-overviews-small-business (expand AI Mode, 2026 changes)
 - [ ] 4. New: ChatGPT vs Gemini vs Claude for small business
 - [ ] 5. New: HVAC keywords: what customers type into Google (target "hvac keywords")
 - [ ] 6. Update: hvac-seo (add winter, heating and air conditioning sections; "seo for hvac", "air conditioning seo")
@@ -41,3 +41,4 @@ Approved by Burhan on 2026-11-24. Sources: Search Console queries (Oct to Nov 20
 
 - 2026-11-24: Impressions but No Clicks in Search Console? What It Means and How to Fix It: https://rankfolk.com/blog/impressions-but-no-clicks/
 - 2026-11-25: How HVAC Companies Get More Furnace Repair Calls in Winter: https://rankfolk.com/blog/more-furnace-repair-calls/
+- 2026-11-26: Google AI Overviews and AI Mode: What They Mean for Small Businesses in 2026 (update): https://rankfolk.com/blog/google-ai-overviews-small-business/
