@@ -121,7 +121,7 @@ Treat these as starting points. Your own experience of what customers ask is mor
 
 ### Is ChatGPT free for small businesses?
 
-ChatGPT, Gemini, Claude and Copilot all offer free versions that are enough for the tasks in this guide. Paid plans add more usage and features; check each provider's pricing page for current details.
+ChatGPT, Gemini, Claude and Copilot all offer free versions that are enough for the tasks in this guide. Paid plans add more usage and features; check each provider's pricing page for current details. Not sure which to pick? See our comparison of [ChatGPT vs Gemini vs Claude for small business](/blog/chatgpt-vs-gemini-vs-claude/).
 
 ### Will customers know my posts were written by AI?
 
